@@ -1,0 +1,89 @@
+.Progress h1{
+    text-align: center;
+    font-size: 40px;
+    background-color: Green;
+    width:1007px;
+    color: #fff;
+    margin-top: 0px;
+    margin-left: -15px;
+
+}
+.mark{
+    display: flex;
+    background-color: transparent;
+
+}
+
+.uB{
+    background-color: darkgreen;
+    color:#fff;
+    text-decoration: none;
+    border: none;
+    width:150px;
+    height:40px;
+    margin-top:10px ;
+    border-radius: 2px;
+}
+
+.kanban{
+    display:flex;
+    margin-left: 100px;
+}
+.kanban div{
+     margin-left: 10px;
+    width:250px;
+    
+    background-color: lightgray;
+     
+}
+table thead th{
+font-size: larger;
+color: black;
+font-weight: bolder;
+
+}
+table tbody tr td{
+    border: 1px solid darkgray;
+    width:250px
+}
+
+
+.send{
+    margin:50px 450px;  
+text-align: center;
+    width:150px;
+height: 50px;
+    color:#fff;
+    background-color: darkgreen;
+    text-decoration: none;
+    border: none;
+  border-radius: 2px;
+}
+.container{
+    width:1007px;
+    height:900px;
+    background-color: #ebebeb;
+    display: flex;
+    justify-content:space-between;
+    margin-left:125px;
+    position:absolute;
+    top:200px;
+}
+
+
+.container h1{
+   text-align: center;
+ 
+   
+}
+ .link{
+    background-color: green;
+    margin-bottom: 10px;
+    color: #eee;
+    border-radius: 4px;
+    height: 50px;
+    text-decoration: none;
+    border: none;
+    font-size: large;
+    text-align: center;
+ }

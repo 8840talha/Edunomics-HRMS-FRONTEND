@@ -1,0 +1,116 @@
+.container{
+    width:1007px;
+    height:900px;
+    background-color: #ebebeb;
+    display: flex;
+    justify-content:space-between;
+    margin-left:125px;
+    position:absolute;
+    top:200px;
+}
+
+
+.container h1{
+   text-align: center;
+ 
+   
+}
+ .link{
+    background-color: green;
+    margin-bottom: 10px;
+    color: #eee;
+    border-radius: 4px;
+    height: 50px;
+    text-decoration: none;
+    border: none;
+    font-size: large;
+    text-align: center;
+ }
+.headwidth{
+      color: #fff;
+      font-size: 40px;
+margin-top: 0px;   
+width:1007px;
+background-color: green;
+text-align: center;
+margin-bottom: 30px;
+margin-right: 105px;
+height: 60px;
+
+
+}
+
+
+.btnContainer{
+    
+    width:800px;
+    display:flex;
+    
+    text-align: center;
+    margin-left: 90px;
+    margin-bottom: 40px;
+    
+}
+
+
+.btnContainer button{
+width:200px;
+font-size: large;
+text-align: center;
+border: 1px solid black;
+text-decoration: none;
+color:black
+}
+
+.green{
+    background-color: green;
+    color: #fff;
+}
+.red{
+    background-color: red;
+    color: #fff;
+}
+.gray{
+    background-color: gray;
+    color: #fff;
+}
+
+.approved{
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid black;
+    width:900px;
+    background-color: darkgray;
+    margin-left: 50px;
+}
+.leaveContainer{
+    height: 50px;
+    display:flex;
+    justify-content: space-evenly;
+    border:1px solid black;
+    width: 900px;
+    margin-left: 50px;
+}
+.par{
+    margin-top: 0px;
+    width: 900px; 
+    margin-left: 50px;
+    font-size: 25px;
+    color: black;
+    height:100%;
+}
+.descCont{ 
+    border: 1px solid gray;
+     margin: 3px 0;
+     display: flex;
+     width: 100%;
+     height: 100%;
+    background-color: lightgray;
+}
+.iconCont{
+    width: 10%;
+     margin: 50px 0; 
+}
+.description{
+width: 90% ;
+}
