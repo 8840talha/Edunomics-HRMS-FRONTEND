@@ -15,11 +15,14 @@ import EmpAdmin from './components/LOGASEMPADmin/EmpAdmin';
 import AdminLoginForm from './components/AdminLoginPage/AdminLoginForm';
 import AdminTrack from './components/AdminTrackPages/Admin/Admin';
 import LeaveView from './components/AdminTrackPages/ViewLeaveReq/LeaveReq';
-import ChangeDetails from './components/TrackUpdateMydetailsMyrecords/TrackPage/MyDetails/ChangeInDetail/ChangeDetail';
+
 import Employees from './components/AdminTrackPages/pages/Employees';
 import AddUser from './components/AdminTrackPages/pages/users/AddUser';
 import EditUser from './components/AdminTrackPages/pages/users/EditUser';
 import User from './components/AdminTrackPages/pages/users/User';
+import EditReqView from './components/AdminTrackPages/ViewEditReq/ViewEditReq';
+import ChangeDetails from './components/TrackUpdateMydetailsMyrecords/TrackPage/ChangeInDetail/ChangeDetail'
+import ForgetPass from './components/ForgetPassWord/ForgetPass';
 
 class App extends Component {
   render() {
@@ -36,8 +39,8 @@ class App extends Component {
             <Route exact path="/adminTrack" component={AdminTrack} />
             <Route exact path='/adminLogin' component={AdminLoginForm} />
             <Route exact path='/empLogin' component={LoginForm} />
-            {/* <Route exact path='/forget' component={ForgetPass} /> */}
-            <Route exact path="/changeDetail" component={ChangeDetails} />
+            <Route exact path='/forget' component={ForgetPass} />
+            {/* <Route exact path="/changeDetail" component={ChangeDetails} /> */}
             <Route exact path='/track' component={Track} />
             <Route exact path='/leave' component={LeaveTrack} />
             <Route exact path='/update' component={Update} />
@@ -46,6 +49,8 @@ class App extends Component {
             <Route exact path="/users/add" component={AddUser} />
             <Route exact path="/users/edit/:id" component={EditUser} />
             <Route exact path="/users/:id" component={User} />
+            <Route exact path="/editReq" component={EditReqView} />
+            <Route exact path="/detailChange" component={ChangeDetails} />
             <Route component={Falsy} />
           </Switch>
         </div>

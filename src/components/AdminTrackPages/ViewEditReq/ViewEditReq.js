@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import './LeaveReq.css';
+import './ViewEditReq.css';
 import { NavLink } from 'react-router-dom'
 import { TextField, jssPreset } from '@material-ui/core'
 
-class LeaveView extends Component {
+class EditReqView extends Component {
     state = {
         approve: false,
         reject: false,
@@ -131,7 +131,7 @@ class LeaveView extends Component {
                     </div>
 
                     <div>
-                        <h1 className='headwidth'>View Leave</h1>
+                        <h1 className='headwidth'>Edit Requests</h1>
 
                         <div>
                             <div className="leaveContainer">
@@ -142,7 +142,7 @@ class LeaveView extends Component {
                             </div>
                             <div className="par">
 
-                                {result}
+                                {/* {result} */}
 
 
                             </div>
@@ -161,4 +161,4 @@ class LeaveView extends Component {
 
 }
 
-export default LeaveView;
+export default EditReqView;

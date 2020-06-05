@@ -4,7 +4,7 @@ import { Paper } from '@material-ui/core'
 import Expand from './ForgetPassModal'
 import { makeStyles } from '@material-ui/core/styles';
 
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 const useStyle = makeStyles((theme) => ({
@@ -73,7 +73,16 @@ const LoginForm = (props) => {
     const [password, setPassword] = useState('');
     //console.log(email);
     //console.log(password);
-
+    const token = localStorage.getItem('token');
+    console.log(token)
+    var login = true;
+    if (token == null) {
+        login = false;
+    }
+    const [loggin, setLogin] = useState(login);
+    if (loggin) {
+        return <Redirect to="/track" />
+    }
     const submithandle = (event) => {
         event.preventDefault();
         //console.log(email, password)
@@ -133,7 +142,7 @@ const LoginForm = (props) => {
                 <input className={classes.inp} type='password' value={password} onChange={(e) => { setPassword(e.target.value) }} />
                 <label style={{ display: 'block' }}>Remember me<input className={classes.check} type="checkbox" /></label>
                 <button className={classes.bttn}>Submit</button>
-                {/* <h3><a style={{ color: 'black' }} href="/forget">Reset Password</a></h3> */}
+                <h3><a style={{ color: 'black' }} href="/forget">Reset Password</a></h3>
                 <h3 onClick={handleClick}>Forgot Your PassWord??</h3>
             </form>
             <img alt="LoginLogo" src={require('../../assets/edunomics.png')} />

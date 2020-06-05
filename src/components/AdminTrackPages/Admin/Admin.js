@@ -13,7 +13,7 @@ const AdminTrack = (props) => {
     const [loggedIn, setLogin] = useState(login)
 
     if (loggedIn === false) {
-        return <Redirect to="/adminLogin" />
+        return <Redirect to="/" />
     }
     const handleLogout = () => {
         localStorage.removeItem('token');
@@ -28,6 +28,7 @@ const AdminTrack = (props) => {
                 <div style={{ top: '12.5rem', left: '-5rem', position: 'absolute', display: 'flex', flexDirection: 'column' }}>
                     <NavLink className="link" to='/viewLeaveReq'  >View Leave Request</NavLink>
                     <NavLink className="link" to='/employees' >Employees</NavLink>
+                    <   NavLink className="link" to="/editReq">Edit Requests</NavLink>
                 </div>
 
                 <h1 className="hp"> 'View Employees And Leave Requests If Any.' </h1>

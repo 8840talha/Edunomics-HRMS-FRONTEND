@@ -137,7 +137,7 @@ const LoginForm = (props) => {
                 <label style={{ display: 'block' }}>Remember me<input className={classes.check} type="checkbox" /></label>
 
                 <button className={classes.bttn}>Submit</button>
-                {/* <h3><a style={{ color: 'black' }} href="/forget">Reset Password</a></h3> */}
+                <h3><a style={{ color: 'black' }} href="/forget">Reset Password</a></h3>
                 <h3 onClick={handleClick}>Forgot Your PassWord</h3>
             </form>
             <img alt="LoginLogo" src={require('../../assets/edunomics.png')} />

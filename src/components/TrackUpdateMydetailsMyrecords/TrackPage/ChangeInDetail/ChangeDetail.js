@@ -51,13 +51,12 @@ const ChangeDetails = (props) => {
     const [userInput, setUserInput] = useReducer(
         (state, newState) => ({ ...state, ...newState }),
         {
-            firstname: '',
-            lastname: '',
-            mobile: '',
+            name: '',
             email: '',
-            address: '',
-            zip: '',
-            join: ''
+
+            phone: '',
+            category: '',
+            role: ''
 
         }
     );
@@ -69,23 +68,36 @@ const ChangeDetails = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(userInput)
+        // console.log(userInput)
+
         var data = {
-            "firstname": userInput.firstname,
-            "lastname": userInput.lastname,
-            "mobile": userInput.mobile,
-            "email": userInput.email,
-            "address": userInput.address,
-            "zip": userInput.zip,
-            "join": userInput.join
+
         }
+        if (userInput.name !== "") {
+            data.name = userInput.name
+        }
+        if (userInput.email !== "") {
+            data.email = userInput.email
+        }
+        if (userInput.phone !== "") {
+            data.phone = userInput.phone
+        }
+        if (userInput.category !== "") {
+            data.category = userInput.category
+        }
+        if (userInput.role !== "") {
+            data.role = userInput.role
+        }
+
+
+        console.log(data)
         var newdata = JSON.stringify(data);
         console.log(newdata)
         alert('requested')
-       props.history.push('/mydetails')
+        //  props.history.push('/mydetails')
 
     }
-   
+
     return (
         <Paper className={classes.changePaper} elevation={24}>
 
@@ -95,13 +107,13 @@ const ChangeDetails = (props) => {
             </div>
             <div className="changepara">
 
-                <input value={userInput.firstname} className={classes.inpp} onChange={handleChange} name="firstname" placeholder="FirstName" type="Text" />
-                <input value={userInput.lastname} className={classes.inpp} onChange={handleChange} name="lastname" placeholder="LastName" type="text" />
-                <input value={userInput.mobile} className={classes.inpp} onChange={handleChange} name="mobile" placeholder="Mobile" type="contact" />
+                <input value={userInput.name} className={classes.inpp} onChange={handleChange} name="name" placeholder="FirstName" type="Text" />
+                {/* <input value={userInput.lastname} className={classes.inpp} onChange={handleChange} name="lastname" placeholder="LastName" type="text" /> */}
                 <input value={userInput.email} className={classes.inpp} onChange={handleChange} name="email" placeholder="Email" type="email" />
-                <input value={userInput.address} className={classes.inpp} onChange={handleChange} name="address" placeholder="Address" type="Text" />
-                <input value={userInput.zip} className={classes.inpp} onChange={handleChange} name="zip" placeholder="Zip Code" type="contact" />
-                <input value={userInput.join} className={classes.inpp} onChange={handleChange} name="join" placeholder="Join Date" type="date" />
+                <input value={userInput.phone} className={classes.inpp} onChange={handleChange} name="phone" placeholder="Phone" type="contact" />
+                <input value={userInput.category} className={classes.inpp} onChange={handleChange} name="category" placeholder="Category" type="Text" />
+                <input value={userInput.role} className={classes.inpp} onChange={handleChange} name="role" placeholder="Role" type="contact" />
+                {/* <input value={userInput.join} className={classes.inpp} onChange={handleChange} name="join" placeholder="Join Date" type="date" /> */}
                 <button className={classes.changeDetBtn} onClick={handleSubmit}>Send Requests</button>
             </div>
 
@@ -112,4 +124,4 @@ const ChangeDetails = (props) => {
     )
 
 }
-export default withRouter(ChangeDetails);
+export default ChangeDetails;

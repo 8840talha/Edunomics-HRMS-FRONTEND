@@ -95,7 +95,7 @@ class MyDetails extends React.Component {
                                 </div>
 
                             </form>
-                            {/* <button className="change"><a href="/changeDetail">Request For Change In Details</a></button> */}
+                            <button className="change"><a href="/detailChange">Request For Change In Details</a></button>
                         </div>
 
                     </div>

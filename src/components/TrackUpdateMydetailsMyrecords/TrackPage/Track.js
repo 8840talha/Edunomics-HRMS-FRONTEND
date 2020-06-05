@@ -1,11 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Track.css'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
 
 
 const Track = (props) => {
 
+    const token = localStorage.getItem('token');
+    console.log(token)
+    var login = true;
+    if (token == null) {
+        login = false;
+    }
+    const [loggedIn, setLogin] = useState(login)
 
+    if (loggedIn === false) {
+        return <Redirect to="/" />
+    }
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        setLogin(!login)
+
+    }
 
     return (
         <div>
@@ -17,7 +32,7 @@ const Track = (props) => {
                 </div>
 
                 <h1> 'Click / Toggle On the Buttons to Get the views .' </h1>
-
+                <button style={{ border: 'none', backgroundColor: 'green', color: '#fff', width: '150px', height: '50px' }} onClick={handleLogout}>LogOut</button>
 
                 <div style={{ top: '6.25rem', right: '-11.25rem', position: 'absolute', display: 'flex', flexDirection: 'column' }} >
                     <img style={{ marginTop: '0.625rem', }} alt="img" src={require('../../../assets/edunomics.png')} />

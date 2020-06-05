@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './LeaveTrack.css';
 import { NavLink } from 'react-router-dom'
 import { InputBase } from '@material-ui/core';
+import axios from 'axios';
 
 class LeaveTrack extends Component {
 
@@ -13,95 +14,161 @@ class LeaveTrack extends Component {
         sentReq: false,
         Description: '',
         NoOFLeaves: '',
-        approvedLeaves: [
-            { id: 1, name: 'Wasif', date: 21 / 11 / 12, },
-
-        ],
-         rejectedLeaves: [
-            { id: 1, name: 'manan', date: 21 / 11 / 12, },
-        ]
+        pendingLeaves: [],
+        approvedLeaves: [],
+        rejectedLeaves: []
     }
     componentDidMount() {
+        // get requested call
         const tokenKey = localStorage.getItem('token');
-        //console.log(tokenKey);
-        
-        fetch('https://hrms-project.herokuapp.com/api/user',{method:'get', headers: { "Content-Type": "application/json" ,"Authorization": `Bearer `+tokenKey } })
-        .then(res => {
-            //console.log(res);
-            if(res.status !== 200 && res.status !== 201) {
-                console.log('hellllo');
-                throw new Error(res.status);
-            }
-            return res.json();
-        })	
-        .then(response => {
-                //console.log(response.user.leaveCount);
-                this.setState({NoOFLeaves: response.user.leaveCount});
-                //alert('sent');            
+        fetch('https://hrms-project.herokuapp.com/api/user', { method: 'get', headers: { "Content-Type": "application/json", "Authorization": `Bearer ` + tokenKey } })
+            .then(res => {
+                if (res.status !== 200 && res.status !== 201) {
+                    console.log('hellllo');
+                    throw new Error(res.status);
+                }
+                return res.json();
+            })
+            .then(response => {
+
+                this.setState({ NoOFLeaves: response.user.leaveCount });
+
             })
             .catch(err => {
-                //console.log(err.message);
-                this.setState({NoOFLeaves: ''});
-                    //alert('Some error occurred. Try again later')
-                
-                
+                this.setState({ NoOFLeaves: '' });
+
             })
+
+
 
     }
 
+
+    // For request change
     sendreqHandler = () => {
         this.setState({ sentReq: true })
         console.log(this.state.Description);
-        var data = JSON.stringify({"description":this.state.Description});
-        // send request here..
+        var data = JSON.stringify({ "description": this.state.Description });
         const tokenKey = localStorage.getItem('token');
-        //console.log(tokenKey);
-        
-        fetch('https://hrms-project.herokuapp.com/api/leave',{method:'post',body: data, headers: { "Content-Type": "application/json" ,"Authorization": `Bearer `+tokenKey } })
-        .then(res => {
-            //console.log(res);
-            if(res.status !== 200 && res.status !== 201) {
-                console.log('hellllo');
-                throw new Error(res.status);
-            }
-            return res.json();
-        })	
-        .then(response => {
-                //console.log(response);
-                alert('request successfully sent');            
+        fetch('https://hrms-project.herokuapp.com/api/leave', { method: 'post', body: data, headers: { "Content-Type": "application/json", "Authorization": `Bearer ` + tokenKey } })
+            .then(res => {
+                if (res.status !== 200 && res.status !== 201) {
+                    console.log('hellllo');
+                    throw new Error(res.status);
+                }
+                return res.json();
+            })
+            .then(response => {
+                alert('request successfully sent');
+                this.setState({ Description: '' })
             })
             .catch(err => {
-                //console.log(err.message);
-                
-                    alert('Some error occurred. Try again later')
-                
-                
+                alert('Some error occurred. Try again later')
             })
-
-        this.state.approvedLeaves.push({ id: 1, name: '3', date: 122 / 3 / 33 })
-        this.setState({ approvedLeaves: this.state.approvedLeaves })
     }
 
-    renderTableData() {
-        return this.state.approvedLeaves.map((approvedLeave, index) => {
-            const { id, name, date } = approvedLeave
-            return (
-                <tr key={id}>
+    onPendingClick = () => {
+        // get pending call
+        this.setState({
+            requested: false,
+            pending: true,
+            approved: false,
+            rejected: false,
+        })
 
-                    <td>{name}</td>
+        const token = localStorage.getItem('token');
+        axios.get('https://hrms-project.herokuapp.com/api/leave/pending', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then(response => {
+            console.log(response.data.Record)
+            this.setState({ pendingLeaves: response.data.Record })
+        }).catch(err => {
+            console.log(err);
+        })
+
+    }
+
+
+    onApprovedClick = () => {
+
+        // get approved call
+        this.setState({
+            requested: false,
+            pending: false,
+            approved: true,
+            rejected: false,
+        })
+        const tokens = localStorage.getItem('token');
+        axios.get('https://hrms-project.herokuapp.com/api/leave/approved', {
+            headers: {
+                Authorization: `Bearer ${tokens}`
+            }
+        }).then(response => {
+            console.log(response.data.Record)
+            this.setState({ approvedLeaves: response.data.Record })
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+    onRejectedClick = () => {
+
+        // get rejected call
+        this.setState({
+            requested: false,
+            pending: false,
+            approved: false,
+            rejected: true,
+        })
+        const tokenn = localStorage.getItem('token');
+        axios.get('https://hrms-project.herokuapp.com/api/leave/rejected', {
+            headers: {
+                Authorization: `Bearer ${tokenn}`
+            }
+        }).then(response => {
+            console.log(response.data.Record)
+            this.setState({ rejectedLeaves: response.data.Record })
+        }).catch(err => {
+            console.log(err);
+        })
+
+    }
+    renderPendingData() {
+        return this.state.pendingLeaves.map((pendingLeave, index) => {
+            const { _id, date, description, employeeId } = pendingLeave
+            return (
+                <tr key={_id} >
+
+                    <td>{description}</td>
+                    <td>{employeeId}</td>
+                    <td>{date}</td>
+                </tr>
+            )
+        })
+    }
+    renderApprovedData() {
+        return this.state.approvedLeaves.map((approvedLeave, index) => {
+            const { _id, date, description, employeeId } = approvedLeave
+            return (
+                <tr key={_id} >
+
+                    <td>{description}</td>
+                    <td>{employeeId}</td>
                     <td>{date}</td>
                 </tr>
             )
         })
     }
 
-    renderTableData1() {
+    renderRejectedData() {
         return this.state.rejectedLeaves.map((rejectedLeave, index) => {
-            const { id, name, date } = rejectedLeave
+            const { _id, date, description, employeeId } = rejectedLeave
             return (
-                <tr key={id}>
+                <tr key={_id} >
 
-                    <td>{name}</td>
+                    <td>{description}</td>
+                    <td>{employeeId}</td>
                     <td>{date}</td>
                 </tr>
             )
@@ -130,110 +197,94 @@ class LeaveTrack extends Component {
                                 })}
                             >Request For Leave</button>
                             <button className={this.state.pending ? 'green' : null}
-                                onClick={() => this.setState({
-                                    requested: false,
-                                    pending: true,
-                                    approved: false,
-                                    rejected: false,
-                                    
-                                })} >Pending</button>
+                                onClick={this.onPendingClick}>Pending</button>
                             <button className={this.state.approved ? 'green' : null}
-                                onClick={() => this.setState({
-                                    requested: false,
-                                    pending: false,
-                                    approved: true,
-                                    rejected: false,
-                                    
-                                })}>Approved </button>
+                                onClick={this.onApprovedClick}>Approved </button>
                             <button className={this.state.rejected ? 'green' : null}
-                                onClick={() => this.setState({
-                                    requested: false,
-                                    pending: false,
-                                    approved: false,
-                                    rejected: true,
-                                   
-
-                                })}>Rejected</button>
+                                onClick={this.onRejectedClick}>Rejected</button>
                         </div>
                         <div>
                             {/* Requested */}
-                            <div>
-                                <div className="leaveContainer">
-                                    <h2>></h2>
-                                    <h2>Your Name</h2>
-                                    <h2>dd/mm/yy</h2>
-                                    <h2>Leave Request</h2>
-                                </div>
+                            {this.state.requested ? <div>
                                 <div className="para">
                                     <InputBase
                                         onChange={(e) => {
                                             this.setState({
                                                 Description: e.target.value
                                             })
-                                        }} multiline
+                                        }}
+                                        value={this.state.Description}
+                                        multiline
                                         placeholder="Description For Leave"
                                         fullWidth
                                         style={{ border: '1px solid darkgray', margin: '10px 0' }} />
 
                                 </div>
                                 {this.state.requested ? <button className='req' onClick={this.sendreqHandler} >Send Request</button> : null}
-                            </div>
+                            </div> : null}
+
                             {/* approved */}
                             {this.state.approved ? <div>
-                                <div className="approved">
-                                    <table >
+                                <div>
+                                    <table style={{ width: '900px', marginLeft: '42px' }} className="table table-striped table-bordered">
                                         <thead>
                                             <tr>
-                                                <th style={{ textAlign: 'left' }}>Approved By</th>
-                                                <th style={{ textAlign: 'left' }}>Approved On</th>
-
+                                                <th>Description</th>
+                                                <th>Employee ID</th>
+                                                <th>Date</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {this.renderTableData()}
+                                            {this.renderApprovedData()}
                                         </tbody>
                                     </table>
 
                                 </div>
-                                <button className='req' onClick={this.sendreqHandler} >Send Request</button>
+                                {/* <button className='req' onClick={this.sendreqHandler} >Send Request</button> */}
                             </div> : null
 
                             }
                             {/* rejected */}
                             {this.state.rejected ? <div>
-                                <div className="approved">
-                                    <table >
+                                <div>
+                                    <table style={{ width: '900px', marginLeft: '42px' }} className="table table-striped table-bordered">
                                         <thead>
                                             <tr>
-                                                <th style={{ textAlign: 'left' }}>Approved By</th>
-                                                <th style={{ textAlign: 'left' }}>Approved On</th>
-
+                                                <th>Description</th>
+                                                <th>Employee ID</th>
+                                                <th>Date</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {this.renderTableData1()}
+                                            {this.renderRejectedData()}
                                         </tbody>
                                     </table>
                                 </div>
-                                <button className='req' onClick={this.sendreqHandler} >Send Request</button>
+                                {/* <button className='req' onClick={this.sendreqHandler} >Send Request</button> */}
                             </div> : null
 
                             }
                             {/* pending */}
                             {this.state.pending ? <div >
-                                <div className="leaveContainer">
-                                    <h2>></h2>
-                                    <h2>Bickey</h2>
-                                    <h2>23/05/2020</h2>
-                                    <h2>Leave Request</h2>
+                                <div >
+
+                                    <table style={{ width: '900px', marginLeft: '42px' }} className="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Description</th>
+                                                <th>Employee ID</th>
+                                                <th>Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {this.renderPendingData()}
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <button className='req' onClick={this.sendreqHandler} >Send Request</button>
+                                {/* <button className='req' onClick={this.pendingReqHandler} >Send Request</button> */}
                             </div> : null
                             }
                         </div>
-
-
-
                         <h3 className="m-20">No Of Leaves Available :{this.state.NoOFLeaves}</h3>
                     </div>
 
@@ -245,7 +296,7 @@ class LeaveTrack extends Component {
 
                 </div>
 
-            </div>
+            </div >
 
         )
 

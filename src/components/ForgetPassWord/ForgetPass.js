@@ -60,4 +60,4 @@ const ForgetPass = (props) => {
 
 }
 
-export default withRouter(ForgetPass);
+export default ForgetPass;
