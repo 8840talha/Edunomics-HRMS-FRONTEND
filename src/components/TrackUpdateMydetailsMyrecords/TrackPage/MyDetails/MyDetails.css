@@ -69,14 +69,15 @@ form input :focus{
 }
 
 .change{
-     background-color: #fff;
-    color:black;
+    background-color: green;
+    color:#fff;
     font-size: larger;
-    width: 180px;
-    margin:50px 435px;
+    width: 280px;
+    margin:50px 325px;
     text-decoration: none;
-    height: 80px;
-    border: 1px solid black;
+    height: 60px;
+    border:none;
+    border-radius: 3px;
 
 }
 

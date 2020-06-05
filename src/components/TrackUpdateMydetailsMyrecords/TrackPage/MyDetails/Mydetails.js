@@ -26,7 +26,7 @@ class MyDetails extends React.Component {
             })
             .then(response => {
                 const user = response.user;
-                //console.log(user);
+                console.log(user);
                 this.setState({
                     name: user.name,
                     email: user.email,
@@ -60,44 +60,35 @@ class MyDetails extends React.Component {
                     <div >
                         <h1 className="headMyDETAil">My Details</h1>
                         <div >
-                            <form>
-                                <div className="form">
-                                    <label><h4>Name</h4></label>
-                                    {this.state.name}
-                                </div>
-                                {/* <div className="form">
-                                    <label><h4>Last Name</h4></label>
-                                    <input type="text" />
-                                </div> */}
-                                <div className="form">
-                                    <label><h4>Mobile</h4></label>
-                                    {this.state.phone}
-                                </div>
-                                <div className="form">
-                                    <label><h4>Email</h4></label>
-                                    {this.state.email}
-                                </div>
-                                {/* <div className="form">
-                                    <label><h4>Addresse</h4></label>
-                                    <input type="text" />
-                                </div> */}
-                                <div className="form">
-                                    <label><h4>Employee Id</h4></label>
-                                    {this.state.employeeId}
-                                </div>
-                                <div className="form">
-                                    <label><h4>Category</h4></label>
-                                    {this.state.category}
-                                </div>
-                                <div className="form">
-                                    <label><h4>Role</h4></label>
-                                    {this.state.role}
-                                </div>
+                            <table style={{ width: '25%', marginLeft: '30%' }} className="  table  table-striped table-bordered">
+                                <tr>
+                                    <th>Name:</th>
+                                    <td>{this.state.name}</td>
+                                </tr>
+                                <tr>
+                                    <th>Email:</th>
+                                    <td>{this.state.email}</td>
+                                </tr>
+                                <tr>
+                                    <th>Telephone:</th>
+                                    <td>{this.state.phone}</td>
+                                </tr>
+                                <tr>
+                                    <th>Role:</th>
+                                    <td>{this.state.role}</td>
+                                </tr>
+                                <tr>
+                                    <th>Category:</th>
+                                    <td>{this.state.category}</td>
+                                </tr>
+                                <tr>
+                                    <th>EmployeeId:</th>
+                                    <td>{this.state.employeeId}</td>
+                                </tr>
+                            </table>
 
-                            </form>
-                            <button className="change"><a href="/detailChange">Request For Change In Details</a></button>
                         </div>
-
+                        <button className="change"><NavLink className="link" to="/detailChange">Request For Change In Details</NavLink></button>
                     </div>
                     <div style={{ top: '6.25rem', right: '-11.25rem', position: 'absolute', display: 'flex', flexDirection: 'column' }} >
                         <img style={{ marginTop: '0.625rem', }} alt="img" src={require('../../../../assets/edunomics.png')} />

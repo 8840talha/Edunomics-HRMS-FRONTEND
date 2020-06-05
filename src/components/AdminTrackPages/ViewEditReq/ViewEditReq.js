@@ -10,11 +10,13 @@ class EditReqView extends Component {
         data: []
     }
 
-
+    // admin ------> PUT -----> /api/editdetail/:detailId
+    // employeeSide----> POST ----> /api/editdetail
+    // adminSide-----> GET -----> /api/editdetail
 
     componentDidMount() {
         var token = localStorage.getItem('token');
-        fetch('https://hrms-project.herokuapp.com/api/leave/all', {
+        fetch('https://hrms-project.herokuapp.com/api/editdetail', {
             method: 'get',
             headers: {
                 "Content-Type": "application/json",
@@ -27,7 +29,7 @@ class EditReqView extends Component {
                     let data = JSON.parse(dataStr);
                     console.log(data)
                     if (data.success == "false") {
-                        alert(data.message + 'No Req Found')
+                        alert(data.message + 'No Request for Detail Change Found')
                     } else {
                         const Myarr = data.Request;
                         console.log(Myarr)
@@ -46,7 +48,7 @@ class EditReqView extends Component {
         console.log(id)
         var Token = localStorage.getItem('token');
         var leaveId = id;
-        fetch(`https://hrms-project.herokuapp.com/api/leave/${leaveId}`, {
+        fetch(`https://hrms-project.herokuapp.com/api/editdetail/${leaveId}`, {
             method: 'put',
             body: JSON.stringify({ "status": "rejected" }),
             headers: {
@@ -73,7 +75,7 @@ class EditReqView extends Component {
         console.log(id)
         var Tokenn = localStorage.getItem('token');
         var leaveID = id;
-        fetch(`https://hrms-project.herokuapp.com/api/leave/${leaveID}`, {
+        fetch(`https://hrms-project.herokuapp.com/api/editdetail/${leaveID}`, {
             method: 'put',
             body: JSON.stringify({ "status": "approved" }),
             headers: {
@@ -88,25 +90,50 @@ class EditReqView extends Component {
                 } else {
                     this.setState({ approve: true })
                     alert(data.message)
+                    if (data.success == "true") {
+                        fetch(`https://hrms-project.herokuapp.com/api/editdetail/${leaveID}`, {
+                            method: 'put',
+                            body: JSON.stringify(this.state.data),
+                            headers: {
+                                "Content-Type": "application/json",
+                                "Authorization": `Bearer ${Tokenn}`
+                            }
+                        }).then(response => response.json())
+                            .then(data => {
+                                console.log(data)
+                                if (data.success == "false") {
+                                    alert(data.message + "unable to put data")
+                                } else {
+                                    // this.setState({ approve: true })
+                                    alert(data.message + "detail changed ")
+
+                                }
+                            })
+                            .catch(error => {
+                                console.log(error)
+                            });
+                    }
                 }
             })
             .catch(error => {
                 console.log(error)
             });
+
+
         console.log('approving')
     }
     render() {
 
 
         var result = this.state.data.map((val, index) => {
-
+            console.log(val)
             return (<div className="descCont" key={index}>
                 <p className="description">
-                    {val.description}My EmpId is{val.employeeId}amd Todays dateis{val.date}
+                    My category is {val.category}My EmpId is{val.employeeId}and i want to change my details on{val.createdAt}
                 </p>
                 <div className="iconCont">
-                    <img alt={val.employeeId} onClick={() => this.approveHandler(val._id)} src={require('../../../assets/check.png')} />
-                    <img alt={val.employeeId} onClick={() => this.rejectHandler(val._id)} src={require('../../../assets/cross.png')} />
+                    <img alt={val.employeeId} onClick={() => this.approveHandler(val.employeeId)} src={require('../../../assets/check.png')} />
+                    <img alt={val.employeeId} onClick={() => this.rejectHandler(val.employeeId)} src={require('../../../assets/cross.png')} />
                 </div>
             </div>
 
@@ -142,7 +169,7 @@ class EditReqView extends Component {
                             </div>
                             <div className="par">
 
-                                {/* {result} */}
+                                {result}
 
 
                             </div>

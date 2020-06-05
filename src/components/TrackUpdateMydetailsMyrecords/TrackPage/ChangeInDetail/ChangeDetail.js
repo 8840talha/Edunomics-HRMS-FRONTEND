@@ -16,7 +16,7 @@ const userStyle = makeStyles(theme => ({
         border: '1px solid Green',
         width: '100%',
         marginTop: '5px',
-        height: '35px'
+        height: '55px'
     },
     saveBtn: {
         width: '100%',
@@ -33,27 +33,26 @@ const userStyle = makeStyles(theme => ({
         paddingTop: theme.spacing(2)
     },
     changeDetBtn: {
+        marginTop: '5px',
         textAlign: 'center',
-        margin: theme.spacing(3),
-        marginLeft: theme.spacing(22),
-        height: '40px',
+        height: '60px',
         backgroundColor: 'green',
         color: '#fff',
-        width: '150px',
+        width: '100%',
         border: 'none',
     }
 
 }))
 const ChangeDetails = (props) => {
     const classes = userStyle();
-
-
+    // admin ------> PUT -----> /api/editdetail/:detailId
+    // employeeSide----> POST ----> /api/editdetail
+    // adminSide-----> GET -----> /api/editdetail
     const [userInput, setUserInput] = useReducer(
         (state, newState) => ({ ...state, ...newState }),
         {
             name: '',
             email: '',
-
             phone: '',
             category: '',
             role: ''
@@ -93,9 +92,29 @@ const ChangeDetails = (props) => {
         console.log(data)
         var newdata = JSON.stringify(data);
         console.log(newdata)
-        alert('requested')
-        //  props.history.push('/mydetails')
 
+
+        const tokenKey = localStorage.getItem('token');
+        fetch('https://hrms-project.herokuapp.com/api/editdetail',
+            {
+                method: 'post', body: newdata,
+                headers: { "Content-Type": "application/json", "Authorization": `Bearer ` + tokenKey }
+            })
+            .then(res => {
+                if (res.status !== 200 && res.status !== 201) {
+                    console.log('hellllo');
+                    throw new Error(res.status);
+                }
+                return res.json();
+            })
+            .then(response => {
+                alert('request for Change In Detail successfully sent');
+                props.history.push('/mydetails')
+            })
+            .catch(err => {
+                alert('Some error occurred. Try again later')
+            })
+        
     }
 
     return (
@@ -103,17 +122,17 @@ const ChangeDetails = (props) => {
 
 
             <div className="changeDetailContainer">
-                <h1>Request For Detail Change</h1>
+                <h1 >Request For Detail Change</h1>
             </div>
             <div className="changepara">
 
                 <input value={userInput.name} className={classes.inpp} onChange={handleChange} name="name" placeholder="FirstName" type="Text" />
-                {/* <input value={userInput.lastname} className={classes.inpp} onChange={handleChange} name="lastname" placeholder="LastName" type="text" /> */}
+
                 <input value={userInput.email} className={classes.inpp} onChange={handleChange} name="email" placeholder="Email" type="email" />
                 <input value={userInput.phone} className={classes.inpp} onChange={handleChange} name="phone" placeholder="Phone" type="contact" />
                 <input value={userInput.category} className={classes.inpp} onChange={handleChange} name="category" placeholder="Category" type="Text" />
                 <input value={userInput.role} className={classes.inpp} onChange={handleChange} name="role" placeholder="Role" type="contact" />
-                {/* <input value={userInput.join} className={classes.inpp} onChange={handleChange} name="join" placeholder="Join Date" type="date" /> */}
+
                 <button className={classes.changeDetBtn} onClick={handleSubmit}>Send Requests</button>
             </div>
 

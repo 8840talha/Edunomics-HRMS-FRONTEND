@@ -1,7 +1,45 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import './MyRecords.css'
+import axios from 'axios'
 const MyRecords = (props) => {
+    const [records, setRecords] = useState([])
+
+    const getMyRecords = () => {
+        const token = localStorage.getItem('token');
+        axios.get('https://hrms-project.herokuapp.com/api/project/all', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then(response => {
+            console.log(response.data.project)
+            setRecords(response.data.project)
+            // this.setState({ pendingLeaves: response.data.Record })
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+    const renderRecordsData = () => {
+        return records.map((record, index) => {
+            console.log(record)
+            const { _id, name, _members, _modules, createdAt } = record
+            const memBer = _members.map(member => {
+                return <td>{member}</td>
+            })
+            const Module = _modules.map(module => {
+                console.log(module)
+                return <td>{module}</td>
+            })
+            return (
+                <tr key={_id} >
+                    <td>{name}</td>
+                    {memBer}
+                    {Module}
+                    <td>{createdAt}</td>
+                </tr>
+            )
+        })
+    }
     return (
         <div>
 
@@ -13,58 +51,29 @@ const MyRecords = (props) => {
 
                 <div>
                     <h1 className="headMyRecords">MyRecords</h1>
-                    <div className="forrm">
-                        <div className="inpBox">
-                            <label><h4>Search Name:</h4></label>
-                            <input type="text" placeholder="Enter Project Name" />
-                        </div>
-                        <div className="inpBox">
-                            <label><h4>Select Date Range:</h4></label>
-                            <input type="date" placeholder="Select Date" />
-                        </div>
 
-                    </div>
+                    <button className="viewRec" onClick={getMyRecords}>View All Records</button>
 
                     <div>
 
-                        <table style={{ width: '900px', marginLeft: '50px' }}>
-                            <thead >
-                                <tr >
-                                    <th>Project</th>
-                                    <th>Module</th>
-                                    <th>Assigned On</th>
-                                    <th>Approved On</th>
-                                    <th>Approved By</th>
+
+                        <table style={{ width: '900px', marginLeft: '42px' }} className="table table-striped table-bordered table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>Project Name</th>
+                                    <th>Member One</th>
+                                    <th>Member Two</th>
+                                    <th>Member Three</th>
+                                    <th>Member Four</th>
+                                    <th>Module One </th>
+                                    <th>Module Two </th>
+                                    <th>Date</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr className="td">
-                                    <td>3741255</td>
-                                    <td>Jones, Martha</td>
-
-                                    <td>3741255</td>
-                                    <td>Jones, Martha</td>
-                                    <td>Computer Science</td>
-                                </tr>
-                                <tr className="td">
-                                    <td>3971244</td>
-                                    <td>Nim, Victor</td>
-                                    <td>3741255</td>
-                                    <td>Jones, Martha</td>
-
-                                    <td>Russian Literature</td>
-                                </tr>
-                                <tr className="td">
-                                    <td>4100332</td>
-                                    <td>Petrov, Alexandra</td>
-                                    <td>3741255</td>
-                                    <td>Jones, Martha</td>
-
-                                    <td>Astrophysics</td>
-                                </tr>
+                                {renderRecordsData()}
                             </tbody>
                         </table>
-
 
                     </div>
 
