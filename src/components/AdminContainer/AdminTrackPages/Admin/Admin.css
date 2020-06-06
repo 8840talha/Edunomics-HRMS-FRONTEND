@@ -1,0 +1,27 @@
+.Container {
+    width: 62.938rem;
+    height: 56.25rem;
+    background-color: #ebebeb;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 7.813rem;
+    position: absolute;
+    top: 12.5rem;
+}
+
+.hp {
+    text-align: center;
+    color: green;
+}
+
+.link {
+    background-color: green;
+    margin-bottom: 0.625rem;
+    color: #eee;
+    border-radius: 0.25rem;
+    height: 3.125rem;
+    text-decoration: none;
+    border: none;
+    font-size: large;
+    text-align: center;
+}

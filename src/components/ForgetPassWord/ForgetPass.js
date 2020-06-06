@@ -1,8 +1,8 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { Paper } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 
-import { withRouter } from 'react-router';
+
 const userStyle = makeStyles(theme => ({
     formContainer: {
         marginTop: theme.spacing(24),
@@ -18,9 +18,11 @@ const userStyle = makeStyles(theme => ({
         border: '1px solid green',
         height: '3.125rem',
         textDecoration: 'none',
-        marginBottom: theme.spacing(2)
+        marginBottom: theme.spacing(2),
+        outline: 'none'
     },
     Forgetbuttonn: {
+
         width: '50%',
         textAlign: 'center',
         backgroundColor: 'green',
@@ -42,14 +44,14 @@ const ForgetPass = (props) => {
     const submithandler = (event) => {
         event.preventDefault();
         var data = JSON.stringify({
-            "email":email,
-            "password":password,
-            "newPassword":newpassword
+            "email": email,
+            "password": password,
+            "newPassword": newpassword
         })
         console.log(data);
         fetch('https://hrms-project.herokuapp.com/api/reset', { method: 'put', body: data, headers: { "Content-Type": "application/json" } })
             .then(res => {
-                //console.log(res);
+
                 if (res.status !== 200 && res.status !== 201) {
                     console.log('hellllo');
                     throw new Error(res.status);
@@ -58,9 +60,12 @@ const ForgetPass = (props) => {
             })
             .then(response => {
 
-                //console.log(response);
-                if(response.success === 'true') {
+
+                if (response.success === 'true') {
                     alert('Password changed successfully')
+                    setEmail('');
+                    setPassword('');
+                    setnewPassword('');
                 } else {
                     alert('Some error occurred. Wrong email or password')
                 }
@@ -84,9 +89,9 @@ const ForgetPass = (props) => {
 
             <h1>Reset Password</h1>
             <h3>Enter Email Id to reset Password</h3>
-            <input className={classes.Forgetpassword} type="email" placeholder="JohnDoe@Yahoo.com" value={email} onChange={(e) => { setEmail(e.target.value) }}/>
-            <input className={classes.Forgetpassword} type="password" placeholder="Old Password" value={password} onChange={(e) => { setPassword(e.target.value) }}/>
-            <input className={classes.Forgetpassword} type="password" placeholder="New Password" value={newpassword} onChange={(e) => { setnewPassword(e.target.value) }}/>
+            <input className={classes.Forgetpassword} type="email" placeholder="JohnDoe@Yahoo.com" value={email} onChange={(e) => { setEmail(e.target.value) }} />
+            <input className={classes.Forgetpassword} type="password" placeholder="Old Password" value={password} onChange={(e) => { setPassword(e.target.value) }} />
+            <input className={classes.Forgetpassword} type="password" placeholder="New Password" value={newpassword} onChange={(e) => { setnewPassword(e.target.value) }} />
             <button className={classes.Forgetbuttonn} onClick={submithandler} type="submit">Submit</button>
 
         </Paper>

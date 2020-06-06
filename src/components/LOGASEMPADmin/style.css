@@ -1,0 +1,48 @@
+.split {
+    margin-top: 95px;
+    height: 100vh;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.left {
+    left: 0;
+    background-color: #ebebeb;
+}
+
+.right {
+    right: 0;
+    background-color: #f1f1f1
+}
+
+.centered {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.buton {
+    width: 150px;
+    color: black;
+    text-decoration: none;
+}
+
+a {
+    color: black;
+}
+
+a:hover {
+    text-decoration: none;
+    color: darkgreen;
+}
+
+.centered img {
+    width: 150px;
+    border-radius: 50%;
+}

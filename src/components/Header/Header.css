@@ -1,50 +1,27 @@
-.header{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 3.125rem;
-    background-color:#fff;
-   
+h1 {
+  font-size: 30px;
 }
 
-
-
-h1{
-  
-  
-    color:darkgreen;
-    font-family: 'Dancing Script', cursive;
-}
-p{
-   
-    color:green;
-}
-.links a{
-    display: inline-block;
-    margin: 1.25rem 0.625rem;
-    color:darkgreen;
-    font-size:1.875rem;
-    letter-spacing: 0.075rem;    
-     text-transform: uppercase;
-     text-decoration: none;
-
+ul li a {
+  font-size: 35px;
+  color: green;
+  text-decoration: none;
 }
 
-.links a:hover{
-    color:green;
-    text-decoration: none;
-    }
+ul li a:hover {
+  text-decoration: none;
+  color: darkgreen;
+}
 
-
-    .sticky {
-        position: sticky;
-        top: 0;
-        z-index: 100;
-      }
-
+.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
 
 .sticky-wrapper {
   position: relative;
-  height: 3rem; 
+  height: 3rem;
 }
 
 .sticky .sticky-inner {
@@ -53,5 +30,4 @@ p{
   left: 0;
   right: 0;
   z-index: 1;
-
 }

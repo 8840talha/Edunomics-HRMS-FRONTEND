@@ -23,19 +23,28 @@ export default () => {
 
         <div className={`sticky-wrapper${isSticky ? ' sticky' : ''}`} ref={ref}>
             <div className="sticky-inner">
-                <header className="header">
-                    <nav>
-                        <img alt="headImg" src={require('../../assets/output-onlinepngtools.png')} />
-                    </nav>
-                    <div className='links'>
-                        <ul>
-                            <a href="/">Home|</a>
-                            <a href="/">Digital Services|</a>
-                            <a href="/">Initiatives</a>
-                        </ul>
 
+
+
+                <nav className="navbar navbar-expand-sm bg-white navbar-black flex-column flex-sm-row">
+
+
+                    <img alt="headImg" src={require('../../assets/1.png')} />
+
+                    <div className="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+                        <ul className="navbar-nav ">
+                            <li className="nav-item">
+                                <a className="nav-link" href="/">Home</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#">Digital Service</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#">Initiatives</a>
+                            </li>
+                        </ul>
                     </div>
-                </header>
+                </nav>
             </div>
         </div>
 

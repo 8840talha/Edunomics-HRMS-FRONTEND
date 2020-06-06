@@ -1,0 +1,66 @@
+.Progress h1 {
+    text-align: center;
+    font-size: 40px;
+    background-color: Green;
+    width: 1007px;
+    color: #fff;
+    margin-top: 0px;
+    height: 60px;
+   
+}
+
+.mark {
+    display: flex;
+    background-color: transparent;
+}
+
+.uB {
+    background-color: green;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    width: 150px;
+    height: 40px;
+    border-radius: 2px;
+}
+
+
+
+.send {
+    margin: 50px 450px;
+    text-align: center;
+    width: 150px;
+    height: 50px;
+    color: #fff;
+    background-color: green;
+    text-decoration: none;
+    border: none;
+    border-radius: 2px;
+}
+
+.updatecontainer {
+    width: 1007px;
+    height: 900px;
+    background-color: #ebebeb;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 125px;
+    position: absolute;
+    top: 200px;
+}
+
+.updatecontainer h1 {
+    text-align: center;
+}
+
+.link {
+    background-color: green;
+    margin-bottom: 10px;
+    color: #eee;
+    border-radius: 4px;
+    height: 50px;
+    text-decoration: none;
+    border: none;
+    font-size: large;
+    text-align: center;
+}
