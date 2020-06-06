@@ -181,8 +181,9 @@ class LeaveTrack extends Component {
 
                 <div className="container">
                     <div style={{ top: '12.5rem', left: '-5rem', position: 'absolute', display: 'flex', flexDirection: 'column' }}>
+                        <NavLink className="link" to="/track"> Home</NavLink>
                         <NavLink className="link" to='/update'  >Update Progress</NavLink>
-                        <   NavLink className="link" to='/leave' >Leave Track</NavLink>
+                        <NavLink className="link" to='/leave' >Leave Track</NavLink>
                     </div>
 
                     <div>

@@ -1,8 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link ,Redirect} from "react-router-dom";
 
 const Employees = () => {
+  const token = localStorage.getItem('token');
+  console.log(token)
+  var login = true;
+  if (token == null) {
+    login = false;
+  }
+  const [loggedIn, setLogin] = useState(login)
+
+  if (loggedIn === false) {
+    return <Redirect to="/adminLogin" />
+  }
   const [users, setUser] = useState([]);
 
   useEffect(() => {
@@ -46,7 +57,7 @@ const Employees = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }} className="container">
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Link style={{ width: '180px', height: '50px' }} className="btn btn-outline-dark w-35" to="/adminTrack">Go to Admin</Link>
+        <Link style={{ width: '180px', height: '50px' }} className="btn btn-outline-dark w-35" to="/adminTrack">Go to Home</Link>
         <Link style={{ width: '180px', height: '50px' }} className="btn btn-outline-dark w-35" to="/users/add">Add User</Link>
 
       </div>
@@ -56,7 +67,7 @@ const Employees = () => {
 
         <div className="py-4">
           <h1>Employees</h1>
-          <table class="table border shadow">
+          <table style={{ marginLeft: '-15px', width: '1007px' }} class="table table-bordered">
             <thead class="thead-dark">
               <tr>
                 <th scope="col">#</th>

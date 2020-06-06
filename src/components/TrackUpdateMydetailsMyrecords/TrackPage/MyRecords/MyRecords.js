@@ -1,10 +1,21 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
 import './MyRecords.css'
 import axios from 'axios'
 const MyRecords = (props) => {
     const [records, setRecords] = useState([])
+    // protected route
+    const token = localStorage.getItem('token');
+    console.log(token)
+    var login = true;
+    if (token == null) {
+        login = false;
+    }
+    const [loggedIn, setLogin] = useState(login)
 
+    if (loggedIn === false) {
+        return <Redirect to="/empLogin" />
+    }
     const getMyRecords = () => {
         const token = localStorage.getItem('token');
         axios.get('https://hrms-project.herokuapp.com/api/project/all', {
@@ -13,7 +24,14 @@ const MyRecords = (props) => {
             }
         }).then(response => {
             console.log(response.data.project)
-            setRecords(response.data.project)
+            if (response.data.success == "true") {
+                alert(response.data.message)
+                setRecords(response.data.project)
+
+            } else {
+                alert(response.data.message)
+            }
+
             // this.setState({ pendingLeaves: response.data.Record })
         }).catch(err => {
             console.log(err);
@@ -21,11 +39,8 @@ const MyRecords = (props) => {
     }
     const renderRecordsData = () => {
         return records.map((record, index) => {
-            console.log(record)
-            const { _id, name, _members, _modules, createdAt } = record
-            const memBer = _members.map(member => {
-                return <td>{member}</td>
-            })
+            const { _modules, name, _id, createdAt } = record;
+
             const Module = _modules.map(module => {
                 console.log(module)
                 return <td>{module}</td>
@@ -33,7 +48,7 @@ const MyRecords = (props) => {
             return (
                 <tr key={_id} >
                     <td>{name}</td>
-                    {memBer}
+
                     {Module}
                     <td>{createdAt}</td>
                 </tr>
@@ -45,8 +60,9 @@ const MyRecords = (props) => {
 
             <div className="container">
                 <div style={{ top: '12.5rem', left: '-5rem', position: 'absolute', display: 'flex', flexDirection: 'column' }}>
+                    <NavLink className="link" to="/track"> Home</NavLink>
                     <NavLink className="link" to='/update'  >Update Progress</NavLink>
-                    <   NavLink className="link" to='/leave' >Leave Track</NavLink>
+                    <NavLink className="link" to='/leave' >Leave Tracker</NavLink>
                 </div>
 
                 <div>
@@ -57,16 +73,12 @@ const MyRecords = (props) => {
                     <div>
 
 
-                        <table style={{ width: '900px', marginLeft: '42px' }} className="table table-striped table-bordered table-responsive">
-                            <thead>
+                        <table style={{ width: '900px', marginLeft: '42px' }} className="table table-striped table-bordered ">
+                            <thead  >
                                 <tr>
                                     <th>Project Name</th>
-                                    <th>Member One</th>
-                                    <th>Member Two</th>
-                                    <th>Member Three</th>
-                                    <th>Member Four</th>
-                                    <th>Module One </th>
-                                    <th>Module Two </th>
+                                    <th>Module One</th>
+                                    <th>Module Two</th>
                                     <th>Date</th>
                                 </tr>
                             </thead>

@@ -1,7 +1,11 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: lightgray;  
+   
 
+
+}
+html body {
+  background-color: lightgray;
 
 }

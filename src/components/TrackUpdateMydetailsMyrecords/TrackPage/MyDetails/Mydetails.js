@@ -1,8 +1,9 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
 
 import './MyDetails.css'
 class MyDetails extends React.Component {
+
     state = {
         name: '',
         email: '',
@@ -11,6 +12,7 @@ class MyDetails extends React.Component {
         category: '',
         role: ''
     }
+
     componentDidMount() {
         const tokenKey = localStorage.getItem('token');
         //console.log(tokenKey);
@@ -47,11 +49,13 @@ class MyDetails extends React.Component {
     }
 
     render() {
+
         return (
             <div>
 
                 <div className="container">
                     <div style={{ top: '12.5rem', left: '-5rem', position: 'absolute', display: 'flex', flexDirection: 'column' }}>
+                        <NavLink className="link" to="/track"> Home</NavLink>
                         <NavLink className="link" to='/update'  >Update Progress</NavLink>
                         <NavLink className="link" to='/leave' >Leave Track</NavLink>
                     </div>

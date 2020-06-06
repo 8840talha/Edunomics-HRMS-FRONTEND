@@ -1,35 +1,48 @@
 import React, { useState } from 'react'
 import './Update.css'
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import axios from 'axios';
 const Update = (props) => {
     const [update, setUpdate] = useState(false);
     const [present, setPresent] = useState(false);
+    const token = localStorage.getItem('token');
+    console.log(token)
+    var login = true;
+    if (token == null) {
+        login = false;
+    }
+    const [loggedIn, setLogin] = useState(login)
+
+    if (loggedIn === false) {
+        return <Redirect to="/empLogin" />
+    }
+
+
     const updatePresent = () => {
         const tokenKey = localStorage.getItem('token');
-        //console.log(tokenKey);
-        
-        fetch('https://hrms-project.herokuapp.com/api/attendance/',{method:'post', headers: { "Authorization": `Bearer `+tokenKey } })
-        .then(res => {
-            //console.log(res);
-            if(res.status !== 200 && res.status !== 201) {
-                console.log('hellllo');
-                throw new Error(res.status);
-            }
-            return res.json();
-        })	
-        .then(response => {
+
+
+        fetch('https://hrms-project.herokuapp.com/api/attendance/', { method: 'post', headers: { "Authorization": `Bearer ` + tokenKey } })
+            .then(res => {
+                //console.log(res);
+                if (res.status !== 200 && res.status !== 201) {
+                    console.log('hellllo');
+                    throw new Error(res.status);
+                }
+                return res.json();
+            })
+            .then(response => {
                 //console.log(response);
-                alert('Attendance marked successfully');            
+                alert('Attendance marked successfully');
             })
             .catch(err => {
                 //console.log(err.message);
-                if(err.message == 403) {
+                if (err.message == 403) {
                     alert('Attendance already marked');
                 } else {
                     alert('Some error occurred. Try again later')
                 }
-                
+
             })
         // setPresent(true)
         // alert('Present Marked')
@@ -45,6 +58,7 @@ const Update = (props) => {
         <div>
             <div className="container">
                 <div style={{ top: '12.5rem', left: '-5rem', position: 'absolute', display: 'flex', flexDirection: 'column' }}>
+                    <NavLink className="link" to="/track"> Home</NavLink>
                     <NavLink className="link" to='/update'  >Update Progress</NavLink>
                     <NavLink className="link" to='/leave' >Leave Track</NavLink>
                 </div>
@@ -121,7 +135,7 @@ const Update = (props) => {
 
 
                     </div>
-                    <button  onClick={updateHandle} className="send">Send Update</button>
+                    <button onClick={updateHandle} className="send">Send Update</button>
                 </div>
 
 

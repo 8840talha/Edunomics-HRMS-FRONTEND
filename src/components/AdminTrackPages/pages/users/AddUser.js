@@ -1,8 +1,19 @@
 import React, { useState } from "react";
 import axios from 'axios'
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 
 const AddUser = () => {
+  const token = localStorage.getItem('token');
+  console.log(token)
+  var login = true;
+  if (token == null) {
+    login = false;
+  }
+  const [loggedIn, setLogin] = useState(login)
+
+  if (loggedIn === false) {
+    return <Redirect to="/adminLogin" />
+  }
   let history = useHistory();
   const [user, setUser] = useState({
     name: "",

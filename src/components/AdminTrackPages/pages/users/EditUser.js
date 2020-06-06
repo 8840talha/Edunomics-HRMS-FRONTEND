@@ -1,8 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams,Redirect } from "react-router-dom";
 
 const EditUser = () => {
+  const token = localStorage.getItem('token');
+  console.log(token)
+  var login = true;
+  if (token == null) {
+    login = false;
+  }
+  const [loggedIn, setLogin] = useState(login)
+
+  if (loggedIn === false) {
+    return <Redirect to="/adminLogin" />
+  }
   let history = useHistory();
   const { id } = useParams();
   const [user, setUser] = useState({

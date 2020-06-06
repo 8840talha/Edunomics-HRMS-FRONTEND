@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import './LeaveReq.css';
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
 import { TextField, jssPreset } from '@material-ui/core'
 
 class LeaveView extends Component {
     state = {
+        islogin: true,
         approve: false,
         reject: false,
         data: []
@@ -13,7 +14,10 @@ class LeaveView extends Component {
 
 
     componentDidMount() {
+
         var token = localStorage.getItem('token');
+
+
         fetch('https://hrms-project.herokuapp.com/api/leave/all', {
             method: 'get',
             headers: {
@@ -27,7 +31,7 @@ class LeaveView extends Component {
                     let data = JSON.parse(dataStr);
                     console.log(data)
                     if (data.success == "false") {
-                        
+
                         alert(data.message + 'No Req Found')
                     } else {
                         const Myarr = data.Request;
