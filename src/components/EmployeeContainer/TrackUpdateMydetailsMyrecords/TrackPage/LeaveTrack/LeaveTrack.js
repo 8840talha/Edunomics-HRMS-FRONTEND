@@ -19,7 +19,7 @@ class LeaveTrack extends Component {
         rejectedLeaves: []
     }
 
-   
+
     componentDidMount() {
         // get leave count
         const tokenKey = localStorage.getItem('token');
@@ -190,7 +190,7 @@ class LeaveTrack extends Component {
             <div>
 
                 <div className="LtContainer">
-                    <div style={{ top: '12.5rem', left: '-5rem', position: 'absolute', display: 'flex', flexDirection: 'column' }}>
+                    <div className="up">
                         <NavLink className="link" to="/track"> Home</NavLink>
                         <NavLink className="link" to='/update'  >Update Progress</NavLink>
                         <NavLink className="link" to='/leave' >Leave Track</NavLink>
@@ -229,7 +229,7 @@ class LeaveTrack extends Component {
                                         multiline
                                         placeholder="Description For Leave"
                                         fullWidth
-                                         />
+                                    />
 
                                 </div>
                                 {this.state.requested ? <button className='req' onClick={this.sendreqHandler} >Send Request</button> : null}
@@ -299,7 +299,7 @@ class LeaveTrack extends Component {
                         <h3 className="m-20">No Of Leaves Available :{this.state.NoOFLeaves}</h3>
                     </div>
 
-                    <div style={{ top: '6.25rem', right: '-9.25rem', position: 'absolute', display: 'flex', flexDirection: 'column' }} >
+                    <div className="down">
                         <img style={{ marginTop: '0.625rem', }} alt="img" src={require('../../../../../assets/edunomics.png')} />
                         <NavLink to='/mydetails' style={{ marginTop: '0.625rem', }} className="link"  >My Details</NavLink>
                         <NavLink className="link" to='/myrecords' >My Record</NavLink>

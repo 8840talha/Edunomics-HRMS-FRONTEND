@@ -26,16 +26,16 @@ const Track = (props) => {
     return (
         <div>
 
-            <div className="container">
-                <div style={{ top: '12.5rem', left: '-5rem', position: 'absolute', display: 'flex', flexDirection: 'column' }}>
+            <div className="Tcontainer">
+                <div className="up">
                     <NavLink className="link" to='/update'  >Update Progress</NavLink>
                     <   NavLink className="link" to='/leave' >Leave Track</NavLink>
                 </div>
 
                 <h1> 'Click / Toggle On the Buttons to Get the views .' </h1>
-                <button style={{ border: 'none', backgroundColor: 'green', color: '#fff', width: '150px', height: '50px' }} onClick={handleLogout}>LogOut</button>
+                <button className="Lout" onClick={handleLogout}>LogOut</button>
 
-                <div style={{ top: '6.25rem', right: '-9.25rem', position: 'absolute', display: 'flex', flexDirection: 'column' }} >
+                <div className="down" >
                     <img style={{ marginTop: '0.625rem', }} alt="img" src={require('../../../../assets/edunomics.png')} />
                     <NavLink to='/mydetails' style={{ marginTop: '0.625rem', }} className="link"  >My Details</NavLink>
                     <NavLink to='/myrecords' className="link"  >My Record</NavLink>

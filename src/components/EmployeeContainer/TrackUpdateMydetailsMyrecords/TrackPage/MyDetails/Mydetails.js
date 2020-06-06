@@ -54,7 +54,7 @@ class MyDetails extends React.Component {
             <div>
 
                 <div className="myDet-Container">
-                    <div style={{ top: '12.5rem', left: '-5rem', position: 'absolute', display: 'flex', flexDirection: 'column' }}>
+                    <div className="up">
                         <NavLink className="link" to="/track"> Home</NavLink>
                         <NavLink className="link" to='/update'  >Update Progress</NavLink>
                         <NavLink className="link" to='/leave' >Leave Track</NavLink>
@@ -94,7 +94,7 @@ class MyDetails extends React.Component {
                         </div>
                         <button className="change"><NavLink className="link" to="/detailChange">Request For Change In Details</NavLink></button>
                     </div>
-                    <div style={{ top: '6.25rem', right: '-9.25rem', position: 'absolute', display: 'flex', flexDirection: 'column' }} >
+                    <div className="down" >
                         <img style={{ marginTop: '0.625rem', }} alt="img" src={require('../../../../../assets/edunomics.png')} />
                         <NavLink to='/mydetails' style={{ marginTop: '0.625rem', }} className="link"  >My Details</NavLink>
                         <NavLink className="link" to='/myrecords' >My Record</NavLink>

@@ -25,3 +25,20 @@
     font-size: large;
     text-align: center;
 }
+
+.tab {
+    top: 12.5rem;
+    left: -5rem;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+}
+
+.btnLogOut {
+    border: none;
+    background-color: green;
+    color: #fff;
+    width: 150px;
+    height: 50px;
+    margin-left: 100px;
+}

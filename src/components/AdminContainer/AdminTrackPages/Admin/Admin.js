@@ -26,14 +26,14 @@ const AdminTrack = (props) => {
         <div>
 
             <div className="Container">
-                <div style={{ top: '12.5rem', left: '-5rem', position: 'absolute', display: 'flex', flexDirection: 'column' }}>
+                <div className="tab">
                     <NavLink className="link" to='/viewLeaveReq'  >View Leave Request</NavLink>
                     <NavLink className="link" to='/employees' >Employees</NavLink>
                     <NavLink className="link" to="/editReq">Edit Requests</NavLink>
                 </div>
 
                 <h1 className="hp"> 'View Employees And Leave Requests If Any.' </h1>
-                <button style={{ border: 'none', backgroundColor: 'green', color: '#fff', width: '150px', height: '50px', marginLeft: '100px' }} onClick={handleLogout}>LogOut</button>
+                <button className="btnLogOut" onClick={handleLogout}>LogOut</button>
 
 
 

@@ -82,8 +82,23 @@
     margin-left: 68px;
 }
 
-
 .tWidth {
     width: 850px;
     margin-left: 68px;
+}
+
+.up {
+    top: 12.5rem;
+    left: -5rem;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+}
+
+.down {
+    top: 6.25rem;
+    right: -9.25rem;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
 }

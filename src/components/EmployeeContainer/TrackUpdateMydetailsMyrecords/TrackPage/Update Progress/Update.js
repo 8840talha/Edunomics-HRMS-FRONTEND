@@ -43,7 +43,7 @@ const Update = (props) => {
     return (
         <div>
             <div className="updatecontainer">
-                <div style={{ top: '12.5rem', left: '-5rem', position: 'absolute', display: 'flex', flexDirection: 'column' }}>
+                <div className="up">
                     <NavLink className="link" to="/track"> Home</NavLink>
                     <NavLink className="link" to='/update'  >Update Progress</NavLink>
                     <NavLink className="link" to='/leave' >Leave Track</NavLink>
@@ -92,7 +92,7 @@ const Update = (props) => {
 
 
 
-                <div style={{ top: '6.25rem', right: '-9.25rem', position: 'absolute', display: 'flex', flexDirection: 'column' }} >
+                <div className="down" >
                     <img style={{ marginTop: '0.625rem', }} alt="img" src={require('../../../../../assets/edunomics.png')} />
                     <NavLink to='/mydetails' style={{ marginTop: '0.625rem', }} className="link"  >My Details</NavLink>
                     <NavLink className="link" to='/myrecords' >My Record</NavLink>

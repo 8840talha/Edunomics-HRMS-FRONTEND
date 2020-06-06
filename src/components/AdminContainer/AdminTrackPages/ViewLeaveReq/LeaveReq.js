@@ -129,7 +129,7 @@ class LeaveView extends Component {
             < div >
 
                 <div className="Container">
-                    <div style={{ top: '12.5rem', left: '-5rem', position: 'absolute', display: 'flex', flexDirection: 'column' }}>
+                    <div className="tab">
                         <NavLink className="link" to="/employees"  >Employees</NavLink>
                         <   NavLink className="link" to="/viewLeaveReq">Leave Requests</NavLink>
                         <   NavLink className="link" to="/editReq">Edit Requests</NavLink>
@@ -139,7 +139,7 @@ class LeaveView extends Component {
                         <h1 className='headwidth'>View Leave</h1>
 
                         <div>
-                            <table style={{ width: '900px', marginLeft: '60px' }} className="table table-striped table-bordered ">
+                            <table className="table table-striped table-bordered viewlevWidth">
                                 <thead  >
                                     <tr>
                                         <th>Description</th>
