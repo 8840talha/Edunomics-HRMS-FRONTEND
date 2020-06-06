@@ -71,7 +71,7 @@ class EditReqView extends Component {
 
         console.log('rejecting')
     }
-    approveHandler = (id) => {
+    approveHandler = (id,empId) => {
         console.log(id)
         var Tokenn = localStorage.getItem('token');
         var leaveID = id;
@@ -91,18 +91,19 @@ class EditReqView extends Component {
                     this.setState({ approve: true })
                     alert(data.message)
                     if (data.success == "true") {
-                        fetch(`https://hrms-project.herokuapp.com/api/editdetail/${leaveID}`, {
+                        var Tokennn = localStorage.getItem('token');
+                        fetch(`https://hrms-project.herokuapp.com/api/editdetail/${empId}`, {
                             method: 'put',
                             body: JSON.stringify(this.state.data),
                             headers: {
                                 "Content-Type": "application/json",
-                                "Authorization": `Bearer ${Tokenn}`
+                                "Authorization": `Bearer ${Tokennn}`
                             }
                         }).then(response => response.json())
                             .then(data => {
                                 console.log(data)
                                 if (data.success == "false") {
-                                    alert(data.message + "unable to put data")
+                                    alert(data.message + " unable to put data")
                                 } else {
                                     // this.setState({ approve: true })
                                     alert(data.message + "detail changed ")
@@ -132,8 +133,8 @@ class EditReqView extends Component {
                     My category is {val.category}My EmpId is{val.employeeId}and i want to change my details on{val.createdAt}
                 </p>
                 <div className="iconCont">
-                    <img alt={val.employeeId} onClick={() => this.approveHandler(val.employeeId)} src={require('../../../assets/check.png')} />
-                    <img alt={val.employeeId} onClick={() => this.rejectHandler(val.employeeId)} src={require('../../../assets/cross.png')} />
+                    <img alt={val.employeeId} onClick={() => this.approveHandler(val._id,val.employeeId)} src={require('../../../assets/check.png')} />
+                    <img alt={val.employeeId} onClick={() => this.rejectHandler(val._id)} src={require('../../../assets/cross.png')} />
                 </div>
             </div>
 

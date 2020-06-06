@@ -37,15 +37,15 @@ const User = () => {
       <Link style={{ height: '50px' }} className="btn btn-primary" to="/employees">
         Back to Employeee
       </Link>
-      <h1 className="display-4">User Id: {id}</h1>
+      <h1 >User Id: {id}</h1>
       <hr />
       <ul className="list-group w-50">
-        <li className="list-group-item">name: {user.name}</li>
-        <li className="list-group-item">email: {user.email}</li>
-        <li className="list-group-item">employeeId: {user.employeeId}</li>
-        <li className="list-group-item">phone: {user.phone}</li>
-        <li className="list-group-item">category: {user.category}</li>
-        <li className="list-group-item">role: {user.role}</li>
+        <li className="list-group-item"><h1>Name: {user.name}</h1></li>
+        <li className="list-group-item"><h1>Email: {user.email}</h1></li>
+        <li className="list-group-item"><h1>EmployeeId: {user.employeeId}</h1></li>
+        <li className="list-group-item"><h1>Phone: {user.phone}</h1></li>
+        <li className="list-group-item"><h1>Category:{user.category}</h1></li>
+        <li className="list-group-item"><h1>Role: {user.role}</h1></li>
       </ul>
     </div>
   );
