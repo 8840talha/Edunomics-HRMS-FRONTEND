@@ -17,18 +17,22 @@ const User = () => {
     loadUser();
   }, []);
   const loadUser = async () => {
-    //   axios.post('https://hrms-project.herokuapp.com/api/login', newdata, {
-    //     headers: { "Content-Type": "application/json" }
-    // })
     var token = localStorage.getItem('token');
     const res = await axios.get(`https://hrms-project.herokuapp.com/api/user/${id}`,
       {
         headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` }
       }).then(res => {
-        console.log(res.data);
-        setUser(res.data.user);
+        if (res.data.success == "true") {
+
+          setUser(res.data.user);
+
+        } else {
+          alert(res.data.message)
+        }
+
       }).catch(err => {
         console.log(err)
+        alert('network issue or error')
       })
 
   };
@@ -37,7 +41,7 @@ const User = () => {
       <Link style={{ height: '50px' }} className="btn btn-primary" to="/employees">
         Back to Employeee
       </Link>
-      <h1 >User Id: {id}</h1>
+      <h1 >User Id: {user.employeeId}</h1>
       <hr />
       <ul className="list-group w-50">
         <li className="list-group-item"><h1>Name: {user.name}</h1></li>

@@ -14,12 +14,6 @@ const EditUser = () => {
     role: "",
     password: ""
 
-
-    // name: "",
-    // username: "",
-    // email: "",
-    // phone: "",
-    // website: ""
   });
 
   const { name, email, employeeId, phone, category, role, password } = user;
@@ -33,16 +27,21 @@ const EditUser = () => {
 
   const onSubmit = async e => {
     e.preventDefault();
-    // await axios.put(`http://localhost:3003/users/${id}`, user);
+
     var token = localStorage.getItem('token');
-    await axios.put(`https://hrms-project.herokuapp.com/api/edit/${id}`, user,
+    await axios.put(`https://hrms-project.herokuapp.com/api/edit/${employeeId}`, user,
       {
         headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` }
       }).then(res => {
-        console.log(res.data.user);
-        history.push("/employees");
+        if (res.data.success == "true") {
+          alert(res.data.message)
+          history.push("/employees");
+        } else {
+          alert(res.data.message)
+        }
+
       }).catch(err => {
-        console.log(err)
+        alert('EmpId is unique ,Dont Change')
       })
 
 
@@ -51,7 +50,7 @@ const EditUser = () => {
 
   const loadUser = async () => {
 
-    // const result = await axios.get(`http://localhost:3003/users/${id}`);
+
     var token = localStorage.getItem('token');
     await axios.get(`https://hrms-project.herokuapp.com/api/user/${id}`,
       {

@@ -87,33 +87,39 @@ const LoginForm = (props) => {
         }
         const newdata = JSON.stringify(data)
 
-        axios.post('https://hrms-project.herokuapp.com/api/login', newdata, {
+        fetch('https://hrms-project.herokuapp.com/api/login', {
+            method: 'post',
+            body: newdata,
             headers: { "Content-Type": "application/json" }
-        }).then(response => {
-            localStorage.setItem('token', response.data.token)
-            props.history.push('/adminTrack');
-            console.log(response)
-        }).catch(err => {
-            if (err.message == 401) {
-                alert('wrong email or password');
-            } else {
-                alert('Some error occurred. Try again later')
+        }).then(res => {
+            console.log(res);
+            if (res.status !== 200 && res.status !== 201) {
+                console.log('hellllo');
+                throw new Error(res.status);
             }
-            console.log(err)
+            return res.json();
         })
+            .then(response => {
+
+                console.log(response);
+                localStorage.setItem('token', response.token);
+
+                props.history.push('/adminTrack');
+            })
+            .catch(err => {
+                console.log(err.message);
+                if (err.message == 401) {
+                    alert('wrong email or password');
+                } else {
+                    alert('Some error occurred. Try again later')
+                }
+
+            })
 
         console.log(email, password)
 
-        // if (input === 'A@gmail.com' && email === 'B'){
 
-        //     setLogin(true)
-        // setInput('')
-        // setEmail('')
-        // }
     }
-    // if(login){
-
-    // }
 
     const classes = useStyle();
     const [anchorEl, setAnchorEl] = React.useState(null);

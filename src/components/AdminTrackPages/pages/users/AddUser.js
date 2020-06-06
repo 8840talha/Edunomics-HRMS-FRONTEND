@@ -12,14 +12,6 @@ const AddUser = () => {
     category: "",
     role: "",
     password: ""
-    // name: ''
-    //         email: '',
-    //         employeeId: '',
-    //         phone: '',
-    //         category: '',
-    //         role: '',
-    //         password: ''
-
   });
 
   const { name, email, employeeId, phone, category, role, password } = user;

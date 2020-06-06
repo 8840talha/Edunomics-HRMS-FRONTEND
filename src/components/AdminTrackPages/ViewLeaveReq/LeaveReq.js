@@ -27,6 +27,7 @@ class LeaveView extends Component {
                     let data = JSON.parse(dataStr);
                     console.log(data)
                     if (data.success == "false") {
+                        
                         alert(data.message + 'No Req Found')
                     } else {
                         const Myarr = data.Request;

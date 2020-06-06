@@ -21,12 +21,12 @@ const Employees = () => {
       }).catch(err => {
         console.log(err)
       })
-    // const result = await axios.get("http://localhost:3003/users");
+
 
   };
 
   const deleteUser = async id => {
-    // await axios.delete(`http://localhost:3003/users/${id}`);
+
     var tokenn = localStorage.getItem('token');
     await axios.delete(`https://hrms-project.herokuapp.com/api/delete/${id}`,
       {
@@ -45,7 +45,11 @@ const Employees = () => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }} className="container">
-      <Link style={{ width: '180px', height: '50px', marginLeft: '420px' }} className="btn btn-outline-dark w-35" to="/users/add">Add User</Link>
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Link style={{ width: '180px', height: '50px' }} className="btn btn-outline-dark w-35" to="/adminTrack">Go to Admin</Link>
+        <Link style={{ width: '180px', height: '50px' }} className="btn btn-outline-dark w-35" to="/users/add">Add User</Link>
+
+      </div>
 
       <div style={{ marginLeft: '-15px', marginTop: '-150px' }} className="container">
 
