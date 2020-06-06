@@ -92,7 +92,7 @@ class EditReqView extends Component {
                     alert(data.message)
                     if (data.success == "true") {
                         var Tokennn = localStorage.getItem('token');
-                        fetch(`https://hrms-project.herokuapp.com/api/editdetail/${empId}`, {
+                        fetch(`https://hrms-project.herokuapp.com/api/edit/${empId}`, {
                             method: 'put',
                             body: JSON.stringify(this.state.data),
                             headers: {
