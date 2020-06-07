@@ -32,3 +32,13 @@
    width: 150px;
    height: 50px;
 }
+
+.Lout:focus {
+   outline: none;
+}
+
+.ImgContainer {
+   background-color: lightgray;
+   display: flex;
+   flex-direction: column
+}

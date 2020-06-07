@@ -58,6 +58,14 @@
     color: #fff;
 }
 
+.green:focus {
+    outline: none;
+}
+
+.green:hover {
+    background-color: #9053c7;
+}
+
 .para {
     margin-top: 0px;
     background-color: lightgray;
@@ -77,6 +85,10 @@
     height: 50px;
     border: none;
 }
+
+.req:focus {
+    outline: none;
+}s
 
 .m-20 {
     margin-left: 68px;

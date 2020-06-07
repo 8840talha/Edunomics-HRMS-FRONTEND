@@ -40,11 +40,11 @@ const User = () => {
   };
   return (
     <div style={{ marginTop: '100px' }} className="container py-4">
-      <Link style={{ height: '50px' }} className="btn btn-outline-light" to="/employees">
+      <Link style={{ height: '50px' }} className="btn btn-outline-dark" to="/employees">
         Back to Employeee
       </Link>
-      <h2 >User Id: {user.employeeId}</h2>
-      <table style={{ margin: '0 auto', width: '35%' }} className="  table  table-striped table-bordered list-group-item">
+      <h1 >User Id: {user.employeeId}</h1>
+      <table style={{ margin: '0 auto',  }} className="w-50 table  table-striped table-bordered ">
         <tr>
           <th>Name:</th>
           <td>{user.name}</td>

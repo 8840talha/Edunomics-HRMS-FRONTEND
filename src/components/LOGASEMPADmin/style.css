@@ -11,12 +11,22 @@
 
 .left {
     left: 0;
-    background-color: #ebebeb;
+    /* background-color: #ebebeb; */
+    background: #9053c7;
+    background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
+    background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
+    background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
+    background: linear-gradient(-135deg, #c850c0, #4158d0)
 }
 
 .right {
     right: 0;
-    background-color: #f1f1f1
+    /* background-color: #f1f1f1 */
+    background: #57b846;
+    background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
+    background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
+    background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
+    background: linear-gradient(-135deg, #c850c0, #4158d0)
 }
 
 .centered {
@@ -31,6 +41,16 @@
     width: 150px;
     color: black;
     text-decoration: none;
+    border-radius: 25px;
+    border: none;
+}
+
+.buton:hover {
+    background-color: black;
+    color: #fff;
+    border-radius: 25px;
+    text-decoration: none;
+    border: none;
 }
 
 a {
@@ -45,4 +65,47 @@ a:hover {
 .centered img {
     width: 150px;
     border-radius: 50%;
+}
+
+.img:hover {
+    /* Start the shake animation and make the animation last for 0.5 seconds */
+    animation: shake 1s;
+    /* When the animation is finished, start again */
+    animation-iteration-count: 1s;
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+    10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+    20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+    }
+    30% {
+        transform: translate(3px, 2px) rotate(0deg);
+    }
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+    50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+    60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+    }
+    70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+    }
+    80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+    }
+    90% {
+        transform: translate(1px, 2px) rotate(0deg);
+    }
+    100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+    }
 }

@@ -42,3 +42,7 @@
     height: 50px;
     margin-left: 100px;
 }
+
+.btnLogOut:focus {
+    outline: none;
+}

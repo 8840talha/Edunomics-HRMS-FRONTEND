@@ -36,7 +36,10 @@ const Track = (props) => {
                 <button className="Lout" onClick={handleLogout}>LogOut</button>
 
                 <div className="down" >
-                    <img style={{ marginTop: '0.625rem', }} alt="img" src={require('../../../../assets/edunomics.png')} />
+                    <div className="ImgContainer">
+                        <img style={{ marginTop: '0.625rem', }} alt="img" src={require('../../../../assets/profile.png')} />
+                        <NavLink style={{ textAlign: 'center' }} to="/detailChange" >Edit Profile</NavLink>
+                    </div>
                     <NavLink to='/mydetails' style={{ marginTop: '0.625rem', }} className="link"  >My Details</NavLink>
                     <NavLink to='/myrecords' className="link"  >My Record</NavLink>
                 </div>

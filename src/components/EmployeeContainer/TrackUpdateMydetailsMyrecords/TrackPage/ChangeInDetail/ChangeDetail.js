@@ -12,12 +12,7 @@ const userStyle = makeStyles(theme => ({
         display: 'flex',
         flexDirection: 'column'
     },
-    inpp: {
-        border: '1px solid Green',
-        width: '100%',
-        marginTop: '5px',
-        height: '55px'
-    },
+
     saveBtn: {
         width: '100%',
         marginTop: theme.spacing(1),
@@ -32,15 +27,7 @@ const userStyle = makeStyles(theme => ({
         height: '500px',
         paddingTop: theme.spacing(2)
     },
-    changeDetBtn: {
-        marginTop: '5px',
-        textAlign: 'center',
-        height: '60px',
-        backgroundColor: 'green',
-        color: '#fff',
-        width: '100%',
-        border: 'none',
-    }
+
 
 }))
 const ChangeDetails = (props) => {
@@ -64,7 +51,7 @@ const ChangeDetails = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-     
+
 
         var data = {
 
@@ -111,7 +98,7 @@ const ChangeDetails = (props) => {
             .catch(err => {
                 alert('Some error occurred. Try again later')
             })
-        
+
     }
 
     return (
@@ -123,14 +110,14 @@ const ChangeDetails = (props) => {
             </div>
             <div className="changepara">
 
-                <input value={userInput.name} className={classes.inpp} onChange={handleChange} name="name" placeholder="FirstName" type="Text" />
+                <input value={userInput.name} className='inpp' onChange={handleChange} name="name" placeholder="FirstName" type="Text" />
 
-                <input value={userInput.email} className={classes.inpp} onChange={handleChange} name="email" placeholder="Email" type="email" />
-                <input value={userInput.phone} className={classes.inpp} onChange={handleChange} name="phone" placeholder="Phone" type="contact" />
-                <input value={userInput.category} className={classes.inpp} onChange={handleChange} name="category" placeholder="Category" type="Text" />
-                <input value={userInput.role} className={classes.inpp} onChange={handleChange} name="role" placeholder="Role" type="contact" />
+                <input value={userInput.email} className='inpp' onChange={handleChange} name="email" placeholder="Email" type="email" />
+                <input value={userInput.phone} className='inpp' onChange={handleChange} name="phone" placeholder="Phone" type="contact" />
+                <input value={userInput.category} className='inpp' onChange={handleChange} name="category" placeholder="Category" type="Text" />
+                <input value={userInput.role} className='inpp' onChange={handleChange} name="role" placeholder="Role" type="contact" />
 
-                <button className={classes.changeDetBtn} onClick={handleSubmit}>Send Requests</button>
+                <button className='changeDetBtn' onClick={handleSubmit}>Send Requests</button>
             </div>
 
 

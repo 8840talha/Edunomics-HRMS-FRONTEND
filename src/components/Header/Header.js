@@ -28,13 +28,14 @@ export default () => {
 
                 <nav class="navbar navbar-expand-sm bg-white navbar-black flex-column flex-sm-row">
 
-                    <div>              
-                         <img alt="headImg" width={95}  src={require('../../assets/edunomics.png')} />
-                         </div>
+
+                    <a href="/" className="navbar-left ">  <img className="img" alt="headImg" width={95} src={require('../../assets/edunomics.png')} />
+                    </a>
+
 
 
                     <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
-                        <ul class="navbar-nav ">
+                        <ul class="navbar-nav topnav">
                             <li class="nav-item">
                                 <a class="nav-link" href="/">Home</a>
                             </li>

@@ -14,7 +14,7 @@ const userStyle = makeStyles(theme => ({
     },
     Forgetpassword: {
         width: '70%',
-        borderRadius: '0.313rem',
+        borderRadius: '25px',
         border: '1px solid green',
         height: '3.125rem',
         textDecoration: 'none',
@@ -30,8 +30,16 @@ const userStyle = makeStyles(theme => ({
         textDecoration: 'none',
         border: 'none',
         height: '3.125rem',
-        borderRadius: '0.313rem',
-        marginLeft: theme.spacing(4)
+        borderRadius: '25px',
+        marginLeft: theme.spacing(4),
+        '&:hover': {
+            background: '#9053c7',
+            outline: 'none'
+        },
+        '&:focus': {
+
+            outline: 'none'
+        }
     },
 
 }))
@@ -88,7 +96,7 @@ const ForgetPass = (props) => {
         <Paper className={classes.formContainer} elevation={4}>
 
             <h1>Reset Password</h1>
-            <h3>Enter Email Id to reset Password</h3>
+
             <input className={classes.Forgetpassword} type="email" placeholder="JohnDoe@Yahoo.com" value={email} onChange={(e) => { setEmail(e.target.value) }} />
             <input className={classes.Forgetpassword} type="password" placeholder="Old Password" value={password} onChange={(e) => { setPassword(e.target.value) }} />
             <input className={classes.Forgetpassword} type="password" placeholder="New Password" value={newpassword} onChange={(e) => { setnewPassword(e.target.value) }} />

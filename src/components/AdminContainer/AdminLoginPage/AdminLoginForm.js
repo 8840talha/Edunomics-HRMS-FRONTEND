@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Paper } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 
-
+import './styles.css'
 import { withRouter, Redirect } from 'react-router-dom';
 
 
@@ -26,28 +26,18 @@ const useStyle = makeStyles((theme) => ({
         flexDirection: 'column'
     }, label: {
         fontSize: '2.5rem',
-        color: 'green',
-        fontFamily: 'lato'
+        color: '#57b846',
+
     },
     inp: {
 
-        borderRadius: '0.313rem',
-        border: '0.063rem solid green',
+        borderRadius: '25px',
+        border: '0.063rem solid #57b846',
         height: '3.125rem',
         marginBottom: '10px',
         outline: 'none'
     },
-    bttn: {
-        width: '100%',
-        backgroundColor: 'green',
-        color: '#eee',
-        textDecoration: 'none',
-        border: 'none',
-        height: '3.125rem',
-        borderRadius: '0.313rem',
-        marginTop: theme.spacing(1)
-
-    }, check: {
+    check: {
         width: '13px',
         height: '13px',
         padding: '0',
@@ -133,10 +123,10 @@ const LoginForm = (props) => {
                 <input className={classes.inp} type='password' value={password} onChange={(e) => { setPassword(e.target.value) }} />
                 <label style={{ display: 'block' }}>Remember me<input className={classes.check} type="checkbox" /></label>
 
-                <button className={classes.bttn}>Submit</button>
+                <button className='bttn'>Submit</button>
                 <h3><a style={{ color: 'black', textDecoration: 'none' }} href="/forget">Reset Password</a></h3>
             </form>
-            <div style={{ marginTop:'100px' }}>
+            <div style={{ marginTop: '100px' }}>
 
                 <img alt="LoginLogo" src={require('../../../assets/edunomics.png')} />
             </div>

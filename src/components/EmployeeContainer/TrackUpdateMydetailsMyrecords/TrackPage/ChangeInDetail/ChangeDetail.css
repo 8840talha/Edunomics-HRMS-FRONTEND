@@ -1,16 +1,48 @@
-.changeDetailContainer{
+.changeDetailContainer {
     height: 50px;
-   
-  
     width: 500px;
     margin-left: 110px;
-    
 }
-.changepara{
+
+.changepara {
     margin-top: 0px;
-   
-    width: 500px; 
+    width: 500px;
     margin-left: 110px;
     font-size: 25px;
     color: black;
+}
+
+.inpp {
+    border-radius: 25px;
+    border: 1px solid Green;
+    width: 100%;
+    margin-top: 5px;
+    height: 55px;
+}
+
+.inpp:focus {
+    text-decoration: none;
+    outline: none;
+}
+
+.changeDetBtn {
+    border-radius: 25px;
+    margin-top: 5px;
+    text-align: center;
+    height: 60px;
+    background-color: green;
+    color: #fff;
+    width: 100%;
+    border: none;
+}
+
+.changeDetBtn:focus {
+    outline: none;
+}
+
+.changeDetBtn:hover {
+    background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
+    background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
+    background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
+    background: linear-gradient(-135deg, #c850c0, #4158d0)
 }

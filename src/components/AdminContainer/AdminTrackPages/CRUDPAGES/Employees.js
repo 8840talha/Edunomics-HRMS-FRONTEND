@@ -45,15 +45,15 @@ const Employees = () => {
   };
 
   return (
-    <div style={{ marginTop: '100px' }} className="container">
+    <div style={{ marginTop: '100px', }} className="container">
       <div style={{ display: 'flex' }}>
-        <Link style={{ border: '1px solid gray', width: '180px', height: '50px', marginRight: '5px' }} className="btn btn-outline-dark w-35" to="/adminTrack">Go to Home</Link>
+        <Link style={{ border: '1px solid gray', width: '180px', height: '50px', marginRight: '5px' }} className="btn btn-outline-dark w-35" to="/adminTrack">Go to Admin's Home</Link>
         <Link style={{ border: '1px solid gray', width: '180px', height: '50px' }} className="btn btn-outline-dark w-35" to="/users/add">Add User</Link>
 
       </div>
       <div className="py-4">
-        <h1>Employees</h1>
-        <table class="table border shadow table-striped">
+        <h1 className="py-4">Employees</h1>
+        <table class="table border shadow table-striped ">
           <thead class="thead">
             <tr>
               <th scope="col">#</th>

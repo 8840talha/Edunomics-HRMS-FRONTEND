@@ -1,0 +1,22 @@
+.bttn {
+    width: 100%;
+    background-color: #57b846;
+    color: #eee;
+    text-Decoration: none;
+    border: none;
+    outline: none;
+    height: 3.125rem;
+    border-radius: 25px;
+    margin-top: 8px
+}
+
+.bttn:hover {
+    background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
+    background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
+    background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
+    background: linear-gradient(-135deg, #c850c0, #4158d0)
+}
+
+.bttn:focus {
+    outline: none;
+}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory, useParams, } from "react-router-dom";
 
+
 const EditUser = () => {
 
   let history = useHistory();
@@ -72,7 +73,7 @@ const EditUser = () => {
           <div className="form-group">
             <input
               type="text"
-              className="form-control form-control-lg"
+              className="form-control form-control-lg "
               placeholder="Enter Your Name"
               name="name"
               value={name}

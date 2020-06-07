@@ -6,7 +6,6 @@
     color: #fff;
     margin-top: 0px;
     height: 60px;
-   
 }
 
 .mark {
@@ -24,7 +23,9 @@
     border-radius: 2px;
 }
 
-
+.uB:focus {
+    outline: none;
+}
 
 .send {
     margin: 50px 450px;
@@ -36,6 +37,10 @@
     text-decoration: none;
     border: none;
     border-radius: 2px;
+}
+
+.send:focus {
+    outline: none;
 }
 
 .updatecontainer {
