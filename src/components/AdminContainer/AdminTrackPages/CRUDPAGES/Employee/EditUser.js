@@ -29,7 +29,7 @@ const EditUser = () => {
 
   const onSubmit = async e => {
     e.preventDefault();
-
+// editting an specific employee with its emp id
     var token = localStorage.getItem('token');
     await axios.put(`https://hrms-project.herokuapp.com/api/edit/${employeeId}`, user,
       {
@@ -49,7 +49,7 @@ const EditUser = () => {
 
 
   };
-
+// loading data to the form before editting
   const loadUser = async () => {
 
 

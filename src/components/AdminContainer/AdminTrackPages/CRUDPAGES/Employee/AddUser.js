@@ -24,7 +24,7 @@ const AddUser = () => {
     var data = {
       ...user
     }
-
+// adding a new employee
     var newdata = JSON.stringify(data);
     console.log(newdata)
     var tokenKey = localStorage.getItem('token')

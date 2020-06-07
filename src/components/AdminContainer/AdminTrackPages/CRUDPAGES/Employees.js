@@ -9,7 +9,7 @@ const Employees = () => {
   useEffect(() => {
     loadUsers();
   }, []);
-
+// loading list of all registered employees
   const loadUsers = async () => {
     var token = localStorage.getItem('token');
     await axios.get(`https://hrms-project.herokuapp.com/api/user/all`,
@@ -25,7 +25,7 @@ const Employees = () => {
 
 
   };
-
+// deleting a specific employee with its id
   const deleteUser = async id => {
 
     var tokenn = localStorage.getItem('token');

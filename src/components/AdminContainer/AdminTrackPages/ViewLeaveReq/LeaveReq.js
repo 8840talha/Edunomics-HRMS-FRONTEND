@@ -12,7 +12,7 @@ class LeaveView extends Component {
     }
 
 
-
+// getting all the request made by employee for leave
     componentDidMount() {
 
         var token = localStorage.getItem('token');
@@ -47,6 +47,8 @@ class LeaveView extends Component {
 
 
     }
+
+    // rejecting the request
     rejectHandler = (id) => {
         console.log(id)
         var Token = localStorage.getItem('token');
@@ -74,6 +76,7 @@ class LeaveView extends Component {
 
         console.log('rejecting')
     }
+    // approving the request
     approveHandler = (id) => {
         console.log(id)
         var Tokenn = localStorage.getItem('token');

@@ -40,6 +40,7 @@ class EditReqView extends Component {
 
 
     }
+    // rejecting employees request for edittting detail
     rejectHandler = (id) => {
         console.log(id)
         var Token = localStorage.getItem('token');
@@ -67,6 +68,8 @@ class EditReqView extends Component {
 
         console.log('rejecting')
     }
+
+    // approving and editting employees request for edittting detail
     approveHandler = (id, empId) => {
         console.log(id)
         var Tokenn = localStorage.getItem('token');

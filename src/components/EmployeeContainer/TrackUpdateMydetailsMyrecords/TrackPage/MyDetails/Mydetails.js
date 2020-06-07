@@ -12,7 +12,7 @@ class MyDetails extends React.Component {
         category: '',
         role: ''
     }
-
+// getting all personal details 
     componentDidMount() {
         const tokenKey = localStorage.getItem('token');
 
@@ -92,10 +92,10 @@ class MyDetails extends React.Component {
                             </table>
 
                         </div>
-                        {/* <button className="change"><NavLink className="link" to="/detailChange">Request For Change In Details</NavLink></button> */}
+                      
                     </div>
                     <div className="down" >
-                        {/* <img style={{ marginTop: '0.625rem', }} alt="img" src={require('../../../../../assets/edunomics.png')} /> */}
+                        
                         <div className="ImgContainer">
                             <img style={{ marginTop: '0.625rem', }} alt="img" src={require('../../../../../assets/profile.png')} />
                             <NavLink style={{ textAlign: 'center' }} to="/detailChange" >Edit Profile</NavLink>

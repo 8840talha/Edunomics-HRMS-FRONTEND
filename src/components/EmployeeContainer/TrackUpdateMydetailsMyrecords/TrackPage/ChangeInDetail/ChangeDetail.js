@@ -77,7 +77,7 @@ const ChangeDetails = (props) => {
         var newdata = JSON.stringify(data);
         console.log(newdata)
 
-
+        // making request for editting detail to admin
         const tokenKey = localStorage.getItem('token');
         fetch('https://hrms-project.herokuapp.com/api/editdetail',
             {

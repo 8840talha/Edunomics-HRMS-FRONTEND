@@ -18,6 +18,7 @@ const User = () => {
   useEffect(() => {
     loadUser();
   }, []);
+  // getting a view of an specific employee by id
   const loadUser = async () => {
     var token = localStorage.getItem('token');
     const res = await axios.get(`https://hrms-project.herokuapp.com/api/user/${id}`,
