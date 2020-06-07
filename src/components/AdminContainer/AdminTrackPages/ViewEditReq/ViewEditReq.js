@@ -128,7 +128,7 @@ class EditReqView extends Component {
                 <td>{val.description}</td>
                 <td>{val.employeeId}</td>
                 <td>{val.createdAt}</td>
-                <td><img alt={val.employeeId} onClick={() => this.approveHandler(val._id)} src={require('../../../../assets/check.png')} /></td>
+                <td><img alt={val.employeeId} onClick={() => this.approveHandler(val._id,val.employeeId)} src={require('../../../../assets/check.png')} /></td>
                 <td><img alt={val.employeeId} onClick={() => this.rejectHandler(val._id)} src={require('../../../../assets/cross.png')} /></td>
             </tr>
 
