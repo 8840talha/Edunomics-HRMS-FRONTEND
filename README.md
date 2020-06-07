@@ -1,5 +1,6 @@
+# HR Management System 
 # Edunomics-HRMS-FRONTEND
-# Made in React.
+# Made in React and Node.
 # MAJOR ROUTES
 # localhost:3000
 # localhost:3000/forget
