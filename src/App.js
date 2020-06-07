@@ -21,6 +21,25 @@ import User from './components/AdminContainer/AdminTrackPages/CRUDPAGES/Employee
 import EditReqView from './components/AdminContainer/AdminTrackPages/ViewEditReq/ViewEditReq';
 import ChangeDetails from './components/EmployeeContainer/TrackUpdateMydetailsMyrecords/TrackPage/ChangeInDetail/ChangeDetail'
 import ForgetPass from './components/ForgetPassWord/ForgetPass';
+// Clear Login Session on tab close
+window.onbeforeunload = function (e) {
+
+  window.localStorage.unloadTime = JSON.stringify(new Date());
+
+};
+
+window.onload = function () {
+
+  let loadTime = new Date();
+  let unloadTime = new Date(JSON.parse(window.localStorage.unloadTime));
+  let refreshTime = loadTime.getTime() - unloadTime.getTime();
+
+  if (refreshTime > 3000)//3000 milliseconds
+  {
+    window.localStorage.removeItem("token");
+  }
+
+};
 
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {

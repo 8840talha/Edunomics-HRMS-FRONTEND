@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Link,useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
 
 const User = () => {
-  
+
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -39,20 +39,38 @@ const User = () => {
 
   };
   return (
-    <div className="container py-4">
-      <Link style={{ height: '50px' }} className="btn btn-outline-dark" to="/employees">
+    <div style={{ marginTop: '100px' }} className="container py-4">
+      <Link style={{ height: '50px' }} className="btn btn-outline-light" to="/employees">
         Back to Employeee
       </Link>
-      <h1 >User Id: {user.employeeId}</h1>
-      <hr />
-      <ul className="list-group w-50">
-        <li className="list-group-item"><h1>Name: {user.name}</h1></li>
-        <li className="list-group-item"><h1>Email: {user.email}</h1></li>
-        <li className="list-group-item"><h1>EmployeeId: {user.employeeId}</h1></li>
-        <li className="list-group-item"><h1>Phone: {user.phone}</h1></li>
-        <li className="list-group-item"><h1>Category:{user.category}</h1></li>
-        <li className="list-group-item"><h1>Role: {user.role}</h1></li>
-      </ul>
+      <h2 >User Id: {user.employeeId}</h2>
+      <table style={{ margin: '0 auto', width: '35%' }} className="  table  table-striped table-bordered list-group-item">
+        <tr>
+          <th>Name:</th>
+          <td>{user.name}</td>
+        </tr>
+        <tr>
+          <th>Email:</th>
+          <td>{user.email}</td>
+        </tr>
+        <tr>
+          <th>Telephone:</th>
+          <td>{user.phone}</td>
+        </tr>
+        <tr>
+          <th>Role:</th>
+          <td>{user.role}</td>
+        </tr>
+        <tr>
+          <th>Category:</th>
+          <td>{user.category}</td>
+        </tr>
+        <tr>
+          <th>EmployeeId:</th>
+          <td>{user.employeeId}</td>
+        </tr>
+      </table>
+
     </div>
   );
 };

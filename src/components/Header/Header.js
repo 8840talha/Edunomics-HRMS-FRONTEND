@@ -26,21 +26,23 @@ export default () => {
 
 
 
-                <nav className="navbar navbar-expand-sm bg-white navbar-black flex-column flex-sm-row">
+                <nav class="navbar navbar-expand-sm bg-white navbar-black flex-column flex-sm-row">
+
+                    <div>              
+                         <img alt="headImg" width={95}  src={require('../../assets/edunomics.png')} />
+                         </div>
 
 
-                    <img alt="headImg" src={require('../../assets/1.png')} />
-
-                    <div className="collapse navbar-collapse justify-content-end" id="navbarCollapse">
-                        <ul className="navbar-nav ">
-                            <li className="nav-item">
-                                <a className="nav-link" href="/">Home</a>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+                        <ul class="navbar-nav ">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">Home</a>
                             </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">Digital Service</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Digital Service</a>
                             </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">Initiatives</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Initiatives</a>
                             </li>
                         </ul>
                     </div>

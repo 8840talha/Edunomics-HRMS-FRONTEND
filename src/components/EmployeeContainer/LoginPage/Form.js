@@ -25,6 +25,7 @@ const useStyle = makeStyles((theme) => ({
         display: 'flex',
     },
     form: {
+        width:'350px',
         padding: theme.spacing(2),
         marginTop: theme.spacing(4),
         marginLeft: theme.spacing(4),
@@ -74,7 +75,7 @@ const LoginForm = (props) => {
     const [password, setPassword] = useState('');
 
     const token = localStorage.getItem('token');
-    
+    console.log(token)
     var login = true;
     if (token == null) {
         login = false;
@@ -137,7 +138,10 @@ const LoginForm = (props) => {
                 <h3><a style={{ color: 'black' }} href="/forget">Reset Password</a></h3>
 
             </form>
+            <div style={{marginTop:'100px'}}>
             <img alt="LoginLogo" src={require('../../../assets/edunomics.png')} />
+            </div>
+            
 
         </Paper>
 

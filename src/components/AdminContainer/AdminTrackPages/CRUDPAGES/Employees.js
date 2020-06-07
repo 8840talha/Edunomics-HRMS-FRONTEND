@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link, } from "react-router-dom";
 
 const Employees = () => {
-  
+
   const [users, setUser] = useState([]);
 
   useEffect(() => {
@@ -45,60 +45,58 @@ const Employees = () => {
   };
 
   return (
-    <div className="container">
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Link style={{ border: '1px solid gray', width: '180px', height: '50px', marginRight: '5px', marginLeft: '-14px' }} className="btn btn-outline-dark w-35" to="/adminTrack">Go to Home</Link>
+    <div style={{ marginTop: '100px' }} className="container">
+      <div style={{ display: 'flex' }}>
+        <Link style={{ border: '1px solid gray', width: '180px', height: '50px', marginRight: '5px' }} className="btn btn-outline-dark w-35" to="/adminTrack">Go to Home</Link>
         <Link style={{ border: '1px solid gray', width: '180px', height: '50px' }} className="btn btn-outline-dark w-35" to="/users/add">Add User</Link>
 
       </div>
-
-      <div style={{ marginLeft: '-15px', marginTop: '-150px' }} className="container">
-
-
-        <div className="py-4">
-          <h1 >Employees</h1>
-          <table style={{ marginLeft: '-15px', width: '1007px' }} class="table table-bordered">
-            <thead class="thead">
+      <div className="py-4">
+        <h1>Employees</h1>
+        <table class="table border shadow table-striped">
+          <thead class="thead">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">EmployeeId</th>
+              <th scope="col">Email</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map((user, index) => (
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">EmployeesId</th>
-                <th scope="col">Email</th>
-                <th>Action</th>
+                <th scope="row">{index + 1}</th>
+                <td>{user.name}</td>
+                <td>{user.employeeId}</td>
+                <td>{user.email}</td>
+                <td>
+                  <Link class="btn btn-primary mr-2" to={`/users/${user._id}`}>
+                    View
+                </Link>
+                  <Link
+                    class="btn btn-outline-primary mr-2"
+                    to={`/users/edit/${user._id}`}
+                  >
+                    Edit
+                </Link>
+                  <Link
+                    class="btn btn-danger"
+                    onClick={() => deleteUser(user._id)}
+                  >
+                    Delete
+                </Link>
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {users.map((user, index) => (
-                <tr key={index}>
-                  <th scope="row">{index + 1}</th>
-                  <td>{user.name}</td>
-                  <td>{user.employeeId}</td>
-                  <td>{user.email}</td>
-                  <td>
-                    <Link class="btn btn-primary mr-2" to={`/users/${user._id}`}>
-                      View
-                  </Link>
-                    <Link
-                      class="btn btn-outline-primary mr-2"
-                      to={`/users/edit/${user._id}`}
-                    >
-                      Edit
-                  </Link>
-                    <Link
-                      class="btn btn-danger"
-                      onClick={() => deleteUser(user._id)}
-                    >
-                      Delete
-                  </Link>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
-  );
+
+
+
+  )
 };
 
 export default Employees;

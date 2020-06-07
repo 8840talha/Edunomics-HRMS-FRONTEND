@@ -3,7 +3,7 @@ import axios from "axios";
 import { useHistory, useParams, } from "react-router-dom";
 
 const EditUser = () => {
- 
+
   let history = useHistory();
   const { id } = useParams();
   const [user, setUser] = useState({
@@ -65,8 +65,8 @@ const EditUser = () => {
 
   };
   return (
-    <div className="container">
-      <div className=" mx-auto p-5">
+    <div style={{ marginTop: '100px' }} className="container">
+      <div className=" w-50 shadow mx-auto p-5">
         <h2 className="text-center mb-4">Edit A User</h2>
         <form style={{ marginLeft: '10px' }} onSubmit={e => onSubmit(e)}>
           <div className="form-group">

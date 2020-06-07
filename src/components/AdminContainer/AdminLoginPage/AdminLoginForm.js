@@ -18,6 +18,7 @@ const useStyle = makeStyles((theme) => ({
         height: '100%',
     },
     form: {
+        width: '350px',
         padding: theme.spacing(2),
         marginTop: theme.spacing(4),
         marginLeft: theme.spacing(4),
@@ -135,7 +136,10 @@ const LoginForm = (props) => {
                 <button className={classes.bttn}>Submit</button>
                 <h3><a style={{ color: 'black', textDecoration: 'none' }} href="/forget">Reset Password</a></h3>
             </form>
-            <img alt="LoginLogo" src={require('../../../assets/edunomics.png')} />
+            <div style={{ marginTop:'100px' }}>
+
+                <img alt="LoginLogo" src={require('../../../assets/edunomics.png')} />
+            </div>
 
         </Paper>
 

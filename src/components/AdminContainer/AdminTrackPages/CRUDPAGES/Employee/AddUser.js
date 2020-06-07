@@ -56,10 +56,10 @@ const AddUser = () => {
 
 
   return (
-    <div className="container">
-      <div className="w-75 mx-auto shadow p-5">
+    <div style={{marginTop:'100px'}} className="container">
+      <div className=" w-50 mx-auto shadow p-5 ">
         <h2 className="text-center mb-4 ">Add A User</h2>
-        <form style={{ marginLeft: '10px' }} onSubmit={e => onSubmit(e)}>
+        <form style={{ marginLeft: '1px' }} onSubmit={e => onSubmit(e)}>
           <div className="form-group">
             <input
               type="text"
