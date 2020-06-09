@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 const Update = (props) => {
 
-    const [update, setUpdate] = useState(false);
+
     const updatePresent = () => {
         const tokenKey = localStorage.getItem('token');
 
@@ -33,18 +33,13 @@ const Update = (props) => {
             })
 
     }
-    const updateHandle = (event) => {
-        event.preventDefault();
-        setUpdate(true);
-        alert('Update Sent')
 
-    }
 
     return (
         <div>
             <div className="updatecontainer">
                 <div className="up">
-                    <NavLink className="link" to="/track"> Home</NavLink>
+                    <NavLink className="link" to="/track">Employee  Home</NavLink>
                     <NavLink className="link" to='/update'  >Update Progress</NavLink>
                     <NavLink className="link" to='/leave' >Leave Track</NavLink>
                 </div>
@@ -87,7 +82,7 @@ const Update = (props) => {
 
 
 
-                    <button onClick={updateHandle} className="send">Send Update</button>
+
                 </div>
 
 

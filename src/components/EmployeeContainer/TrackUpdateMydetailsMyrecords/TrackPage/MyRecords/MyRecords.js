@@ -24,6 +24,7 @@ const MyRecords = (props) => {
 
         }).catch(err => {
             console.log(err);
+            alert('No Projects Found')
         })
     }
     const renderRecordsData = () => {
@@ -49,7 +50,7 @@ const MyRecords = (props) => {
 
             <div className="myRecContainer">
                 <div className="up">
-                    <NavLink className="link" to="/track"> Home</NavLink>
+                    <NavLink className="link" to="/track">Employee Home</NavLink>
                     <NavLink className="link" to='/update'  >Update Progress</NavLink>
                     <NavLink className="link" to='/leave' >Leave Tracker</NavLink>
                 </div>

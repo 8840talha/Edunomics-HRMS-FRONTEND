@@ -140,7 +140,7 @@ class LeaveTrack extends Component {
             console.log(response.data.Record)
             this.setState({ rejectedLeaves: response.data.Record })
         }).catch(err => {
-            alert('No approved leaves or network error')
+            alert('No rejected leaves or network error')
         })
 
     }
@@ -191,7 +191,7 @@ class LeaveTrack extends Component {
 
                 <div className="LtContainer">
                     <div className="up">
-                        <NavLink className="link" to="/track"> Home</NavLink>
+                        <NavLink className="link" to="/track">Employee Home</NavLink>
                         <NavLink className="link" to='/update'  >Update Progress</NavLink>
                         <NavLink className="link" to='/leave' >Leave Track</NavLink>
                     </div>

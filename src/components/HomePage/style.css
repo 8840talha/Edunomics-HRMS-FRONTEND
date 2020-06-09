@@ -11,7 +11,6 @@
 
 .left {
     left: 0;
-    /* background-color: #ebebeb; */
     background: #9053c7;
     background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
     background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
@@ -21,7 +20,6 @@
 
 .right {
     right: 0;
-    /* background-color: #f1f1f1 */
     background: #57b846;
     background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
     background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
@@ -53,6 +51,10 @@
     border: none;
 }
 
+.buton:focus {
+    outline: none
+}
+
 a {
     color: black;
 }
@@ -67,10 +69,8 @@ a:hover {
     border-radius: 50%;
 }
 
-.img:hover {
-    /* Start the shake animation and make the animation last for 0.5 seconds */
+.iimg:hover {
     animation: shake 1s;
-    /* When the animation is finished, start again */
     animation-iteration-count: 1s;
 }
 

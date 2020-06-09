@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Paper } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
-
+import jwt_decode from 'jwt-decode'
 import './styles.css'
 import { withRouter, Redirect } from 'react-router-dom';
 
@@ -91,8 +91,18 @@ const LoginForm = (props) => {
 
                 console.log(response);
                 localStorage.setItem('token', response.token);
+                // Authorizing user that only admin can acess these routes.
+                var decoded = jwt_decode(response.token);
+                console.log(decoded.role);
+                if (decoded.role !== "admin") {
+                    alert(' Unauthorized Acess, Only Admins are Authorized for these Routes')
+                    props.history.push('/')
+                } else {
+                    props.history.push('/adminTrack');
+                }
 
-                props.history.push('/adminTrack');
+
+
             })
             .catch(err => {
                 console.log(err.message);
@@ -105,7 +115,6 @@ const LoginForm = (props) => {
             })
 
         console.log(email, password)
-
 
     }
 

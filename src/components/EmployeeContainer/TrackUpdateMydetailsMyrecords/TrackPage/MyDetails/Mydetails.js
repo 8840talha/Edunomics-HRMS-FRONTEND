@@ -55,7 +55,7 @@ class MyDetails extends React.Component {
 
                 <div className="myDet-Container">
                     <div className="up">
-                        <NavLink className="link" to="/track"> Home</NavLink>
+                        <NavLink className="link" to="/track">Employee Home</NavLink>
                         <NavLink className="link" to='/update'  >Update Progress</NavLink>
                         <NavLink className="link" to='/leave' >Leave Track</NavLink>
                     </div>

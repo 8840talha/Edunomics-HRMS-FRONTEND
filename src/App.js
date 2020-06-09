@@ -10,7 +10,7 @@ import LeaveTrack from './components/EmployeeContainer/TrackUpdateMydetailsMyrec
 import MyDetails from './components/EmployeeContainer/TrackUpdateMydetailsMyrecords/TrackPage/MyDetails/Mydetails';
 import MyRecords from './components/EmployeeContainer/TrackUpdateMydetailsMyrecords/TrackPage/MyRecords/MyRecords';
 import Falsy from './components/WrongRoute/Wrong';
-import EmpAdmin from './components/LOGASEMPADmin/EmpAdmin';
+import EmpAdmin from './components/HomePage/HomePage';
 import AdminLoginForm from './components/AdminContainer/AdminLoginPage/AdminLoginForm';
 import AdminTrack from './components/AdminContainer/AdminTrackPages/Admin/Admin';
 import LeaveView from './components/AdminContainer/AdminTrackPages/ViewLeaveReq/LeaveReq';
@@ -40,13 +40,16 @@ window.onload = function () {
   }
 
 };
-
-
+// 
+// Protected Routing Goes here
 const ProtectedRoute = ({ component: Component, ...rest }) => {
+
   return <Route {...rest} render={(props) => {
-    return localStorage.getItem('token') ? <Component {...props} /> : <Redirect to="/empLogin" />
+    return localStorage.getItem('token') ? <Component {...props} /> : <Redirect to="/" />
+
   }} />
 }
+// 
 
 
 class App extends Component {

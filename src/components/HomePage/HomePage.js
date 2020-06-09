@@ -1,23 +1,27 @@
-import React from 'react';
-
-import { makeStyles } from '@material-ui/core/styles';
-
+import React, { useState } from 'react';
 import './style.css'
 
-const useStyle = makeStyles((theme) => ({
-
-
-}));
 
 const EmpAdmin = (props) => {
-    const classes = useStyle();
+    // deleting the token when user redirects mistakenly to / after login.
+    const token = localStorage.getItem('token');
+    console.log(token)
+    var login = true;
+    if (token == null) {
+        login = false;
+    }
+    const [loggin, setLogin] = useState(login);
+    if (loggin) {
+        localStorage.removeItem('token')
+    }
+
     return (
         <div >
             <div className="split left">
                 <div className="centered">
 
                     <h2>Login As Employee</h2>
-                    <img className="img" src={require('.././../assets/emp1.png')} />
+                    <img className="iimg" src={require('.././../assets/emp1.png')} />
                     <a href="/empLogin"><button className="buton">Login</button></a>
                 </div>
             </div>
@@ -27,7 +31,7 @@ const EmpAdmin = (props) => {
                 <div className="centered">
 
                     <h2>Login As Administrator</h2>
-                    <img className="img" src={require('.././../assets/Boss.png')} />
+                    <img className="iimg" src={require('.././../assets/Boss.png')} />
                     <a href="/adminLogin"><button className="buton">Login</button></a>
                 </div>
             </div>
