@@ -53,17 +53,24 @@
     color: black
 }
 
+.btnContainer button:focus {
+    outline: none;
+}
+
 .green {
     background-color: green;
     color: #fff;
-}
-
-.green:focus {
     outline: none;
 }
 
 .green:hover {
-    background-color: #9053c7;
+    background-color: #fff;
+    color: black;
+    outline: none;
+}
+
+.green:focus {
+    outline: none;
 }
 
 .para {
@@ -71,7 +78,7 @@
     background-color: lightgray;
     width: 850px;
     height: 350px;
-    margin-left: 68px;
+    margin-left: 75px;
     font-size: 25px;
     color: black;
 }
@@ -86,17 +93,22 @@
     border: none;
 }
 
+.req:hover {
+    background-color: #fff;
+    color: black;
+}
+
 .req:focus {
     outline: none;
-}s
+}
 
 .m-20 {
-    margin-left: 68px;
+    margin-left: 75px;
 }
 
 .tWidth {
     width: 850px;
-    margin-left: 68px;
+    margin-left: 75px;
 }
 
 .up {

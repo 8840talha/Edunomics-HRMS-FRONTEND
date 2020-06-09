@@ -33,6 +33,11 @@
    height: 50px;
 }
 
+.Lout:hover {
+   background-color: white;
+   color: black;
+}
+
 .Lout:focus {
    outline: none;
 }

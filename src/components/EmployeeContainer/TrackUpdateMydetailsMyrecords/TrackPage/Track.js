@@ -28,8 +28,10 @@ const Track = (props) => {
 
             <div className="Tcontainer">
                 <div className="up">
-                    <NavLink className="link" to='/update'  >Update Progress</NavLink>
-                    <   NavLink className="link" to='/leave' >Leave Track</NavLink>
+
+                    <NavLink to='/update'><button className="link">Update Progress</button></NavLink>
+                    <NavLink to='/leave'><button className="link">Leave Tracker</button></NavLink>
+
                 </div>
 
                 <h1> 'Click / Toggle On the Buttons to Get the views .' </h1>
@@ -38,10 +40,10 @@ const Track = (props) => {
                 <div className="down" >
                     <div className="ImgContainer">
                         <img style={{ marginTop: '0.625rem', }} alt="img" src={require('../../../../assets/profile.png')} />
-                        <NavLink style={{ textAlign: 'center' }} to="/detailChange" >Edit Profile</NavLink>
+                        <NavLink style={{ textAlign: 'center', color: 'black' }} to="/detailChange" >Edit Profile</NavLink>
                     </div>
-                    <NavLink to='/mydetails' style={{ marginTop: '0.625rem', }} className="link"  >My Details</NavLink>
-                    <NavLink to='/myrecords' className="link"  >My Record</NavLink>
+                    <NavLink to='/mydetails'><button style={{ marginTop: '0.625rem' }} className="link">My Details</button></NavLink>
+                    <NavLink to='/myrecords'><button className="link">My Records</button></NavLink>
                 </div>
 
             </div>

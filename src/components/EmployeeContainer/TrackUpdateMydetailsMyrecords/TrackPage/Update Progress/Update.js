@@ -39,9 +39,10 @@ const Update = (props) => {
         <div>
             <div className="updatecontainer">
                 <div className="up">
-                    <NavLink className="link" to="/track">Employee  Home</NavLink>
-                    <NavLink className="link" to='/update'  >Update Progress</NavLink>
-                    <NavLink className="link" to='/leave' >Leave Track</NavLink>
+                    <NavLink to='/track'><button className="link">Employee Home</button></NavLink>
+                    <NavLink to='/update'><button className="link">Update Progress</button></NavLink>
+                    <NavLink to='/leave'><button className="link">Leave Tracker</button></NavLink>
+
                 </div>
                 <div className="Progress">
                     <div>
@@ -50,11 +51,11 @@ const Update = (props) => {
                     </div>
                     <div className="mark">
                         <h3>Mark Attendance</h3>
-                        <button className="uB" onClick={updatePresent}><NavLink className="link" to="#">Present</NavLink></button>
+                        <NavLink to="#"><button className="link" onClick={updatePresent}>Present</button></NavLink>
                     </div>
 
                     <div>
-                        <table style={{ width: '800px', marginLeft: '90px' }} className="table table-striped table-bordered ">
+                        <table style={{ width: '800px', marginLeft: '100px' }} className="table table-striped table-bordered ">
                             <thead  >
                                 <tr>
 
@@ -88,13 +89,13 @@ const Update = (props) => {
 
 
                 <div className="down" >
-                    {/* <img style={{ marginTop: '0.625rem', }} alt="img" src={require('../../../../../assets/edunomics.png')} /> */}
+
                     <div className="ImgContainer">
                         <img style={{ marginTop: '0.625rem', }} alt="img" src={require('../../../../../assets/profile.png')} />
-                        <NavLink style={{ textAlign: 'center' }} to="/detailChange" >Edit Profile</NavLink>
+                        <NavLink style={{ textAlign: 'center', color: 'black' }} to="/detailChange" >Edit Profile</NavLink>
                     </div>
-                    <NavLink to='/mydetails' style={{ marginTop: '0.625rem', }} className="link"  >My Details</NavLink>
-                    <NavLink className="link" to='/myrecords' >My Record</NavLink>
+                    <NavLink to='/mydetails'><button style={{ marginTop: '0.625rem' }} className="link">My Details</button></NavLink>
+                    <NavLink to='/myrecords'><button className="link">My Records</button></NavLink>
                 </div>
 
             </div>

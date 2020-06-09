@@ -50,3 +50,8 @@
 .viewRec:focus {
     outline: none;
 }
+
+.viewRec:hover {
+    background-color: #fff;
+    color: black;
+}

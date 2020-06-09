@@ -30,9 +30,10 @@ const AdminTrack = (props) => {
 
             <div className="Container">
                 <div className="tab">
-                    <NavLink className="link" to='/viewLeaveReq'  >View Leave Request</NavLink>
-                    <NavLink className="link" to='/employees' >Employees</NavLink>
-                    <NavLink className="link" to="/editReq">Edit Requests</NavLink>
+                    <NavLink to='/viewLeaveReq'><button className="link">Leave Requests</button></NavLink>
+                    <NavLink to='/employees'><button className="link"> Employees</button></NavLink>
+                    <NavLink to='/editReq'><button className="link"> Edit Requests</button></NavLink>
+
                 </div>
 
                 <h1 className="hp"> 'View Employees And Leave Requests If Any.' </h1>

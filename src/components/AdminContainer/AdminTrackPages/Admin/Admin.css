@@ -11,20 +11,38 @@
 
 .hp {
     text-align: center;
-    color: green;
 }
 
 .link {
+    width: 150px;
     background-color: green;
     margin-bottom: 0.625rem;
-    color: #eee;
+    color: white;
     border-radius: 0.25rem;
     height: 3.125rem;
     text-decoration: none;
     border: none;
     font-size: large;
     text-align: center;
+    margin-top: 5px;
 }
+
+.link:hover {
+    background-color: white;
+    color: black;
+}
+
+.link:focus {
+    outline: none;
+}
+
+/* a {
+    color: #fff;
+} */
+
+/* a:hover {
+    color: black;
+} */
 
 .tab {
     top: 12.5rem;
@@ -41,6 +59,11 @@
     width: 150px;
     height: 50px;
     margin-left: 100px;
+}
+
+.btnLogOut:hover {
+    background-color: white;
+    color: black;
 }
 
 .btnLogOut:focus {

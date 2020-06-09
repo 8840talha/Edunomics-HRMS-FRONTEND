@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 const AddUser = () => {
-  
+
   let history = useHistory();
   const [user, setUser] = useState({
     name: "",
@@ -24,7 +24,7 @@ const AddUser = () => {
     var data = {
       ...user
     }
-// adding a new employee
+    // adding a new employee
     var newdata = JSON.stringify(data);
     console.log(newdata)
     var tokenKey = localStorage.getItem('token')
@@ -56,7 +56,7 @@ const AddUser = () => {
 
 
   return (
-    <div style={{marginTop:'100px'}} className="container">
+    <div style={{ marginTop: '100px' }} className="container">
       <div className=" w-50 mx-auto shadow p-5 ">
         <h2 className="text-center mb-4 ">Add A User</h2>
         <form style={{ marginLeft: '1px' }} onSubmit={e => onSubmit(e)}>

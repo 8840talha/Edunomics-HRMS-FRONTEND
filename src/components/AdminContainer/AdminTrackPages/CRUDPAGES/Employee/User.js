@@ -45,7 +45,7 @@ const User = () => {
         Back to Employeee
       </Link>
       <h1 >User Id: {user.employeeId}</h1>
-      <table style={{ margin: '0 auto',  }} className="w-50 table  table-striped table-bordered ">
+      <table style={{ margin: '0 auto', }} className="w-50 table  table-striped table-bordered ">
         <tr>
           <th>Name:</th>
           <td>{user.name}</td>

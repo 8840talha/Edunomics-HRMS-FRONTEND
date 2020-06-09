@@ -12,7 +12,7 @@ class LeaveView extends Component {
     }
 
 
-// getting all the request made by employee for leave
+    // getting all the request made by employee for leave
     componentDidMount() {
 
         var token = localStorage.getItem('token');
@@ -133,9 +133,9 @@ class LeaveView extends Component {
 
                 <div className="Container">
                     <div className="tab">
-                        <NavLink className="link" to="/employees"  >Employees</NavLink>
-                        <   NavLink className="link" to="/viewLeaveReq">Leave Requests</NavLink>
-                        <   NavLink className="link" to="/editReq">Edit Requests</NavLink>
+                        <NavLink to='/viewLeaveReq'><button className="link">Leave Requests</button></NavLink>
+                        <NavLink to='/employees'><button className="link"> Employees</button></NavLink>
+                        <NavLink to='/editReq'><button className="link"> Edit Requests</button></NavLink>
                     </div>
 
                     <div>

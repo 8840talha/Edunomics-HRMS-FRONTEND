@@ -23,6 +23,11 @@
     border-radius: 2px;
 }
 
+.uB:hover {
+    background-color: #fff;
+    color: black;
+}
+
 .uB:focus {
     outline: none;
 }

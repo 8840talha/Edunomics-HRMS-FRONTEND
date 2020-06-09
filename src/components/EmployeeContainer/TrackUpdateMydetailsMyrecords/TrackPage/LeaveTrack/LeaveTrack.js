@@ -191,9 +191,10 @@ class LeaveTrack extends Component {
 
                 <div className="LtContainer">
                     <div className="up">
-                        <NavLink className="link" to="/track">Employee Home</NavLink>
-                        <NavLink className="link" to='/update'  >Update Progress</NavLink>
-                        <NavLink className="link" to='/leave' >Leave Track</NavLink>
+                        <NavLink to='/track'><button className="link">Employee Home</button></NavLink>
+                        <NavLink to='/update'><button className="link">Update Progress</button></NavLink>
+                        <NavLink to='/leave'><button className="link">Leave Tracker</button></NavLink>
+
                     </div>
 
                     <div>
@@ -300,13 +301,14 @@ class LeaveTrack extends Component {
                     </div>
 
                     <div className="down">
-                        {/* <img style={{ marginTop: '0.625rem', }} alt="img" src={require('../../../../../assets/edunomics.png')} /> */}
+
                         <div className="ImgContainer">
                             <img style={{ marginTop: '0.625rem', }} alt="img" src={require('../../../../../assets/profile.png')} />
-                            <NavLink style={{ textAlign: 'center' }} to="/detailChange" >Edit Profile</NavLink>
+                            <NavLink style={{ textAlign: 'center', color: 'black' }} to="/detailChange" >Edit Profile</NavLink>
                         </div>
-                        <NavLink to='/mydetails' style={{ marginTop: '0.625rem', }} className="link"  >My Details</NavLink>
-                        <NavLink className="link" to='/myrecords' >My Record</NavLink>
+                        <NavLink to='/mydetails'><button style={{ marginTop: '0.625rem' }} className="link">My Details</button></NavLink>
+                        <NavLink to='/myrecords'><button className="link">My Records</button></NavLink>
+
                     </div>
 
                 </div>

@@ -131,7 +131,7 @@ class EditReqView extends Component {
                 <td>{val.description}</td>
                 <td>{val.employeeId}</td>
                 <td>{val.createdAt}</td>
-                <td><img alt={val.employeeId} onClick={() => this.approveHandler(val._id,val.employeeId)} src={require('../../../../assets/check.png')} /></td>
+                <td><img alt={val.employeeId} onClick={() => this.approveHandler(val._id, val.employeeId)} src={require('../../../../assets/check.png')} /></td>
                 <td><img alt={val.employeeId} onClick={() => this.rejectHandler(val._id)} src={require('../../../../assets/cross.png')} /></td>
             </tr>
 
@@ -154,9 +154,9 @@ class EditReqView extends Component {
 
                 <div className="Container">
                     <div className="tab">
-                        <NavLink className="link" to="/employees"  >Employees</NavLink>
-                        <   NavLink className="link" to="/viewLeaveReq">Leave Requests</NavLink>
-                        <   NavLink className="link" to="/editReq">Edit Requests</NavLink>
+                        <NavLink to='/viewLeaveReq'><button className="link">Leave Requests</button></NavLink>
+                        <NavLink to='/employees'><button className="link"> Employees</button></NavLink>
+                        <NavLink to='/editReq'><button className="link"> Edit Requests</button></NavLink>
                     </div>
 
                     <div>
