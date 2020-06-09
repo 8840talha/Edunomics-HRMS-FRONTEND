@@ -93,7 +93,7 @@ class EditReqView extends Component {
                         var Tokennn = localStorage.getItem('token');
                         fetch(`https://hrms-project.herokuapp.com/api/edit/${empId}`, {
                             method: 'put',
-                            body: JSON.stringify(this.state.data),
+                            body: JSON.stringify(this.state.data[0]),
                             headers: {
                                 "Content-Type": "application/json",
                                 "Authorization": `Bearer ${Tokennn}`
