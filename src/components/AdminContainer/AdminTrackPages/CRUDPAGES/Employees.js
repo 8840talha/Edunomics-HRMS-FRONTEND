@@ -1,9 +1,22 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, } from "react-router-dom";
+import jwt_decode from 'jwt-decode'
 
-const Employees = () => {
 
+const Employees = (props) => {
+
+  var decoded = jwt_decode(localStorage.getItem('token'));
+  console.log(decoded.role);
+  if (decoded.role !== "admin") {
+    alert(' Unauthorized Acess, Only Admins are Authorized for these Routes')
+    props.history.push('/track')
+  }
+  //  else {
+  //     props.history.push('/adminTrack');
+  // }
+
+  // 
   const [users, setUser] = useState([]);
 
   useEffect(() => {
@@ -45,15 +58,15 @@ const Employees = () => {
   };
 
   return (
-    <div style={{ marginTop: '100px', }} className="container">
+    <div style={{ marginTop: '100px', backgroundColor: '#fff' }} className="container">
       <div style={{ display: 'flex' }}>
-        <Link style={{ border: '1px solid gray', width: '180px', height: '50px', marginRight: '5px' }} className="btn btn-outline-dark w-35" to="/adminTrack">Go to Admin's Home</Link>
-        <Link style={{ border: '1px solid gray', width: '180px', height: '50px' }} className="btn btn-outline-dark w-35" to="/users/add">Add User</Link>
+        <Link style={{ border: '1px solid gray', width: '180px', height: '50px', marginRight: '5px' }} className="btn btn-dark w-35" to="/adminTrack">Go to Admin's Home</Link>
+        <Link style={{ border: '1px solid gray', width: '180px', height: '50px' }} className="btn btn-dark w-35" to="/users/add">Add User</Link>
 
       </div>
       <div className="py-4">
         <h1 className="py-4">Employees</h1>
-        <table class="table border shadow table-striped ">
+        <table style={{ backgroundColor: '#fff' }} class="table table-bordered shadow table-striped ">
           <thead class="thead">
             <tr>
               <th scope="col">#</th>

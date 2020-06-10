@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory, useParams, } from "react-router-dom";
+import jwt_decode from 'jwt-decode'
 
-
-const EditUser = () => {
-
+const EditUser = (props) => {
+  // giving role based access by jwt token
+  var decoded = jwt_decode(localStorage.getItem('token'));
+  console.log(decoded.role);
+  if (decoded.role !== "admin") {
+    alert(' Unauthorized Acess, Only Admins are Authorized for these Routes')
+    props.history.push('/track')
+  }
   let history = useHistory();
   const { id } = useParams();
   const [user, setUser] = useState({
@@ -67,9 +73,9 @@ const EditUser = () => {
   };
   return (
     <div style={{ marginTop: '100px' }} className="container">
-      <div className=" w-50 shadow mx-auto p-5">
+      <div style={{ backgroundColor: '#fff' }} className=" w-50 shadow mx-auto p-5">
         <h2 className="text-center mb-4">Edit A User</h2>
-        <form style={{ marginLeft: '10px' }} onSubmit={e => onSubmit(e)}>
+        <form style={{ marginLeft: '10px', backgroundColor: '#fff' }} onSubmit={e => onSubmit(e)}>
           <div className="form-group">
             <input
               type="text"

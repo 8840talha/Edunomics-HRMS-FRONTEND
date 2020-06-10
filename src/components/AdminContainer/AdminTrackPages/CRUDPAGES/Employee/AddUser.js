@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-
-const AddUser = () => {
-
+import jwt_decode from 'jwt-decode';
+const AddUser = (props) => {
+  // giving role based access by jwt token
+  var decoded = jwt_decode(localStorage.getItem('token'));
+  console.log(decoded.role);
+  if (decoded.role !== "admin") {
+    alert(' Unauthorized Acess, Only Admins are Authorized for these Routes')
+    props.history.push('/track')
+  }
   let history = useHistory();
   const [user, setUser] = useState({
     name: "",
@@ -57,9 +63,9 @@ const AddUser = () => {
 
   return (
     <div style={{ marginTop: '100px' }} className="container">
-      <div className=" w-50 mx-auto shadow p-5 ">
+      <div style={{ backgroundColor: '#fff' }} className=" w-50 mx-auto shadow p-5 ">
         <h2 className="text-center mb-4 ">Add A User</h2>
-        <form style={{ marginLeft: '1px' }} onSubmit={e => onSubmit(e)}>
+        <form style={{ marginLeft: '1px', backgroundColor: '#fff' }} onSubmit={e => onSubmit(e)}>
           <div className="form-group">
             <input
               type="text"
