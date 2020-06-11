@@ -1,76 +1,76 @@
 .Progress h1 {
-    text-align: center;
-    font-size: 40px;
-    background-color: Green;
-    width: 1007px;
-    color: #fff;
-    margin-top: 0px;
-    height: 60px;
+  text-align: center;
+  font-size: 40px;
+  background-color: Green;
+  width: 1007px;
+  color: #fff;
+  margin-top: 0px;
+  height: 60px;
 }
 
 .mark {
-    display: flex;
-    background-color: transparent;
+  display: flex;
+  background-color: transparent;
 }
 
 .uB {
-    background-color: green;
-    color: #fff;
-    text-decoration: none;
-    border: none;
-    width: 150px;
-    height: 40px;
-    border-radius: 2px;
+  background-color: green;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  width: 150px;
+  height: 40px;
+  border-radius: 2px;
 }
 
 .uB:hover {
-    background-color: #fff;
-    color: black;
+  background-color: #fff;
+  color: black;
 }
 
 .uB:focus {
-    outline: none;
+  outline: none;
 }
 
 .send {
-    margin: 50px 450px;
-    text-align: center;
-    width: 150px;
-    height: 50px;
-    color: #fff;
-    background-color: green;
-    text-decoration: none;
-    border: none;
-    border-radius: 2px;
+  margin: 50px 450px;
+  text-align: center;
+  width: 150px;
+  height: 50px;
+  color: #fff;
+  background-color: green;
+  text-decoration: none;
+  border: none;
+  border-radius: 2px;
 }
 
 .send:focus {
-    outline: none;
+  outline: none;
 }
 
 .updatecontainer {
-    width: 1007px;
-    height: 900px;
-    background-color: #ebebeb;
-    display: flex;
-    justify-content: space-between;
-    margin-left: 130px;
-    position: absolute;
-    top: 200px;
+  width: 1007px;
+  height: 900px;
+  background-color: #ebebeb;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 130px;
+  position: absolute;
+  top: 200px;
 }
 
 .updatecontainer h1 {
-    text-align: center;
+  text-align: center;
 }
 
 .link {
-    background-color: green;
-    margin-bottom: 10px;
-    color: #eee;
-    border-radius: 4px;
-    height: 50px;
-    text-decoration: none;
-    border: none;
-    font-size: large;
-    text-align: center;
+  background-color: green;
+  margin-bottom: 10px;
+  color: #eee;
+  border-radius: 4px;
+  height: 50px;
+  text-decoration: none;
+  border: none;
+  font-size: large;
+  text-align: center;
 }

@@ -1,79 +1,79 @@
 .myDet-Container {
-    width: 1007px;
-    height: 900px;
-    background-color: #ebebeb;
-    display: flex;
-    justify-content: space-between;
-    margin-left: 130px;
-    position: absolute;
-    top: 200px;
+  width: 1007px;
+  height: 900px;
+  background-color: #ebebeb;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 130px;
+  position: absolute;
+  top: 200px;
 }
 
 .myDet-container h1 {
-    text-align: center;
+  text-align: center;
 }
 
 .link {
-    background-color: green;
-    margin-bottom: 10px;
-    color: #eee;
-    border-radius: 4px;
-    height: 50px;
-    text-decoration: none;
-    border: none;
-    font-size: large;
-    text-align: center;
+  background-color: green;
+  margin-bottom: 10px;
+  color: #eee;
+  border-radius: 4px;
+  height: 50px;
+  text-decoration: none;
+  border: none;
+  font-size: large;
+  text-align: center;
 }
 
 .headMyDETAil {
-    color: #fff;
-    font-size: 40px;
-    margin-top: 0px;
-    width: 1007px;
-    background-color: green;
-    text-align: center;
-    margin-bottom: 30px;
-    margin-right: 105px;
-    height: 60px;
+  color: #fff;
+  font-size: 40px;
+  margin-top: 0px;
+  width: 1007px;
+  background-color: green;
+  text-align: center;
+  margin-bottom: 30px;
+  margin-right: 105px;
+  height: 60px;
 }
 
 form {
-    margin-left: 350px;
+  margin-left: 350px;
 }
 
 .form {
-    display: flex;
+  display: flex;
 }
 
 .form input {
-    background-color: lightgray;
-    border-bottom: 1px;
-    outline: none;
+  background-color: lightgray;
+  border-bottom: 1px;
+  outline: none;
 }
 
 form input :focus {
-    outline: none;
+  outline: none;
 }
 
 .form label {
-    width: 150px;
-    height: 50px;
-    border: 1px solid black;
-    text-align: center;
+  width: 150px;
+  height: 50px;
+  border: 1px solid black;
+  text-align: center;
 }
 
 .form label h4 {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .change {
-    background-color: green;
-    color: #fff;
-    font-size: larger;
-    width: 280px;
-    margin: 50px 325px;
-    text-decoration: none;
-    height: 60px;
-    border: none;
-    border-radius: 3px;
+  background-color: green;
+  color: #fff;
+  font-size: larger;
+  width: 280px;
+  margin: 50px 325px;
+  text-decoration: none;
+  height: 60px;
+  border: none;
+  border-radius: 3px;
 }
