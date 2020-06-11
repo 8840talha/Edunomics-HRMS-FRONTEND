@@ -6,7 +6,9 @@
   margin: auto;
   margin-top: 7%;
 }
-
+._container > div:not(.header-container) {
+  margin-bottom: 5%;
+}
 .nav-header {
   margin-bottom: 5%;
   background-color: rgb(236, 233, 233);
@@ -51,4 +53,6 @@
 .table-container {
   display: flex;
   justify-content: space-around;
+  width: 80%;
+  margin: auto;
 }
