@@ -3,7 +3,14 @@ import './Update.css'
 import './Update1.css'
 import { Link, useLocation } from 'react-router-dom';
 import profile from '../../../../../assets/profile.png'
-import { Button, Paper, Tabs, Tab } from '@material-ui/core'
+import {
+    Button,
+    Paper,
+    Table,
+    TableBody, TableRow, TableCell, TableContainer
+} from '@material-ui/core'
+import TableHead from '@material-ui/core/TableHead';
+
 
 const Update = (props) => {
 
@@ -101,28 +108,25 @@ const Update = (props) => {
                 </div>
             </div>
             <div className="table-container">
-                <table style={{ width: '800px', marginLeft: '100px' }} className="table table-striped table-bordered ">
-                    <thead  >
-                        <tr>
+                <TableContainer component={Paper}>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell align="center" style={{ fontWeight: "bold" }}>To Do</TableCell>
+                                <TableCell align="center" style={{ fontWeight: "bold" }}>Doing</TableCell>
+                                <TableCell align="center" style={{ fontWeight: "bold" }}>Done</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            <TableRow>
+                                <TableCell align="center">One</TableCell>
+                                <TableCell align="center">Two</TableCell>
+                                <TableCell align="center">Three</TableCell>
+                            </TableRow>
 
-                            <th>Todo</th>
-                            <th>Doing</th>
-                            <th>Done</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Task 1</td>
-                            <td>Task 2 </td>
-                            <td>Task 3</td>
-                        </tr>
-                        <tr>
-                            <td>Task 1</td>
-                            <td>Task 2 </td>
-                            <td>Task 3</td>
-                        </tr>
-                    </tbody>
-                </table>
+                        </TableBody>
+                    </Table>
+                </TableContainer>
             </div>
         </div >
 
