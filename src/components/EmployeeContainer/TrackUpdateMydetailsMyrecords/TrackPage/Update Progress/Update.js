@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import './Update.css'
 import './Update1.css'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import profile from '../../../../../assets/profile.png'
 import { Button, Paper, Tabs, Tab } from '@material-ui/core'
 
 const Update = (props) => {
 
-
+    const location = useLocation()
     const updatePresent = () => {
         const tokenKey = localStorage.getItem('token');
 
@@ -42,26 +43,53 @@ const Update = (props) => {
             <div className="header-container">
                 <h1 style={{ fontWeight: "bolder" }}>Update Progress</h1>
             </div>
-            <div className="navigation-container">
-                <Link to="/track">
-                    <Button variant="contained" style={{
-                        backgroundColor: "#1976D2",
-                        color: "white"
-                    }}>Employee Home</Button>
-                </Link>
-                <Link to="/update">
-                    <Button variant="contained" style={{
-                        backgroundColor: "#1976D2",
-                        color: "white"
-                    }}>Update Progress</Button>
-                </Link>
-                <Link to="/leave">
-                    <Button variant="contained" style={{
-                        backgroundColor: "#1976D2",
-                        color: "white"
-                    }}>Leave Tracker</Button>
-                </Link>
+            <div className="nav-header">
+                <div className="my-details-container">
+                    <Link to="/mydetails">
+                        <Button variant="contained" style={{
+                            backgroundColor: "#1976D2",
+                            color: "white"
+                        }}>My Details</Button>
+                    </Link>
+                    <div className="edit-profile-container">
+                        <img src={profile} width="80px" height="90px" />
+                        <Link to="/detailChange">
+                            <Button variant="contained" style={{
+                                backgroundColor: "#1976D2",
+                                color: "white",
+                                marginTop: "1%"
+                            }}>Edit Profile</Button>
+                        </Link>
+                    </div>
+                    <Link to="/myrecords">
+                        <Button variant="contained" style={{
+                            backgroundColor: "#1976D2",
+                            color: "white"
+                        }}>My Records</Button>
+                    </Link>
+                </div>
+                <div className="navigation-container">
+                    <Link to="/track">
+                        <Button variant="contained" style={{
+                            backgroundColor: "#1976D2",
+                            color: "white"
+                        }}>Employee Home</Button>
+                    </Link>
+                    <Link to="/update">
+                        <Button variant="contained" style={{
+                            backgroundColor: "#1976D2",
+                            color: "white"
+                        }}>Update Progress</Button>
+                    </Link>
+                    <Link to="/leave">
+                        <Button variant="contained" style={{
+                            backgroundColor: "#1976D2",
+                            color: "white"
+                        }}>Leave Tracker</Button>
+                    </Link>
+                </div>
             </div>
+
             <div className="mark-attendance-container">
                 <div className="mark-attendance-heading">
                     <h3>Mark Attendance:</h3>
@@ -96,7 +124,7 @@ const Update = (props) => {
                     </tbody>
                 </table>
             </div>
-        </div>
+        </div >
 
     )
 
