@@ -1,12 +1,20 @@
+._CCC {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 15.5rem;
+}
+
 .Tcontainer {
   width: 62.938rem;
   height: 56.25rem;
   background-color: #ebebeb;
   display: flex;
   justify-content: space-between;
-  margin-left: 130px;
-  position: absolute;
-  top: 12.5rem;
+  /* margin-left: 130px; */
+  /* position: absolute; */
+  
 }
 
 .Tcontainer h1 {
