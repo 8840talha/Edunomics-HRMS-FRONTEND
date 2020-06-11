@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import './Update.css'
-import { NavLink } from 'react-router-dom';
+import './Update1.css'
+import { Link } from 'react-router-dom';
+import { Button, Paper, Tabs, Tab } from '@material-ui/core'
 
 const Update = (props) => {
 
@@ -36,70 +38,64 @@ const Update = (props) => {
 
 
     return (
-        <div>
-            <div className="updatecontainer">
-                <div className="up">
-                    <NavLink to='/track'><button className="link">Employee Home</button></NavLink>
-                    <NavLink to='/update'><button className="link">Update Progress</button></NavLink>
-                    <NavLink to='/leave'><button className="link">Leave Tracker</button></NavLink>
-
-                </div>
-                <div className="Progress">
-                    <div>
-                        <h1>Update Progress</h1>
-
-                    </div>
-                    <div className="mark">
-                        <h3>Mark Attendance</h3>
-                        <NavLink to="#"><button className="link" onClick={updatePresent}>Present</button></NavLink>
-                    </div>
-
-                    <div>
-                        <table style={{ width: '800px', marginLeft: '100px' }} className="table table-striped table-bordered ">
-                            <thead  >
-                                <tr>
-
-                                    <th>Todo</th>
-                                    <th>Doing</th>
-                                    <th>Done</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Task 1</td>
-                                    <td>Task 2 </td>
-                                    <td>Task 3</td>
-                                </tr>
-                                <tr>
-                                    <td>Task 1</td>
-                                    <td>Task 2 </td>
-                                    <td>Task 3</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                    </div>
-
-
-
-
-
-                </div>
-
-
-
-                <div className="down" >
-
-                    <div className="ImgContainer">
-                        <img style={{ marginTop: '0.625rem', }} alt="img" src={require('../../../../../assets/profile.png')} />
-                        <NavLink style={{ textAlign: 'center', color: 'black' }} to="/detailChange" >Edit Profile</NavLink>
-                    </div>
-                    <NavLink to='/mydetails'><button style={{ marginTop: '0.625rem' }} className="link">My Details</button></NavLink>
-                    <NavLink to='/myrecords'><button className="link">My Records</button></NavLink>
-                </div>
-
+        <div className="_container">
+            <div className="header-container">
+                <h1 style={{ fontWeight: "bolder" }}>Update Progress</h1>
             </div>
+            <div className="navigation-container">
+                <Link to="/track">
+                    <Button variant="contained" style={{
+                        backgroundColor: "#1976D2",
+                        color: "white"
+                    }}>Employee Home</Button>
+                </Link>
+                <Link to="/update">
+                    <Button variant="contained" style={{
+                        backgroundColor: "#1976D2",
+                        color: "white"
+                    }}>Update Progress</Button>
+                </Link>
+                <Link to="/leave">
+                    <Button variant="contained" style={{
+                        backgroundColor: "#1976D2",
+                        color: "white"
+                    }}>Leave Tracker</Button>
+                </Link>
+            </div>
+            <div className="mark-attendance-container">
+                <div className="mark-attendance-heading">
+                    <h3>Mark Attendance:</h3>
+                </div>
+                <div className="mark-attendance-button">
+                    <Button variant="contained" style={{ backgroundColor: "#00a652", color: "white" }}>
+                        Present
+                    </Button>
+                </div>
+            </div>
+            <div className="table-container">
+                <table style={{ width: '800px', marginLeft: '100px' }} className="table table-striped table-bordered ">
+                    <thead  >
+                        <tr>
 
+                            <th>Todo</th>
+                            <th>Doing</th>
+                            <th>Done</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Task 1</td>
+                            <td>Task 2 </td>
+                            <td>Task 3</td>
+                        </tr>
+                        <tr>
+                            <td>Task 1</td>
+                            <td>Task 2 </td>
+                            <td>Task 3</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
     )

@@ -1,0 +1,32 @@
+._container {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 60%;
+  margin: auto;
+  margin-top: 7%;
+}
+._container > div {
+  margin-bottom: 4%;
+}
+
+.navigation-container {
+  display: flex;
+  justify-content: space-around;
+}
+.header-container {
+  display: flex;
+  width: 100%;
+  padding: 1%;
+  background-color: #00a652;
+  color: white;
+  justify-content: center;
+}
+.mark-attendance-container {
+  display: flex;
+  justify-content: space-around;
+}
+.table-container {
+  display: flex;
+  justify-content: space-around;
+}

@@ -24,10 +24,9 @@ const AdminTrack = (props) => {
         setLogin(!login)
 
     }
-  
+
     return (
         <div>
-
             <div className="Container">
                 <div className="tab">
                     <NavLink to='/viewLeaveReq'><button className="link">Leave Requests</button></NavLink>
@@ -42,6 +41,7 @@ const AdminTrack = (props) => {
 
 
             </div>
+
         </div>
 
 
