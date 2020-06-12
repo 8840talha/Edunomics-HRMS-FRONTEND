@@ -129,9 +129,9 @@ class LeaveView extends Component {
         return (
 
 
-            < div >
+            < div className="LWrapper"  >
 
-                <div className="Container">
+                <div className="LContainer">
                     <div className="tab">
                         <NavLink to='/viewLeaveReq'><button className="link">Leave Requests</button></NavLink>
                         <NavLink to='/employees'><button className="link"> Employees</button></NavLink>
@@ -139,7 +139,7 @@ class LeaveView extends Component {
                     </div>
 
                     <div>
-                        <h1 className='headwidth'>View Leave</h1>
+                        <h1 className='Lheadwidth'>View Leave</h1>
 
                         <div>
                             <table className="table table-striped table-bordered viewlevWidth">

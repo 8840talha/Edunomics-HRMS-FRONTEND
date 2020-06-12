@@ -58,7 +58,7 @@ const Employees = (props) => {
   };
 
   return (
-    <div style={{ marginTop: '100px', backgroundColor: '#fff' }} className="container">
+    <div style={{ marginTop: '100px', backgroundColor: '#fff' }} className="container ">
       <div style={{ display: 'flex' }}>
         <Link style={{ border: '1px solid gray', width: '180px', height: '50px', marginRight: '5px' }} className="btn btn-dark w-35" to="/adminTrack">Go to Admin's Home</Link>
         <Link style={{ border: '1px solid gray', width: '180px', height: '50px' }} className="btn btn-dark w-35" to="/users/add">Add User</Link>

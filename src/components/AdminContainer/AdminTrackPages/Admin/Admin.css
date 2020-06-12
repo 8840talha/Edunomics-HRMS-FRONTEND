@@ -1,12 +1,27 @@
-.Container {
+.AdminWrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 15.5rem;
+}
+
+@-moz-document url-prefix() {
+  .AdminWrapper {
+    margin-top: 16.25rem;
+    /* color: lime; */
+  }
+}
+
+.AContainer {
   width: 62.938rem;
   height: 56.25rem;
-  background-color: #ebebeb;
+  background-color: #fff;
   display: flex;
   justify-content: space-between;
-  margin-left: 130px;
+  /* margin-left: 130px;
   position: absolute;
-  top: 12.5rem;
+  top: 12.5rem; */
 }
 
 .hp {
@@ -28,21 +43,13 @@
 }
 
 .link:hover {
-  background-color: white;
-  color: black;
+  background-color: #24a0ed;
+  color: #fff;
 }
 
 .link:focus {
   outline: none;
 }
-
-/* a {
-    color: #fff;
-} */
-
-/* a:hover {
-    color: black;
-} */
 
 .tab {
   top: 12.5rem;
@@ -54,7 +61,7 @@
 
 .btnLogOut {
   border: none;
-  background-color: green;
+  background-color: #00a652;
   color: #fff;
   width: 150px;
   height: 50px;
@@ -62,8 +69,8 @@
 }
 
 .btnLogOut:hover {
-  background-color: white;
-  color: black;
+  background-color: #24a0ed;
+  color: #fff;
 }
 
 .btnLogOut:focus {

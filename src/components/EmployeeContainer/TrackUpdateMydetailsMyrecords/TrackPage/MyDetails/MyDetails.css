@@ -1,12 +1,27 @@
+._DWrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 15.5rem;
+}
+
+@-moz-document url-prefix() {
+  ._DWrapper {
+    margin-top: 16.25rem;
+    /* color: lime; */
+  }
+}
+
 .myDet-Container {
   width: 1007px;
   height: 900px;
-  background-color: #ebebeb;
+  background-color: #fff;
   display: flex;
   justify-content: space-between;
-  margin-left: 130px;
+  /* margin-left: 130px;
   position: absolute;
-  top: 200px;
+  top: 200px; */
 }
 
 .myDet-container h1 {
@@ -14,7 +29,7 @@
 }
 
 .link {
-  background-color: green;
+  background-color: #00a652;
   margin-bottom: 10px;
   color: #eee;
   border-radius: 4px;
@@ -30,7 +45,7 @@
   font-size: 40px;
   margin-top: 0px;
   width: 1007px;
-  background-color: green;
+  background-color: #00a652;
   text-align: center;
   margin-bottom: 30px;
   margin-right: 105px;

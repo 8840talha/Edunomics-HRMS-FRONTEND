@@ -46,7 +46,7 @@ const MyRecords = (props) => {
         })
     }
     return (
-        <div>
+        <div className="_RWrapper">
 
             <div className="myRecContainer">
                 <div className="up">
@@ -58,13 +58,13 @@ const MyRecords = (props) => {
 
                 <div>
                     <h1 className="headMyRecords">MyRecords</h1>
-
+                    
                     <button className="viewRec" onClick={getMyRecords}>View All Records</button>
 
                     <div>
 
 
-                        <table style={{ width: '850px', marginLeft: '68px' }} className="table table-striped table-bordered ">
+                        <table style={{ width: '850px', marginLeft: '75px',backgroundColor:'#fff' }} className="table table-striped table-bordered ">
                             <thead  >
                                 <tr>
                                     <th>Project Name</th>

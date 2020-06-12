@@ -1,20 +1,25 @@
-._CCC {
+._trackWrapper {
   position: absolute;
+  margin-top: 15.5rem;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  margin-top: 15.5rem;
+}
+
+@-moz-document url-prefix() {
+  ._trackWrapper {
+    margin-top: 16.25rem;
+    /* color: lime; */
+  }
 }
 
 .Tcontainer {
   width: 62.938rem;
   height: 56.25rem;
-  background-color: #ebebeb;
+  background-color: #fff;
   display: flex;
   justify-content: space-between;
   /* margin-left: 130px; */
-  /* position: absolute; */
-  
 }
 
 .Tcontainer h1 {
@@ -22,9 +27,9 @@
 }
 
 .link {
-  background-color: green;
+  background-color: #00a652;
   margin-bottom: 0.625rem;
-  color: #eee;
+  color: #fff;
   border-radius: 0.25rem;
   height: 3.125rem;
   text-decoration: none;
@@ -35,15 +40,15 @@
 
 .Lout {
   border: none;
-  background-color: green;
+  background-color: #00a652;
   color: #fff;
   width: 150px;
   height: 50px;
 }
 
 .Lout:hover {
-  background-color: white;
-  color: black;
+  background-color: #24a0ed;
+  color: #fff;
 }
 
 .Lout:focus {

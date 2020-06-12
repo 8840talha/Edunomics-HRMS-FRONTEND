@@ -150,9 +150,9 @@ class EditReqView extends Component {
         return (
 
 
-            < div >
+            < div className="VEWrapper" >
 
-                <div className="Container">
+                <div className="VEContainer">
                     <div className="tab">
                         <NavLink to='/viewLeaveReq'><button className="link">Leave Requests</button></NavLink>
                         <NavLink to='/employees'><button className="link"> Employees</button></NavLink>
@@ -160,7 +160,7 @@ class EditReqView extends Component {
                     </div>
 
                     <div>
-                        <h1 className='headwidth'>Edit Requests</h1>
+                        <h1 className='editheadwidth'>Edit Requests</h1>
 
                         <div>
                             <table className="table table-striped table-bordered vieweditWidth">

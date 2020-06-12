@@ -1,7 +1,7 @@
 .Progress h1 {
   text-align: center;
   font-size: 40px;
-  background-color: Green;
+  background-color: #00a652;
   width: 1007px;
   color: #fff;
   margin-top: 0px;
@@ -10,35 +10,37 @@
 
 .mark {
   display: flex;
+  /* flex-direction: row; */
+  justify-content: space-evenly;
   background-color: transparent;
 }
 
 .uB {
-  background-color: green;
+  background-color: #00a652;
   color: #fff;
   text-decoration: none;
   border: none;
   width: 150px;
-  height: 40px;
+  height: 45px;
   border-radius: 2px;
 }
 
 .uB:hover {
-  background-color: #fff;
-  color: black;
+  background-color: #24a0ed;
+  color: #fff;
 }
 
 .uB:focus {
   outline: none;
 }
 
-.send {
+/* .send {
   margin: 50px 450px;
   text-align: center;
   width: 150px;
   height: 50px;
   color: #fff;
-  background-color: green;
+  background-color: #00a652;
   text-decoration: none;
   border: none;
   border-radius: 2px;
@@ -46,17 +48,32 @@
 
 .send:focus {
   outline: none;
+} */
+
+._UWrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 15.5rem;
+}
+
+@-moz-document url-prefix() {
+  ._UWrapper {
+    margin-top: 16.25rem;
+    /* color: lime; */
+  }
 }
 
 .updatecontainer {
   width: 1007px;
   height: 900px;
-  background-color: #ebebeb;
+  background-color: #fff;
   display: flex;
   justify-content: space-between;
-  margin-left: 130px;
-  position: absolute;
-  top: 200px;
+  /* margin-left: 130px; */
+  /* position: absolute; */
+  /* top: 200px; */
 }
 
 .updatecontainer h1 {
@@ -64,9 +81,9 @@
 }
 
 .link {
-  background-color: green;
+  background-color: #00a652;
   margin-bottom: 10px;
-  color: #eee;
+  color: #fff;
   border-radius: 4px;
   height: 50px;
   text-decoration: none;

@@ -26,8 +26,8 @@ const AdminTrack = (props) => {
     }
 
     return (
-        <div>
-            <div className="Container">
+        <div className="AdminWrapper">
+            <div className="AContainer">
                 <div className="tab">
                     <NavLink to='/viewLeaveReq'><button className="link">Leave Requests</button></NavLink>
                     <NavLink to='/employees'><button className="link"> Employees</button></NavLink>

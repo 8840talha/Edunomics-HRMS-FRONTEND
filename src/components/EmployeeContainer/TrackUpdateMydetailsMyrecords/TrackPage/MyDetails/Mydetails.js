@@ -51,7 +51,7 @@ class MyDetails extends React.Component {
     render() {
 
         return (
-            <div>
+            <div className="_DWrapper">
 
                 <div className="myDet-Container">
                     <div className="up">
@@ -65,7 +65,7 @@ class MyDetails extends React.Component {
                     <div >
                         <h1 className="headMyDETAil">My Details</h1>
                         <div >
-                            <table style={{ width: '25%', marginLeft: '30%' }} className="  table  table-striped table-bordered">
+                            <table style={{ width: '25%', marginLeft: '30%', backgroundColor: '#fff' }} className="table table-bordered table-striped">
                                 <tr>
                                     <th>Name:</th>
                                     <td>{this.state.name}</td>

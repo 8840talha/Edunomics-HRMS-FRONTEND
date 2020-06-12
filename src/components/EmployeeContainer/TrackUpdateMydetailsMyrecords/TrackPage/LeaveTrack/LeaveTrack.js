@@ -187,7 +187,7 @@ class LeaveTrack extends Component {
     render() {
         return (
 
-            <div>
+            <div className="LTWrapper" >
 
                 <div className="LtContainer">
                     <div className="up">
@@ -198,7 +198,7 @@ class LeaveTrack extends Component {
                     </div>
 
                     <div>
-                        <h1 className='headwidth'>Leave Track</h1>
+                        <h1 className='LTheadwidth'>Leave Track</h1>
                         <div className="btnContainer">
                             <button className={this.state.requested ? 'green' : null}
                                 onClick={() => this.setState({
