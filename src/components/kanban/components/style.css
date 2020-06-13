@@ -163,7 +163,7 @@ h4 {
   word-wrap: break-word;
 }
 .task-card-dragged {
-  background-color: rgb(255, 89, 89);
+  background-color: #84dcff;
   opacity: 0.5;
   animation: shake 0.8s infinite;
 }
@@ -171,7 +171,7 @@ h4 {
   opacity: 0;
 }
 .bucket-dragged {
-  background-color: rgb(255, 89, 89);
+  background-color: #84dcff;
   opacity: 0.5;
   animation: shake 0.8s infinite;
 }
@@ -179,7 +179,7 @@ h4 {
   opacity: 0;
 }
 .task-desc > .modal-dialog {
-  max-width: 50%;
+  max-width: 70%;
 }
 @keyframes glowing {
   0% {
