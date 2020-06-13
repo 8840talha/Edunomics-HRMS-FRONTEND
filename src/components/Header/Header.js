@@ -20,13 +20,13 @@ export default () => {
 
     return (
 
-
         <div className={`sticky-wrapper${isSticky ? ' sticky' : ''}`} ref={ref}>
             <div className="sticky-inner">
 
 
 
-                <nav class="navbar navbar-expand-sm bg-white navbar-black flex-column flex-sm-row">
+                <nav class="navbar navbar-expand-sm bg-white navbar-black flex-column flex-sm-row"
+                    style={{ boxShadow: "0px 2px 4px grey" }}>
 
 
                     <a href="/" className="navbar-left "><img className="img" alt="headImg" width={95} src={require('../../assets/edunomics.png')} />
@@ -50,7 +50,5 @@ export default () => {
                 </nav>
             </div>
         </div>
-
-
     );
 };
