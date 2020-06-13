@@ -2,16 +2,7 @@ h1 {
   font-size: 30px;
 }
 
-ul li a {
-  font-size: 35px;
-  color: green;
-  text-decoration: none;
-}
-
-ul li a:hover {
-  text-decoration: none;
-  color: darkgreen;
-}
+ 
 
 .sticky {
   position: sticky;
@@ -45,6 +36,7 @@ ul li a:hover {
   padding: 14px 16px;
   text-decoration: none;
   font-size: 27px;
+ color:green
 }
 
 /* Change the color of links on hover */

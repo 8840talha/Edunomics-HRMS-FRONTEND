@@ -14,12 +14,24 @@
 }
 
 .Tcontainer {
-  width: 62.938rem;
+  width: 80%;
   height: 56.25rem;
   background-color: #fff;
   display: flex;
+  margin-top: 70px;
+  margin-left: 10px;
   justify-content: space-between;
   /* margin-left: 130px; */
+}
+
+.ActiveCont {
+  width: 1000%;
+  height: 56.25rem;
+  background-color: #fff;
+  display: flex;
+  margin-top: 70px;
+  margin-right: 30px;
+  justify-content: space-between;
 }
 
 .Tcontainer h1 {

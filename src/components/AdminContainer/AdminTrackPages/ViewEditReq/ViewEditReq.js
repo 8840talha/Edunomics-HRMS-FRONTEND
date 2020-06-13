@@ -128,7 +128,7 @@ class EditReqView extends Component {
         var result = this.state.data.map((val, index) => {
             console.log(val)
             return (<tr key={index}>
-                <td>{val.description}</td>
+               
                 <td>{val.employeeId}</td>
                 <td>{val.createdAt}</td>
                 <td><img alt={val.employeeId} onClick={() => this.approveHandler(val._id, val.employeeId)} src={require('../../../../assets/check.png')} /></td>
@@ -166,7 +166,7 @@ class EditReqView extends Component {
                             <table className="table table-striped table-bordered vieweditWidth">
                                 <thead  >
                                     <tr>
-                                        <th>Description</th>
+                                      
                                         <th>Employee Id</th>
                                         <th>Date</th>
                                         <th>Approve</th>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './Track.css'
 import { NavLink, Redirect } from 'react-router-dom'
+import SideBar from '../Sidebar';
 
 
 const Track = (props) => {
@@ -23,30 +24,25 @@ const Track = (props) => {
     }
     // 
 
+    const [showSide, setShow] = useState(false)
     return (
-        <div className="_trackWrapper" >
-
-            <div className="Tcontainer">
-                <div className="up">
-
-                    <NavLink to='/update'><button className="link">Update Progress</button></NavLink>
-                    <NavLink to='/leave'><button className="link">Leave Tracker</button></NavLink>
-
+        <div style={{ display: 'flex' }}>
+            <div style={{ width: '20%' }}>
+                <SideBar logout={handleLogout} show={showSide} />
+            </div>
+            <div className={showSide ? "Tcontainer" : "ActiveCont"}>
+                <div className='toggle' onClick={() => setShow(!showSide)}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
-
                 <h1> 'Click / Toggle On the Buttons to Get the views .' </h1>
                 <button className="Lout" onClick={handleLogout}>LogOut</button>
 
-                <div className="down" >
-                    <div className="ImgContainer">
-                        <img style={{ marginTop: '0.625rem', }} alt="img" src={require('../../../../assets/profile.png')} />
-                        <NavLink style={{ textAlign: 'center', color: 'black' }} to="/detailChange" >Edit Profile</NavLink>
-                    </div>
-                    <NavLink to='/mydetails'><button style={{ marginTop: '0.625rem' }} className="link">My Details</button></NavLink>
-                    <NavLink to='/myrecords'><button className="link">My Records</button></NavLink>
-                </div>
-
             </div>
+
+
+
         </div>
 
 
