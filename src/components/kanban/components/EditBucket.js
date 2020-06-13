@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Modal, Form, Button } from "react-bootstrap";
+import { TextField } from '@material-ui/core'
 
 
 function EditBucket(props) {
@@ -21,16 +22,15 @@ function EditBucket(props) {
           <Modal.Title>Edit Bucket</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
-            <Form.Group>
-              <Form.Label>Name :</Form.Label>
-              <Form.Control
-                type="text"
-                onChange={(e) => setBucketName(e.target.value)}
-                value={bucketName}
-              />
-            </Form.Group>
-          </Form>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <TextField
+              onChange={(e) => setBucketName(e.target.value)}
+              value={bucketName}
+              variant="outlined"
+              label="Bucket Name"
+              fullWidth
+            ></TextField>
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <Button
