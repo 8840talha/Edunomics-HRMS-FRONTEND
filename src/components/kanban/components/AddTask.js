@@ -130,6 +130,7 @@ function AddTask(props) {
       centered
       show={props.visibility}
       onHide={() => props.hideModal()}
+      className="task-desc"
     >
       <Modal.Header closeButton>
         <Modal.Title>Enter Task</Modal.Title>

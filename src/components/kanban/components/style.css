@@ -178,6 +178,9 @@ h4 {
 .bucket-dragged > * {
   opacity: 0;
 }
+.task-desc > .modal-dialog {
+  max-width: 50%;
+}
 @keyframes glowing {
   0% {
     box-shadow: 0 0 0px #414040;
