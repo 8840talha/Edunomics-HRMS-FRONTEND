@@ -21,6 +21,7 @@ import User from './components/AdminContainer/AdminTrackPages/CRUDPAGES/Employee
 import EditReqView from './components/AdminContainer/AdminTrackPages/ViewEditReq/ViewEditReq';
 import ChangeDetails from './components/EmployeeContainer/TrackUpdateMydetailsMyrecords/TrackPage/ChangeInDetail/ChangeDetail'
 import ForgetPass from './components/ForgetPassWord/ForgetPass';
+import Kanban from './components/kanban/KanbanApp'
 // Clear Login Session on tab close
 window.onbeforeunload = function (e) {
 
@@ -65,6 +66,7 @@ class App extends Component {
             <Route exact path='/empLogin' component={LoginForm} />
             <Route exact path='/forget' component={ForgetPass} />
             <Route exact path='/track' component={Track} />
+            <ProtectedRoute exact path="/kanban" component={Kanban} /> {/* New kanban route included */}
             <ProtectedRoute exact path="/viewLeaveReq" component={LeaveView} />
             <ProtectedRoute exact path="/employees" component={Employees} />
             <ProtectedRoute exact path='/leave' component={LeaveTrack} />

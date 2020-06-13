@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import './Track.css'
 import { NavLink, Redirect } from 'react-router-dom'
+import jwt_decode from 'jwt-decode'
 
 
 const Track = (props) => {
     // protected route logic
     const token = localStorage.getItem('token');
-    console.log(token)
     var login = true;
     if (token == null) {
         login = false;
