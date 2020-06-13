@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './Track.css'
 import { NavLink, Redirect } from 'react-router-dom'
 import jwt_decode from 'jwt-decode'
+import SideBar from '../Sidebar'
 
 
 const Track = (props) => {
