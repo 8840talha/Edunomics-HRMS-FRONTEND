@@ -25,15 +25,17 @@
 }
 
 .ActiveCont {
-  width: 1000%;
+  width: 10000%;
   height: 56.25rem;
   background-color: #fff;
   display: flex;
   margin-top: 70px;
-  margin-right: 30px;
+
   justify-content: space-between;
 }
-
+.ActiveCont h1{
+  text-align: center;
+}
 .Tcontainer h1 {
   text-align: center;
 }

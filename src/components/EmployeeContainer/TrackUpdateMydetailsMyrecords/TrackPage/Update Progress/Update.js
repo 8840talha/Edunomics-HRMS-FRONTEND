@@ -10,7 +10,7 @@ import {
     TableBody, TableRow, TableCell, TableContainer
 } from '@material-ui/core'
 import TableHead from '@material-ui/core/TableHead';
-
+import SideBar from '../../Sidebar'
 
 const Update = (props) => {
 
@@ -42,8 +42,10 @@ const Update = (props) => {
 
             })
 
+
     }
 
+    const [showSide, setShow] = useState(false)
 
     return (
         // <div className="_container">
@@ -129,16 +131,24 @@ const Update = (props) => {
         //         </TableContainer>
         //     </div>
         // </div >
-        <div className="_UWrapper" >
+        <div style={{ display: 'flex' }} >
+            <div style={{ width: '20%' }}>
+                <SideBar show={showSide} />
+            </div>
+            {/* <div className="updatecontainer"> */}
 
-            <div className="updatecontainer">
-
-                <div className="up">
+            {/* <div className="up">
                     <NavLink to='/track'><button className="link">Employee Home</button></NavLink>
                     <NavLink to='/update'><button className="link">Update Progress</button></NavLink>
                     <NavLink to='/leave'><button className="link">Leave Tracker</button></NavLink>
+                </div> */}
+            <div className={showSide ? "Tcontainer" : "ActiveCont"}>
+                <div style={{marginTop:'15px'}} className='toggle' onClick={() => setShow(!showSide)}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
-                <div className="Progress">
+                <div className={showSide ? "ActiveProg" : "Progress"}>
                     <h1> Update Progress </h1>
                     <div className="mark">
                         <h2>Mark Attendance:</h2>
@@ -168,14 +178,14 @@ const Update = (props) => {
 
 
 
-                <div className="down" >
+                {/* <div className="down" >
                     <div className="ImgContainer">
                         <img style={{ marginTop: '0.625rem', }} alt="img" src={require('../../../../../assets/profile.png')} />
                         <NavLink style={{ textAlign: 'center', color: 'black' }} to="/detailChange" >Edit Profile</NavLink>
                     </div>
                     <NavLink to='/mydetails'><button style={{ marginTop: '0.625rem' }} className="link">My Details</button></NavLink>
                     <NavLink to='/myrecords'><button className="link">My Records</button></NavLink>
-                </div>
+                </div> */}
 
             </div>
         </div>

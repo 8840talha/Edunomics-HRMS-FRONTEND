@@ -2,7 +2,17 @@
   text-align: center;
   font-size: 40px;
   background-color: #00a652;
-  width: 1007px;
+  width: 1282px;
+  color: #fff;
+  margin-top: 0px;
+  height: 60px;
+}
+
+.ActiveProg h1{
+  text-align: center;
+  font-size: 40px;
+  background-color: #00a652;
+  width: 1025px;
   color: #fff;
   margin-top: 0px;
   height: 60px;

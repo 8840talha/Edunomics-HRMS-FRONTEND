@@ -9,7 +9,23 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import ViewListIcon from '@material-ui/icons/ViewList';
 const SideBar = (props) => {
 
+    // protected route logic
+    const token = localStorage.getItem('token');
+    var login = true;
+    if (token == null) {
+        login = false;
+    }
+    const [loggedIn, setLogin] = useState(login)
 
+    if (loggedIn === false) {
+        return <Redirect to="/empLogin" />
+    }
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        setLogin(!login)
+
+    }
+    //
     const show = props.show;
     return (
 
@@ -23,7 +39,7 @@ const SideBar = (props) => {
                 <NavLink to="/mydetails"  ><button style={{ display: 'flex', justifyContent: 'row' }} className="SBlink" ><AccountCircleIcon />My Details</button></NavLink>
                 <NavLink to="/detailChange"  ><button style={{ display: 'flex', justifyContent: 'row' }} className="SBlink" ><AccountCircleIcon />EditProfile</button></NavLink>
                 <NavLink to="/myrecords"  ><button style={{ display: 'flex', justifyContent: 'row' }} className="SBlink" >< ViewListIcon /> Records</button></NavLink>
-                <NavLink to="#"  ><button style={{ display: 'flex', justifyContent: 'row' }} onClick={props.logout} className="SBlink" ><ExitToAppIcon />Logout</button></NavLink>
+                <NavLink to="#"  ><button style={{ display: 'flex', justifyContent: 'row' }} onClick={handleLogout} className="SBlink" ><ExitToAppIcon />Logout</button></NavLink>
             </ul>
 
         </div > : null

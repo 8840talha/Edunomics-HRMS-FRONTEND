@@ -21,10 +21,10 @@
     font-size: 25px;
 }
 
-/* .toggle {
+.toggle {
     position: absolute;
-   left: 100%;
-} */
+   
+}
 
 .toggle span {
     display: block;

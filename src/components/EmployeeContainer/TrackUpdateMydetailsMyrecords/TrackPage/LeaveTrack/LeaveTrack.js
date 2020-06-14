@@ -3,7 +3,7 @@ import './LeaveTrack.css';
 import { NavLink, } from 'react-router-dom'
 import { InputBase } from '@material-ui/core';
 import axios from 'axios';
-
+import SideBar from '../../Sidebar'
 class LeaveTrack extends Component {
 
     state = {
@@ -16,7 +16,8 @@ class LeaveTrack extends Component {
         NoOFLeaves: '',
         pendingLeaves: [],
         approvedLeaves: [],
-        rejectedLeaves: []
+        rejectedLeaves: [],
+        showSide: false
     }
 
 
@@ -184,22 +185,41 @@ class LeaveTrack extends Component {
             )
         })
     }
+
     render() {
         return (
 
-            <div className="LTWrapper" >
+            <div style={{ display: 'flex' }} >
+                <div style={{ width: '20%' }}>
+                    <SideBar show={this.state.showSide} />
+                </div>
+                {/* <div className="updatecontainer"> */}
 
-                <div className="LtContainer">
-                    <div className="up">
+                {/* <div className="up">
+                    <NavLink to='/track'><button className="link">Employee Home</button></NavLink>
+                    <NavLink to='/update'><button className="link">Update Progress</button></NavLink>
+                    <NavLink to='/leave'><button className="link">Leave Tracker</button></NavLink>
+                </div> */}
+
+                <div className={this.state.showSide ? "LTcontainer" : "LTActiveCont"}>
+                    <div style={{ marginTop: '15px' }} className='toggle' onClick={() => this.setState({ showSide: !this.state.showSide })}>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    {/* <div className="LtContainer"> */}
+                    {/* <div className="up">
                         <NavLink to='/track'><button className="link">Employee Home</button></NavLink>
                         <NavLink to='/update'><button className="link">Update Progress</button></NavLink>
                         <NavLink to='/leave'><button className="link">Leave Tracker</button></NavLink>
 
-                    </div>
+                    </div> */}
 
                     <div>
-                        <h1 className='LTheadwidth'>Leave Track</h1>
-                        <div className="btnContainer">
+                        <div className={this.state.showSide ? "LTActive" : "LT"}>
+                            <h1 className='LTheadwidth'>Leave Track</h1>
+                        </div>
+                        <div className={this.state.showSide ? "btnContainerActive" : "btnContainer"}>
                             <button className={this.state.requested ? 'green' : null}
                                 onClick={() => this.setState({
                                     requested: true,
@@ -218,7 +238,7 @@ class LeaveTrack extends Component {
                         <div>
                             {/* Requested */}
                             {this.state.requested ? <div>
-                                <div className="para">
+                                <div className={this.state.showSide ? "paraActive" : "para"}>
                                     <InputBase
                                         rowsMax={10}
                                         onChange={(e) => {
@@ -233,13 +253,13 @@ class LeaveTrack extends Component {
                                     />
 
                                 </div>
-                                {this.state.requested ? <button className='req' onClick={this.sendreqHandler} >Send Request</button> : null}
+                                {this.state.requested ? <button className={this.state.showSide ? 'reqActive' : 'req'} onClick={this.sendreqHandler} >Send Request</button> : null}
                             </div> : null}
 
                             {/* approved */}
                             {this.state.approved ? <div>
                                 <div>
-                                    <table className="table table-striped table-bordered tWidth">
+                                    <table className={this.state.showSide ? "table table-striped table-bordered tWidthActive" : "table table-striped table-bordered tWidth"}>
                                         <thead>
                                             <tr>
                                                 <th>Description</th>
@@ -260,7 +280,7 @@ class LeaveTrack extends Component {
                             {/* rejected */}
                             {this.state.rejected ? <div>
                                 <div>
-                                    <table className="table table-striped table-bordered tWidth">
+                                    <table className={this.state.showSide ? "table table-striped table-bordered tWidthActive" : "table table-striped table-bordered tWidth"}>
                                         <thead>
                                             <tr>
                                                 <th>Description</th>
@@ -280,7 +300,7 @@ class LeaveTrack extends Component {
                             {this.state.pending ? <div >
                                 <div >
 
-                                    <table className="table table-striped table-bordered tWidth">
+                                    <table className={this.state.showSide ? "table table-striped table-bordered tWidthActive" : "table table-striped table-bordered tWidth"}>
                                         <thead>
                                             <tr>
                                                 <th>Description</th>
@@ -297,9 +317,9 @@ class LeaveTrack extends Component {
                             </div> : null
                             }
                         </div>
-                        <h3 className="m-20">No Of Leaves Available :{this.state.NoOFLeaves}</h3>
+                        <h3 className={this.state.showSide ? "m-20Active" : "m-20"}>No Of Leaves Available :{this.state.NoOFLeaves}</h3>
                     </div>
-
+                    {/* 
                     <div className="down">
 
                         <div className="ImgContainer">
@@ -309,7 +329,7 @@ class LeaveTrack extends Component {
                         <NavLink to='/mydetails'><button style={{ marginTop: '0.625rem' }} className="link">My Details</button></NavLink>
                         <NavLink to='/myrecords'><button className="link">My Records</button></NavLink>
 
-                    </div>
+                    </div> */}
 
                 </div>
 
