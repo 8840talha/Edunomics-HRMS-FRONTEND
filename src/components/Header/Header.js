@@ -25,7 +25,7 @@ export default () => {
 
 
 
-                <nav class="navbar navbar-expand-sm bg-white navbar-black flex-column flex-sm-row"
+                <nav className="navbar navbar-expand-sm bg-white navbar-black flex-column flex-sm-row"
                     style={{ boxShadow: "0px 2px 4px grey" }}>
 
 
@@ -34,16 +34,16 @@ export default () => {
 
 
 
-                    <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
-                        <ul class="navbar-nav topnav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/">Home</a>
+                    <div className="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+                        <ul className="navbar-nav topnav">
+                            <li className="nav-item">
+                                <a className="nav-link" href="/">Home</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Digital Service</a>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#">Digital Service</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Initiatives</a>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#">Initiatives</a>
                             </li>
                         </ul>
                     </div>

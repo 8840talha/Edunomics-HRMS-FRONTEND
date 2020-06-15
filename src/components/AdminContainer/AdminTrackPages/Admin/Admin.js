@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './Admin.css'
 import { NavLink, Redirect } from 'react-router-dom'
 import jwt_decode from 'jwt-decode';
+import AdminSideBar from '../AdminSideBar/AdminSideBar'
 
 const AdminTrack = (props) => {
     //protected Route Logic
@@ -24,19 +25,23 @@ const AdminTrack = (props) => {
         setLogin(!login)
 
     }
-
+    const [show, setshow] = useState(false)
     return (
-        <div className="AdminWrapper">
-            <div className="AContainer">
-                <div className="tab">
-                    <NavLink to='/viewLeaveReq'><button className="link">Leave Requests</button></NavLink>
-                    <NavLink to='/employees'><button className="link"> Employees</button></NavLink>
-                    <NavLink to='/editReq'><button className="link"> Edit Requests</button></NavLink>
-
+        <div style={{ display: 'flex' }}>
+            <div style={{ width: '20%' }}>
+                <AdminSideBar show={show} />
+            </div>
+            <div className={show ? "AContainer" : "AContainerActive"} >
+                <div style={{ marginTop: '15px' }} className='admintoggle' onClick={() => setshow(!show)}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div className={show ? "AheadActive" : "Ahead"}>
+                    <h1 > Home Page </h1>
                 </div>
 
-                <h1 className="hp"> 'View Employees And Leave Requests If Any.' </h1>
-                <button className="btnLogOut" onClick={handleLogout}>LogOut</button>
+
 
 
 

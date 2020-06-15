@@ -1,18 +1,3 @@
-._trackWrapper {
-  position: absolute;
-  margin-top: 15.5rem;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-@-moz-document url-prefix() {
-  ._trackWrapper {
-    margin-top: 16.25rem;
-    /* color: lime; */
-  }
-}
-
 .Tcontainer {
   width: 80%;
   height: 56.25rem;
@@ -21,7 +6,6 @@
   margin-top: 70px;
   margin-left: 10px;
   justify-content: space-between;
-  /* margin-left: 130px; */
 }
 
 .ActiveCont {
@@ -30,47 +14,33 @@
   background-color: #fff;
   display: flex;
   margin-top: 70px;
-
   justify-content: space-between;
 }
-.ActiveCont h1{
+
+.ActiveCont h1 {
   text-align: center;
 }
+
 .Tcontainer h1 {
   text-align: center;
 }
 
-.link {
-  background-color: #00a652;
-  margin-bottom: 0.625rem;
-  color: #fff;
-  border-radius: 0.25rem;
-  height: 3.125rem;
-  text-decoration: none;
-  border: none;
-  font-size: large;
+.THEAD h1 {
   text-align: center;
-}
-
-.Lout {
-  border: none;
+  font-size: 40px;
   background-color: #00a652;
+  width: 1282px;
   color: #fff;
-  width: 150px;
-  height: 50px;
+  margin-top: 0px;
+  height: 60px;
 }
 
-.Lout:hover {
-  background-color: #24a0ed;
+.THEADACTIVE h1 {
+  text-align: center;
+  font-size: 40px;
+  background-color: #00a652;
+  width: 1025px;
   color: #fff;
-}
-
-.Lout:focus {
-  outline: none;
-}
-
-.ImgContainer {
-  background-color: lightgray;
-  display: flex;
-  flex-direction: column;
+  margin-top: 0px;
+  height: 60px;
 }

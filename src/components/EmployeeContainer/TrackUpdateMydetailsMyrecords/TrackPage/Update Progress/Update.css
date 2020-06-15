@@ -1,3 +1,30 @@
+.UTcontainer {
+  width: 80%;
+  height: 56.25rem;
+  background-color: #fff;
+  display: flex;
+  margin-top: 70px;
+  margin-left: 10px;
+  justify-content: space-between;
+}
+
+.UActiveCont {
+  width: 100%;
+  height: 56.25rem;
+  background-color: #fff;
+  display: flex;
+  margin-top: 70px;
+  justify-content: space-between;
+}
+
+.UActiveCont h1 {
+  text-align: center;
+}
+
+.UTcontainer h1 {
+  text-align: center;
+}
+
 .Progress h1 {
   text-align: center;
   font-size: 40px;
@@ -8,7 +35,7 @@
   height: 60px;
 }
 
-.ActiveProg h1{
+.ActiveProg h1 {
   text-align: center;
   font-size: 40px;
   background-color: #00a652;
@@ -20,7 +47,6 @@
 
 .mark {
   display: flex;
-  /* flex-direction: row; */
   justify-content: space-evenly;
   background-color: transparent;
 }
@@ -42,62 +68,4 @@
 
 .uB:focus {
   outline: none;
-}
-
-/* .send {
-  margin: 50px 450px;
-  text-align: center;
-  width: 150px;
-  height: 50px;
-  color: #fff;
-  background-color: #00a652;
-  text-decoration: none;
-  border: none;
-  border-radius: 2px;
-}
-
-.send:focus {
-  outline: none;
-} */
-
-._UWrapper {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  margin-top: 15.5rem;
-}
-
-@-moz-document url-prefix() {
-  ._UWrapper {
-    margin-top: 16.25rem;
-    /* color: lime; */
-  }
-}
-
-.updatecontainer {
-  width: 1007px;
-  height: 900px;
-  background-color: #fff;
-  display: flex;
-  justify-content: space-between;
-  /* margin-left: 130px; */
-  /* position: absolute; */
-  /* top: 200px; */
-}
-
-.updatecontainer h1 {
-  text-align: center;
-}
-
-.link {
-  background-color: #00a652;
-  margin-bottom: 10px;
-  color: #fff;
-  border-radius: 4px;
-  height: 50px;
-  text-decoration: none;
-  border: none;
-  font-size: large;
-  text-align: center;
 }

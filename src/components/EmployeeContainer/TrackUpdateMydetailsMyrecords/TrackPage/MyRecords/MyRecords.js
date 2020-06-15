@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { NavLink, } from 'react-router-dom'
 import './MyRecords.css'
 import axios from 'axios'
+import SideBar from '../SideBar/Sidebar'
 const MyRecords = (props) => {
     const [records, setRecords] = useState([])
 
@@ -45,26 +46,28 @@ const MyRecords = (props) => {
             )
         })
     }
+    const [showSide, setShow] = useState(false)
     return (
-        <div className="_RWrapper">
+        <div style={{ display: 'flex' }}>
+            <div style={{ width: '20%' }}>
+                <SideBar show={showSide} />
+            </div>
+            <div className={showSide ? "myRecContainer" : "myRecContainerActive"}>
 
-            <div className="myRecContainer">
-                <div className="up">
-                    <NavLink to='/track'><button className="link">Employee Home</button></NavLink>
-                    <NavLink to='/update'><button className="link">Update Progress</button></NavLink>
-                    <NavLink to='/leave'><button className="link">Leave Tracker</button></NavLink>
-
+                <div style={{ marginTop: '15px' }} className='toggle' onClick={() => setShow(!showSide)}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
+                <div className={showSide ? "HeadActive" : "Head"} >
+                    <h1 >MyRecords</h1>
 
-                <div>
-                    <h1 className="headMyRecords">MyRecords</h1>
-                    
-                    <button className="viewRec" onClick={getMyRecords}>View All Records</button>
+                    <button className={showSide ? "viewRecActive" : "viewRec"} onClick={getMyRecords}>View All Records</button>
 
                     <div>
 
 
-                        <table style={{ width: '850px', marginLeft: '75px',backgroundColor:'#fff' }} className="table table-striped table-bordered ">
+                        <table className={showSide ? "table table-striped table-bordered mrTwidthActive " : "table table-striped table-bordered mrTwidth "}>
                             <thead  >
                                 <tr>
                                     <th>Project Name</th>
@@ -83,16 +86,6 @@ const MyRecords = (props) => {
                 </div>
 
 
-
-                <div className="down" >
-
-                    <div className="ImgContainer">
-                        <img style={{ marginTop: '0.625rem', }} alt="img" src={require('../../../../../assets/profile.png')} />
-                        <NavLink style={{ textAlign: 'center', color: 'black' }} to="/detailChange" >Edit Profile</NavLink>
-                    </div>
-                    <NavLink to='/mydetails'><button style={{ marginTop: '0.625rem' }} className="link">My Details</button></NavLink>
-                    <NavLink to='/myrecords'><button className="link">My Records</button></NavLink>
-                </div>
 
             </div>
 

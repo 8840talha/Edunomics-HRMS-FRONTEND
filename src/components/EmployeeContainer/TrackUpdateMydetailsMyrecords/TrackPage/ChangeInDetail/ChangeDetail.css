@@ -1,50 +1,92 @@
 .changeDetailContainer {
-    height: 50px;
-    width: 500px;
-    margin-left: 110px;
-    text-align: center;
+  height: 50px;
+  width: 500px;
+  margin-left: 110px;
+  text-align: center;
 }
 
 .changepara {
-    margin-top: 0px;
-    width: 500px;
-    margin-left: 110px;
-    font-size: 25px;
-    color: black;
+  margin-top: 20px;
+  width: 500px;
+  margin-left: 110px;
+  font-size: 25px;
+  color: black;
 }
 
 .inpp {
-    border-radius: 25px;
-    border: 1px solid Green;
-    width: 100%;
-    margin-top: 5px;
-    height: 55px;
-   
+  border-radius: 25px;
+  border: 1px solid Green;
+  width: 100%;
+  margin-top: 25px;
+  height: 55px;
 }
 
 .inpp:focus {
-    text-decoration: none;
-    outline: none;
+  text-decoration: none;
+  outline: none;
 }
 
 .changeDetBtn {
-    border-radius: 25px;
-    margin-top: 5px;
-    text-align: center;
-    height: 60px;
-    background-color: green;
-    color: #fff;
-    width: 100%;
-    border: none;
+  border-radius: 25px;
+  margin-top: 25px;
+  text-align: center;
+  height: 60px;
+  background-color: green;
+  color: #fff;
+  width: 100%;
+  border: none;
 }
 
 .changeDetBtn:focus {
-    outline: none;
+  outline: none;
 }
 
 .changeDetBtn:hover {
-    background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
-    background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
-    background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
-    background: linear-gradient(-135deg, #c850c0, #4158d0)
+  background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: linear-gradient(-135deg, #c850c0, #4158d0)
+}
+
+.CDcontainer {
+  width: 80%;
+  height: 56.25rem;
+  background-color: #fff;
+  margin-top: 70px;
+  margin-left: 10px;
+}
+
+.CDActiveCont {
+  width: 10000%;
+  height: 56.25rem;
+  background-color: #fff;
+  margin-top: 70px;
+}
+
+.CDActiveCont h1 {
+  text-align: center;
+}
+
+.CDcontainer h1 {
+  text-align: center;
+}
+
+.CDTHEAD h1 {
+  text-align: center;
+  font-size: 40px;
+  background-color: #00a652;
+  width: 1282px;
+  color: #fff;
+  margin-top: 0px;
+  height: 60px;
+}
+
+.CDTHEADACTIVE h1 {
+  text-align: center;
+  font-size: 40px;
+  background-color: #00a652;
+  width: 1025px;
+  color: #fff;
+  margin-top: 0px;
+  height: 60px;
 }

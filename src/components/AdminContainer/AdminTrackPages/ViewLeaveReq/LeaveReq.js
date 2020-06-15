@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 import './LeaveReq.css';
-import { NavLink, Redirect } from 'react-router-dom'
-
+import AdminSideBar from '../AdminSideBar/AdminSideBar'
 
 class LeaveView extends Component {
     state = {
         islogin: true,
         approve: false,
         reject: false,
-        data: []
+        data: [],
+        show: false,
+        reason: ''
     }
 
 
@@ -30,7 +31,7 @@ class LeaveView extends Component {
 
                     let data = JSON.parse(dataStr);
                     console.log(data)
-                    if (data.success == "false") {
+                    if (data.success === "false") {
 
                         alert(data.message + 'No Req Found')
                     } else {
@@ -48,21 +49,27 @@ class LeaveView extends Component {
 
     }
 
+    changeHandler = (event) => {
+        event.preventDefault();
+        console.log(this.state.reason)
+        this.setState({ [event.target.name]: event.target.value })
+    }
     // rejecting the request
     rejectHandler = (id) => {
         console.log(id)
+
         var Token = localStorage.getItem('token');
         var leaveId = id;
         fetch(`https://hrms-project.herokuapp.com/api/leave/${leaveId}`, {
             method: 'put',
-            body: JSON.stringify({ "status": "rejected" }),
+            body: JSON.stringify({ "status": "rejected", "comment": this.state.reason }),
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${Token}`
             }
         }).then(response => response.json())
             .then(data => {
-                if (data.success == "false") {
+                if (data.success === "false") {
                     alert(data.message)
                 } else {
                     this.setState({ reject: true })
@@ -91,7 +98,7 @@ class LeaveView extends Component {
         }).then(response => response.json())
             .then(data => {
                 console.log(data)
-                if (data.success == "false") {
+                if (data.success === "false") {
                     alert(data.message)
                 } else {
                     this.setState({ approve: true })
@@ -109,11 +116,16 @@ class LeaveView extends Component {
         var result = this.state.data.map((val, index) => {
 
             return (<tr key={index}>
+                <td>{index + 1}</td>
                 <td>{val.description}</td>
+                <td>{val.name}</td>
                 <td>{val.employeeId}</td>
-                <td>{val.date}</td>
+                <td>{val.dateFrom}</td>
+                <td>{val.dateTo}</td>
                 <td><img alt={val.employeeId} onClick={() => this.approveHandler(val._id)} src={require('../../../../assets/check.png')} /></td>
-                <td><img alt={val.employeeId} onClick={() => this.rejectHandler(val._id)} src={require('../../../../assets/cross.png')} /></td>
+                <td><img alt={val.employeeId} onClick={() => this.rejectHandler(val._id)} src={require('../../../../assets/cross.png')} />
+                    <input type="text" placeholder="Reason" name="reason" onChange={this.changeHandler} />
+                </td>
             </tr>
 
 
@@ -129,25 +141,32 @@ class LeaveView extends Component {
         return (
 
 
-            < div className="LWrapper"  >
+            < div style={{ display: 'flex' }} >
 
-                <div className="LContainer">
-                    <div className="tab">
-                        <NavLink to='/viewLeaveReq'><button className="link">Leave Requests</button></NavLink>
-                        <NavLink to='/employees'><button className="link"> Employees</button></NavLink>
-                        <NavLink to='/editReq'><button className="link"> Edit Requests</button></NavLink>
+                <div style={{ width: '20%' }}>
+                    <AdminSideBar show={this.state.show} />
+                </div>
+                <div className={this.state.show ? "LRContainer" : "LRContainerActive"}>
+                    <div style={{ marginTop: '15px' }} className='admintoggle' onClick={() => this.setState({ show: !this.state.show })}>
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </div>
 
-                    <div>
-                        <h1 className='Lheadwidth'>View Leave</h1>
+
+                    <div className={this.state.show ? "LRheadActive" : "LRhead"} >
+                        <h1 >Leave Requests</h1>
 
                         <div>
-                            <table className="table table-striped table-bordered viewlevWidth">
+                            <table className={this.state.show ? "table table-striped table-bordered viewleaveWidthActive" : "table table-striped table-bordered viewleaveWidth"} >
                                 <thead  >
                                     <tr>
-                                        <th>Description</th>
+                                        <th>#</th>
+                                        <th>Purpose</th>
+                                        <th>Employee Name</th>
                                         <th>Employee Id</th>
-                                        <th>Date</th>
+                                        <th>Date From</th>
+                                        <th>Date To</th>
                                         <th>Approve</th>
                                         <th>Reject</th>
                                     </tr>

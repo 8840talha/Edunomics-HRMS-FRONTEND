@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import './ViewEditReq.css';
 import { NavLink } from 'react-router-dom'
-
+import AdminSideBar from '../AdminSideBar/AdminSideBar'
 
 class EditReqView extends Component {
     state = {
         approve: false,
         reject: false,
-        data: []
+        data: [],
+        show: false
     }
 
     componentDidMount() {
@@ -24,7 +25,7 @@ class EditReqView extends Component {
 
                     let data = JSON.parse(dataStr);
                     console.log(data)
-                    if (data.success == "false") {
+                    if (data.success === "false") {
                         alert(data.message + 'No Request for Detail Change Found')
                     } else {
                         const Myarr = data.Request;
@@ -54,7 +55,7 @@ class EditReqView extends Component {
             }
         }).then(response => response.json())
             .then(data => {
-                if (data.success == "false") {
+                if (data.success === "false") {
                     alert(data.message)
                 } else {
                     this.setState({ reject: true })
@@ -84,12 +85,12 @@ class EditReqView extends Component {
         }).then(response => response.json())
             .then(data => {
                 console.log(data)
-                if (data.success == "false") {
+                if (data.success === "false") {
                     alert(data.message)
                 } else {
                     this.setState({ approve: true })
                     alert(data.message)
-                    if (data.success == "true") {
+                    if (data.success === "true") {
                         var Tokennn = localStorage.getItem('token');
                         fetch(`https://hrms-project.herokuapp.com/api/edit/${empId}`, {
                             method: 'put',
@@ -101,7 +102,7 @@ class EditReqView extends Component {
                         }).then(response => response.json())
                             .then(data => {
                                 console.log(data)
-                                if (data.success == "false") {
+                                if (data.success === "false") {
                                     alert(data.message + " unable to put data")
                                 } else {
 
@@ -127,10 +128,12 @@ class EditReqView extends Component {
 
         var result = this.state.data.map((val, index) => {
             console.log(val)
+            var date = new Date(val.createdAt)
+            var d = date.toLocaleDateString();
             return (<tr key={index}>
-               
+                <td>{index + 1}</td>
                 <td>{val.employeeId}</td>
-                <td>{val.createdAt}</td>
+                <td>{d}</td>
                 <td><img alt={val.employeeId} onClick={() => this.approveHandler(val._id, val.employeeId)} src={require('../../../../assets/check.png')} /></td>
                 <td><img alt={val.employeeId} onClick={() => this.rejectHandler(val._id)} src={require('../../../../assets/cross.png')} /></td>
             </tr>
@@ -147,26 +150,30 @@ class EditReqView extends Component {
 
 
 
+
         return (
 
 
-            < div className="VEWrapper" >
+            < div style={{ display: 'flex' }} >
 
-                <div className="VEContainer">
-                    <div className="tab">
-                        <NavLink to='/viewLeaveReq'><button className="link">Leave Requests</button></NavLink>
-                        <NavLink to='/employees'><button className="link"> Employees</button></NavLink>
-                        <NavLink to='/editReq'><button className="link"> Edit Requests</button></NavLink>
+                <div style={{ width: '20%' }}>
+                    <AdminSideBar show={this.state.show} />
+                </div>
+                <div className={this.state.show ? "VEContainer" : "VEContainerActive"}>
+                    <div style={{ marginTop: '15px' }} className='admintoggle' onClick={() => this.setState({ show: !this.state.show })}>
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </div>
 
-                    <div>
-                        <h1 className='editheadwidth'>Edit Requests</h1>
+                    <div className={this.state.show ? "VEheadActive" : "VEhead"} >
+                        <h1 >Edit Requests</h1>
 
                         <div>
-                            <table className="table table-striped table-bordered vieweditWidth">
+                            <table className={this.state.show ? "table table-striped table-bordered vieweditWidthActive" : "table table-striped table-bordered vieweditWidth"} >
                                 <thead  >
                                     <tr>
-                                      
+                                        <th>#</th>
                                         <th>Employee Id</th>
                                         <th>Date</th>
                                         <th>Approve</th>

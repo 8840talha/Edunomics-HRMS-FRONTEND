@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-
+import SideBar from '../SideBar/Sidebar'
 import './MyDetails.css'
 class MyDetails extends React.Component {
 
@@ -10,7 +10,8 @@ class MyDetails extends React.Component {
         phone: '',
         employeeId: '',
         category: '',
-        role: ''
+        role: '',
+        showSide: false
     }
     // getting all personal details 
     componentDidMount() {
@@ -51,21 +52,22 @@ class MyDetails extends React.Component {
     render() {
 
         return (
-            <div className="_DWrapper">
+            <div style={{ display: "flex" }}>
 
-                <div className="myDet-Container">
-                    <div className="up">
-                        <NavLink to='/track'><button className="link">Employee Home</button></NavLink>
-                        <NavLink to='/update'><button className="link">Update Progress</button></NavLink>
-                        <NavLink to='/leave'><button className="link">Leave Tracker</button></NavLink>
+                <div style={{ width: '20%' }}>
+                    <SideBar show={this.state.showSide} />
+                </div>
 
+                <div className={this.state.showSide ? "MDcontainer" : "MDActiveCont"}>
+                    <div style={{ marginTop: '15px' }} className='toggle' onClick={() => this.setState({ showSide: !this.state.showSide })}>
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </div>
-
-
-                    <div >
-                        <h1 className="headMyDETAil">My Details</h1>
-                        <div >
-                            <table style={{ width: '25%', marginLeft: '30%', backgroundColor: '#fff' }} className="table table-bordered table-striped">
+                    <div className={this.state.showSide ? "MDActive" : "MD"}>
+                        <h1>My Details</h1>
+                        <div>
+                            <table style={{ margin: '0 auto', width: '30%', backgroundColor: '#fff' }} className="table table-bordered table-striped">
                                 <tr>
                                     <th>Name:</th>
                                     <td>{this.state.name}</td>
@@ -95,15 +97,7 @@ class MyDetails extends React.Component {
                         </div>
 
                     </div>
-                    <div className="down" >
 
-                        <div className="ImgContainer">
-                            <img style={{ marginTop: '0.625rem', }} alt="img" src={require('../../../../../assets/profile.png')} />
-                            <NavLink style={{ textAlign: 'center', color: 'black' }} to="/detailChange" >Edit Profile</NavLink>
-                        </div>
-                        <NavLink to='/mydetails'><button style={{ marginTop: '0.625rem' }} className="link">My Details</button></NavLink>
-                        <NavLink to='/myrecords'><button className="link">My Records</button></NavLink>
-                    </div>
 
                 </div>
 

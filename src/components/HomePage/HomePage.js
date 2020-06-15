@@ -20,7 +20,7 @@ const EmpAdmin = (props) => {
             <div className="split left">
                 <div className="centered">
 
-                    <h2>Login As Employee</h2>
+                    <h1>Login As Employee</h1>
                     <img className="iimg" stys src={require('.././../assets/emp1.png')} />
                     <a href="/empLogin"><button className="buton">Login</button></a>
                 </div>
@@ -30,9 +30,9 @@ const EmpAdmin = (props) => {
             <div className="split right">
                 <div className="centered">
 
-                    <h2>Login As Administrator</h2>
+                    <h1>Login As Administrator</h1>
                     <img className="iimg" src={require('.././../assets/Boss.png')} />
-                    <a href="/adminLogin"><button style={{marginTop:'4px'}} className="buton">Login</button></a>
+                    <a href="/adminLogin"><button style={{ marginTop: '4px' }} className="buton">Login</button></a>
                 </div>
             </div>
         </div>

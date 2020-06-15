@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import jwt_decode from 'jwt-decode';
+import './AddUser.css'
+import AdminSideBar from '../../AdminSideBar/AdminSideBar'
 const AddUser = (props) => {
   // giving role based access by jwt token
   var decoded = jwt_decode(localStorage.getItem('token'));
@@ -9,6 +11,7 @@ const AddUser = (props) => {
     alert(' Unauthorized Acess, Only Admins are Authorized for these Routes')
     props.history.push('/track')
   }
+  // 
   let history = useHistory();
   const [user, setUser] = useState({
     name: "",
@@ -59,13 +62,24 @@ const AddUser = (props) => {
 
 
   }
-
+  const [show, setshow] = useState(false);
 
   return (
-    <div style={{ marginTop: '100px' }} className="container">
-      <div style={{ backgroundColor: '#fff' }} className=" w-50 mx-auto shadow p-5 ">
-        <h2 className="text-center mb-4 ">Add A User</h2>
-        <form style={{ marginLeft: '1px', backgroundColor: '#fff' }} onSubmit={e => onSubmit(e)}>
+    <div style={{ display: 'flex' }}>
+      <div style={{ width: '20%' }}>
+        <AdminSideBar show={show} />
+      </div>
+      <div className={show ? "AUContainer" : "AUContainerActive"}>
+
+        <div style={{ marginTop: '15px' }} className='admintoggle' onClick={() => setshow(!show)}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div className={show ? "AUheadActive" : "AUhead"}>
+          <h1 >Add User</h1>
+        </div>
+        <form className={show ? "forrmActive" : "forrm"} onSubmit={e => onSubmit(e)}>
           <div className="form-group">
             <input
               type="text"
@@ -139,7 +153,9 @@ const AddUser = (props) => {
           <button className="btn btn-primary btn-block ">Add User</button>
         </form>
       </div>
+
     </div>
+
   );
 };
 

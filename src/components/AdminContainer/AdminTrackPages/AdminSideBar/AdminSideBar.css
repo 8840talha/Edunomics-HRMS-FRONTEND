@@ -1,0 +1,49 @@
+.adminsideBar {
+    position: absolute;
+    margin-top: 70px;
+    width: 20%;
+    height: 900px;
+    background-color: #151719;
+    
+    transition: all 0.5 linear;  
+}
+
+
+
+.adminsideBar ul li {
+    color: black;
+    list-style: none;
+    padding: 5px 10px;
+    border-bottom: 1px solid black;
+    font-size: 25px;
+}
+
+.admintoggle {
+    position: absolute;
+   
+}
+
+.admintoggle span {
+    display: block;
+    width: 30px;
+    height: 5px;
+    background-color: #151719;
+    margin-bottom: 5px ;
+    /* left: 20%; */
+}
+
+.adminSBlink {
+    width: 100%;
+    background-color: #151719;
+    color: #fff;
+    height: 50px;
+    text-decoration: none;
+    border: none;
+    font-size: large;
+    border-bottom: 1px solid black;
+}
+
+.adminSBlink:hover {
+    background-color: #ebebeb;
+    color: #151719;
+}

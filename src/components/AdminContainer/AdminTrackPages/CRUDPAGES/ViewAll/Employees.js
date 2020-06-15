@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, } from "react-router-dom";
 import jwt_decode from 'jwt-decode'
-
+import './Employees.css';
+import AdminSideBar from '../../AdminSideBar/AdminSideBar'
 
 const Employees = (props) => {
 
@@ -56,18 +57,26 @@ const Employees = (props) => {
 
 
   };
+  const [show, setshow] = useState(false);
 
   return (
-    <div style={{ marginTop: '100px', backgroundColor: '#fff' }} className="container ">
-      <div style={{ display: 'flex' }}>
-        <Link style={{ border: '1px solid gray', width: '180px', height: '50px', marginRight: '5px' }} className="btn btn-dark w-35" to="/adminTrack">Go to Admin's Home</Link>
-        <Link style={{ border: '1px solid gray', width: '180px', height: '50px' }} className="btn btn-dark w-35" to="/users/add">Add User</Link>
-
+    <div style={{ display: 'flex' }}>
+      <div style={{ width: '20%' }}>
+        <AdminSideBar show={show} />
       </div>
-      <div className="py-4">
-        <h1 className="py-4">Employees</h1>
-        <table style={{ backgroundColor: '#fff' }} class="table table-bordered shadow table-striped ">
-          <thead class="thead">
+      <div className={show ? "empContainer" : "empContainerActive"}>
+
+        <div style={{ marginTop: '15px' }} className='admintoggle' onClick={() => setshow(!show)}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div className={show ? "empheadActive" : "emphead"}>
+          <h1 >Employees</h1>
+        </div>
+
+        <table style={{ backgroundColor: '#fff' }} className="table table-bordered shadow table-striped ">
+          <thead className="thead">
             <tr>
               <th scope="col">#</th>
               <th scope="col">Name</th>
@@ -78,23 +87,23 @@ const Employees = (props) => {
           </thead>
           <tbody>
             {users.map((user, index) => (
-              <tr>
+              <tr key={index}>
                 <th scope="row">{index + 1}</th>
                 <td>{user.name}</td>
                 <td>{user.employeeId}</td>
                 <td>{user.email}</td>
                 <td>
-                  <Link class="btn btn-primary mr-2" to={`/users/${user._id}`}>
+                  <Link className="btn btn-primary mr-2" to={`/users/${user._id}`}>
                     View
                 </Link>
                   <Link
-                    class="btn btn-outline-primary mr-2"
+                    className="btn btn-outline-primary mr-2"
                     to={`/users/edit/${user._id}`}
                   >
                     Edit
                 </Link>
-                  <Link
-                    class="btn btn-danger"
+                  <Link to="#"
+                    className="btn btn-danger"
                     onClick={() => deleteUser(user._id)}
                   >
                     Delete
@@ -104,7 +113,9 @@ const Employees = (props) => {
             ))}
           </tbody>
         </table>
+
       </div>
+
     </div>
 
 

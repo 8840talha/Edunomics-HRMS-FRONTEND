@@ -1,31 +1,27 @@
-.LRContainer {
+.empContainer {
     width: 80%;
     height: 900px;
     margin-left: 10px;
     background-color: #fff;
-    display: flex;
-    justify-content: space-between;
     margin-top: 70px;
 }
 
-.LRContainerActive {
+.empContainerActive {
     width: 100%;
     height: 900px;
     background-color: #fff;
-    display: flex;
-    justify-content: space-between;
     margin-top: 70px;
 }
 
-.LRContainer h1 {
+.empContainer h1 {
     text-align: center;
 }
 
-.LRContainerActive h1 {
+.empContainerActive h1 {
     text-align: center;
 }
 
-.LRhead h1 {
+.emphead h1 {
     text-align: center;
     font-size: 40px;
     background-color: #00a652;
@@ -35,7 +31,7 @@
     height: 60px;
 }
 
-.LRheadActive h1 {
+.empheadActive h1 {
     text-align: center;
     font-size: 40px;
     background-color: #00a652;
@@ -43,15 +39,4 @@
     color: #fff;
     margin-top: 0px;
     height: 60px;
-}
-
-.viewleaveWidth {
-    width: 1200px;
-    margin-left: 41px;
-    background-color: #fff
-}
-
-.viewleaveWidthActive {
-    width: 1025px;
-    background-color: #fff;
 }

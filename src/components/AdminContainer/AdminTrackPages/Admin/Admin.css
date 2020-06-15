@@ -1,78 +1,44 @@
-.AdminWrapper {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  margin-top: 15.5rem;
-}
-
-@-moz-document url-prefix() {
-  .AdminWrapper {
-    margin-top: 16.25rem;
-    /* color: lime; */
-  }
-}
-
 .AContainer {
-  width: 62.938rem;
-  height: 56.25rem;
+  width: 80%;
+  height: 900px;
+  margin-left: 10px;
   background-color: #fff;
   display: flex;
   justify-content: space-between;
-  /* margin-left: 130px;
-  position: absolute;
-  top: 12.5rem; */
+  margin-top: 70px;
+  
 }
 
-.hp {
-  text-align: center;
-}
-
-.link {
-  width: 150px;
-  background-color: green;
-  margin-bottom: 0.625rem;
-  color: white;
-  border-radius: 0.25rem;
-  height: 3.125rem;
-  text-decoration: none;
-  border: none;
-  font-size: large;
-  text-align: center;
-  margin-top: 5px;
-}
-
-.link:hover {
-  background-color: #24a0ed;
-  color: #fff;
-}
-
-.link:focus {
-  outline: none;
-}
-
-.tab {
-  top: 12.5rem;
-  left: -5rem;
-  position: absolute;
+.AContainerActive {
+  width: 100%;
+  height: 900px;
+  background-color: #fff;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 70px;
 }
-
-.btnLogOut {
-  border: none;
+.AContainer h1{
+  text-align: center;
+}
+.AContainerActive h1{
+  text-align: center;
+}
+.Ahead h1{
+  text-align: center;
+  font-size: 40px;
   background-color: #00a652;
+  width: 1282px;
   color: #fff;
-  width: 150px;
-  height: 50px;
-  margin-left: 100px;
+  margin-top: 0px;
+  height: 60px;
 }
 
-.btnLogOut:hover {
-  background-color: #24a0ed;
+.AheadActive h1 {
+  text-align: center;
+  font-size: 40px;
+  background-color: #00a652;
+  width: 1025px;
   color: #fff;
-}
-
-.btnLogOut:focus {
-  outline: none;
+  margin-top: 0px;
+  height: 60px;
 }

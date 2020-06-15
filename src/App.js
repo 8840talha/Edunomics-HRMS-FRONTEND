@@ -14,34 +14,15 @@ import EmpAdmin from './components/HomePage/HomePage';
 import AdminLoginForm from './components/AdminContainer/AdminLoginPage/AdminLoginForm';
 import AdminTrack from './components/AdminContainer/AdminTrackPages/Admin/Admin';
 import LeaveView from './components/AdminContainer/AdminTrackPages/ViewLeaveReq/LeaveReq';
-import Employees from './components/AdminContainer/AdminTrackPages/CRUDPAGES/Employees';
-import AddUser from './components/AdminContainer/AdminTrackPages/CRUDPAGES/Employee/AddUser';
-import EditUser from './components/AdminContainer/AdminTrackPages/CRUDPAGES/Employee/EditUser';
-import User from './components/AdminContainer/AdminTrackPages/CRUDPAGES/Employee/User';
+import Employees from './components/AdminContainer/AdminTrackPages/CRUDPAGES/ViewAll/Employees';
+import AddUser from './components/AdminContainer/AdminTrackPages/CRUDPAGES/CreateUser/AddUser';
+import EditUser from './components/AdminContainer/AdminTrackPages/CRUDPAGES/editUser/EditUser';
+import User from './components/AdminContainer/AdminTrackPages/CRUDPAGES/ViewSingleUser/User';
 import EditReqView from './components/AdminContainer/AdminTrackPages/ViewEditReq/ViewEditReq';
 import ChangeDetails from './components/EmployeeContainer/TrackUpdateMydetailsMyrecords/TrackPage/ChangeInDetail/ChangeDetail'
 import ForgetPass from './components/ForgetPassWord/ForgetPass';
 import Kanban from './components/kanban/KanbanApp'
-// Clear Login Session on tab close
-window.onbeforeunload = function (e) {
-
-  window.localStorage.unloadTime = JSON.stringify(new Date());
-
-};
-
-window.onload = function () {
-
-  let loadTime = new Date();
-  let unloadTime = new Date(JSON.parse(window.localStorage.unloadTime));
-  let refreshTime = loadTime.getTime() - unloadTime.getTime();
-
-  if (refreshTime > 3000)//3000 milliseconds
-  {
-    window.localStorage.removeItem("token");
-  }
-
-};
-// 
+ 
 // Protected Routing Goes here
 const ProtectedRoute = ({ component: Component, ...rest }) => {
 

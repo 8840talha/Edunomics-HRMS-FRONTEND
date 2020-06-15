@@ -44,7 +44,7 @@ const useStyle = makeStyles((theme) => ({
         margin: '0',
         verticalAlign: 'bottom',
         position: 'relative',
-        top: '-5px',
+        top: '-3px',
         overflow: 'hidden'
     }
 

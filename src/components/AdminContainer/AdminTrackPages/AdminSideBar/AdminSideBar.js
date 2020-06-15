@@ -1,0 +1,54 @@
+import React, { useState } from 'react'
+import { NavLink, Redirect } from 'react-router-dom'
+import './AdminSideBar.css'
+import HomeIcon from '@material-ui/icons/Home';
+import PeopleIcon from '@material-ui/icons/People';
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import EditIcon from '@material-ui/icons/Edit';
+import TimeToLeaveIcon from '@material-ui/icons/TimeToLeave';
+
+const AdminSideBar = (props) => {
+
+    // protected route logic
+
+    const token = localStorage.getItem('token');
+   
+    var login = true;
+    if (token == null) {
+        login = false;
+    }
+    const [loggedIn, setLogin] = useState(login)
+
+    if (loggedIn === false) {
+        return <Redirect to="/adminLogin" />
+    }
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        setLogin(!login)
+
+    }
+    //
+    const show = props.show;
+    return (
+
+
+        show ? <div className={'adminsideBar'} >
+
+            <ul>
+                <NavLink to="/adminTrack"><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><HomeIcon />Home</button></NavLink>
+                <NavLink to="/employees"><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><PeopleIcon />Employees</button></NavLink>
+                <NavLink to="/users/add"><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><PersonAddIcon />Add Employee</button></NavLink>
+                <NavLink to="/viewLeaveReq"><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><TimeToLeaveIcon />Leave Requests</button></NavLink>
+                <NavLink to="/editReq"  ><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><EditIcon/>Edit Requests</button></NavLink>
+                <NavLink to="#"  ><button style={{ display: 'flex', justifyContent: 'row' }} onClick={handleLogout} className="adminSBlink" ><ExitToAppIcon />Logout</button></NavLink>
+            </ul>
+
+        </div > : null
+
+
+    )
+
+}
+
+export default AdminSideBar;
