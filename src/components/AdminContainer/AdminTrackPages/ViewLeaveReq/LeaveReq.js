@@ -114,12 +114,14 @@ class LeaveView extends Component {
 
 
         var result = this.state.data.map((val, index) => {
-
+             const date = new Date(val.date);
+             const DATE = date.toDateString();
             return (<tr key={index}>
                 <td>{index + 1}</td>
                 <td>{val.description}</td>
                 <td>{val.name}</td>
                 <td>{val.employeeId}</td>
+                <td>{DATE}</td>
                 <td>{val.dateFrom}</td>
                 <td>{val.dateTo}</td>
                 <td><img alt={val.employeeId} onClick={() => this.approveHandler(val._id)} src={require('../../../../assets/check.png')} /></td>
@@ -165,6 +167,7 @@ class LeaveView extends Component {
                                         <th>Purpose</th>
                                         <th>Employee Name</th>
                                         <th>Employee Id</th>
+                                        <th>Applied On</th>
                                         <th>Date From</th>
                                         <th>Date To</th>
                                         <th>Approve</th>

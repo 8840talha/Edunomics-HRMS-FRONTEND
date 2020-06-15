@@ -136,16 +136,6 @@ const EditUser = (props) => {
               onChange={e => onInputChange(e)}
             />
           </div>
-          <div className="form-group">
-            <input
-              type="password"
-              className="form-control form-control-lg"
-              placeholder="Enter Your password"
-              name="password"
-              value={password}
-              onChange={e => onInputChange(e)}
-            />
-          </div>
           <button className="btn btn-warning btn-block">Update User</button>
         </form>
       </div>
