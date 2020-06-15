@@ -7,7 +7,7 @@ import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import EditIcon from '@material-ui/icons/Edit';
 import TimeToLeaveIcon from '@material-ui/icons/TimeToLeave';
-
+import KeyboardTabIcon from '@material-ui/icons/KeyboardTab';
 const AdminSideBar = (props) => {
 
     // protected route logic
@@ -37,6 +37,7 @@ const AdminSideBar = (props) => {
 
             <ul>
                 <NavLink to="/adminTrack"><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><HomeIcon />Home</button></NavLink>
+                <NavLink to="/kanban"  ><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><KeyboardTabIcon />Kanban</button></NavLink>
                 <NavLink to="/employees"><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><PeopleIcon />Employees</button></NavLink>
                 <NavLink to="/users/add"><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><PersonAddIcon />Add Employee</button></NavLink>
                 <NavLink to="/viewLeaveReq"><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><TimeToLeaveIcon />Leave Requests</button></NavLink>

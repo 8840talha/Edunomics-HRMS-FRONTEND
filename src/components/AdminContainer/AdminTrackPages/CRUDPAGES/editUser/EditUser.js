@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useHistory, useParams, } from "react-router-dom";
+import { useHistory, useParams, NavLink, } from "react-router-dom";
 import jwt_decode from 'jwt-decode'
+import LastPageIcon from '@material-ui/icons/LastPage';
 
 const EditUser = (props) => {
   // giving role based access by jwt token
@@ -74,9 +75,10 @@ const EditUser = (props) => {
   return (
     <div style={{ marginTop: '100px' }} className="container">
       <div style={{ backgroundColor: '#fff' }} className=" w-50 shadow mx-auto p-5">
-        <h2 className="text-center mb-4">Edit A User</h2>
+        <h2 className="text-center mb-3">Edit A User</h2>
         <form style={{ marginLeft: '10px', backgroundColor: '#fff' }} onSubmit={e => onSubmit(e)}>
           <div className="form-group">
+            <label for="name"><h3>Name</h3></label>
             <input
               type="text"
               className="form-control form-control-lg "
@@ -87,6 +89,7 @@ const EditUser = (props) => {
             />
           </div>
           <div className="form-group">
+            <label for="email"><h3>Email address</h3></label>
             <input
               type="email"
               className="form-control form-control-lg"
@@ -97,6 +100,7 @@ const EditUser = (props) => {
             />
           </div>
           <div className="form-group">
+            <label for="employeeId"><h3>Employee Id</h3></label>
             <input
               type="text"
               className="form-control form-control-lg"
@@ -107,6 +111,7 @@ const EditUser = (props) => {
             />
           </div>
           <div className="form-group">
+            <label for="phone"><h3>Contact</h3></label>
             <input
               type="contact"
               className="form-control form-control-lg"
@@ -117,6 +122,7 @@ const EditUser = (props) => {
             />
           </div>
           <div className="form-group">
+            <label for="category"><h3>Category</h3></label>
             <input
               type="text"
               className="form-control form-control-lg"
@@ -127,6 +133,7 @@ const EditUser = (props) => {
             />
           </div>
           <div className="form-group">
+            <label for="role"><h3>Role</h3></label>
             <input
               type="text"
               className="form-control form-control-lg"
@@ -137,6 +144,7 @@ const EditUser = (props) => {
             />
           </div>
           <button className="btn btn-warning btn-block">Update User</button>
+          <NavLink to="/employees"><button style={{display:'flex',justifyContent:'center'}} className="btn btn-primary btn-block mt-1"><LastPageIcon />Back</button></NavLink>
         </form>
       </div>
     </div>

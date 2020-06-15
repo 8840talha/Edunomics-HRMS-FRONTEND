@@ -71,7 +71,7 @@ class EditReqView extends Component {
     }
 
     // approving and editting employees request for edittting detail
-    approveHandler = (id, empId) => {
+    approveHandler = (id, empId, index) => {
         console.log(id)
         var Tokenn = localStorage.getItem('token');
         var leaveID = id;
@@ -94,7 +94,7 @@ class EditReqView extends Component {
                         var Tokennn = localStorage.getItem('token');
                         fetch(`https://hrms-project.herokuapp.com/api/edit/${empId}`, {
                             method: 'put',
-                            body: JSON.stringify(this.state.data[0]),
+                            body: JSON.stringify(this.state.data[index]),
                             headers: {
                                 "Content-Type": "application/json",
                                 "Authorization": `Bearer ${Tokennn}`
@@ -124,7 +124,7 @@ class EditReqView extends Component {
         console.log('approving')
     }
     render() {
-
+        console.log(this.state.data)
 
         var result = this.state.data.map((val, index) => {
             console.log(val)
@@ -133,8 +133,14 @@ class EditReqView extends Component {
             return (<tr key={index}>
                 <td>{index + 1}</td>
                 <td>{val.employeeId}</td>
+                <td>{this.state.data[index].name ? <l1>Name:{this.state.data[index].name},</l1> : null}
+                    {this.state.data[index].email ? <l1>Email:{this.state.data[index].email},</l1> : null}
+                    {this.state.data[index].category ? <l1>Category:{this.state.data[index].category},</l1> : null}
+                    {this.state.data[index].role ? <l1>Role:{this.state.data[index].role},</l1> : null}
+                    {this.state.data[index].phone ? <l1>Contact:{this.state.data[index].phone},</l1> : null}
+                </td>
                 <td>{d}</td>
-                <td><img alt={val.employeeId} onClick={() => this.approveHandler(val._id, val.employeeId)} src={require('../../../../assets/check.png')} /></td>
+                <td><img alt={val.employeeId} onClick={() => this.approveHandler(val._id, val.employeeId, index )} src={require('../../../../assets/check.png')} /></td>
                 <td><img alt={val.employeeId} onClick={() => this.rejectHandler(val._id)} src={require('../../../../assets/cross.png')} /></td>
             </tr>
 
@@ -175,6 +181,7 @@ class EditReqView extends Component {
                                     <tr>
                                         <th>#</th>
                                         <th>Employee Id</th>
+                                        <th>Change Fields</th>
                                         <th>Date</th>
                                         <th>Approve</th>
                                         <th>Reject</th>
