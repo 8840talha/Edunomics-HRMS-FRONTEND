@@ -35,14 +35,12 @@ const SideBar = (props) => {
 
             <ul>
                 <NavLink to="/track"  ><button style={{ display: 'flex', justifyContent: 'row' }} className="SBlink" ><HomeIcon />Home</button></NavLink>
-                <NavLink to="/kanban"  ><button style={{ display: 'flex', justifyContent: 'row' }} className="SBlink" ><KeyboardTabIcon />Kanban</button></NavLink>
-
+               
                 <NavLink to="/update"  ><button style={{ display: 'flex', justifyContent: 'row' }} className="SBlink" ><DonutLargeIcon />Update</button></NavLink>
                 <NavLink to="/leave"  ><button style={{ display: 'flex', justifyContent: 'row' }} className="SBlink" ><TrackChangesIcon />Leave</button></NavLink>
                 <NavLink to="/mydetails"  ><button style={{ display: 'flex', justifyContent: 'row' }} className="SBlink" ><AccountCircleIcon />My Details</button></NavLink>
                 <NavLink to="/detailChange"  ><button style={{ display: 'flex', justifyContent: 'row' }} className="SBlink" ><AccountCircleIcon />EditProfile</button></NavLink>
                 <NavLink to="/myrecords"  ><button style={{ display: 'flex', justifyContent: 'row' }} className="SBlink" >< ViewListIcon /> Records</button></NavLink>
-
                 <NavLink to="#"  ><button style={{ display: 'flex', justifyContent: 'row' }} onClick={handleLogout} className="SBlink" ><ExitToAppIcon />Logout</button></NavLink>
             </ul>
 

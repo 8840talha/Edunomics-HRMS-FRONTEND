@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { NavLink, } from 'react-router-dom'
+import { NavLink} from 'react-router-dom'
 import './MyRecords.css'
 import axios from 'axios'
 import SideBar from '../SideBar/Sidebar'
@@ -42,6 +42,7 @@ const MyRecords = (props) => {
 
                     {Module}
                     <td>{createdAt}</td>
+                    <td><NavLink to="/kanban"><button className="btn btn-success btn-block">Go to Kanban</button></NavLink></td>
                 </tr>
             )
         })
@@ -74,6 +75,7 @@ const MyRecords = (props) => {
                                     <th>Module One</th>
                                     <th>Module Two</th>
                                     <th>Date</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
