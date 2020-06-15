@@ -36,15 +36,9 @@ export default () => {
 
                     <div className="collapse navbar-collapse justify-content-end" id="navbarCollapse">
                         <ul className="navbar-nav topnav">
-                            <li className="nav-item">
-                                <a className="nav-link" href="/">Home</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">Digital Service</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">Initiatives</a>
-                            </li>
+
+                            <a href="#"> <h1> Project Management Tool </h1></a>
+
                         </ul>
                     </div>
                 </nav>
