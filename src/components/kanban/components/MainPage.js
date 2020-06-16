@@ -69,7 +69,12 @@ class MainPage extends Component {
       axios
         .post(
           url + "buckets/save",
-          { buckets: Object.assign({}, this.state.buckets_array) }
+          { buckets: Object.assign({}, this.state.buckets_array), _user: this.state.jwtToken.userId },
+          {
+            headers: {
+              Authorization: 'Bearer ' + this.state.jwtToken
+            }
+          }
         )
         .then(
           (response) => { },
@@ -83,7 +88,12 @@ class MainPage extends Component {
       axios
         .post(
           url + "tasks/save",
-          { tasks: this.state.tasks }
+          { tasks: this.state.tasks, _user: this.state.jwtToken.userId },
+          {
+            headers: {
+              Authorization: 'Bearer ' + this.state.jwtToken
+            }
+          }
         )
         .then(
           (response) => { },
@@ -99,7 +109,12 @@ class MainPage extends Component {
     await axios
       .post(
         url + "buckets/save",
-        { buckets: Object.assign({}, this.state.buckets_array) }
+        { buckets: Object.assign({}, this.state.buckets_array), _user: this.state.jwtToken.userId },
+        {
+          headers: {
+            Authorization: 'Bearer ' + this.state.jwtToken
+          }
+        }
       )
       .then(
         (response) => {
@@ -113,7 +128,12 @@ class MainPage extends Component {
     await axios
       .post(
         url + "tasks/save",
-        { tasks: this.state.tasks }
+        { tasks: this.state.tasks },
+        {
+          headers: {
+            Authorization: 'Bearer ' + this.state.jwtToken
+          }
+        }
       )
       .then(
         (response) => {
