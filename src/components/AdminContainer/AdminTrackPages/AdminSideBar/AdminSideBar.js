@@ -8,12 +8,13 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import EditIcon from '@material-ui/icons/Edit';
 import TimeToLeaveIcon from '@material-ui/icons/TimeToLeave';
 import KeyboardTabIcon from '@material-ui/icons/KeyboardTab';
+import TrackChangesIcon from '@material-ui/icons/TrackChanges';
 const AdminSideBar = (props) => {
 
     // protected route logic
 
     const token = localStorage.getItem('token');
-   
+
     var login = true;
     if (token == null) {
         login = false;
@@ -38,10 +39,11 @@ const AdminSideBar = (props) => {
             <ul>
                 <NavLink to="/adminTrack"><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><HomeIcon />Home</button></NavLink>
                 <NavLink to="/kanban"  ><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><KeyboardTabIcon />Kanban</button></NavLink>
+                <NavLink to="/progress"  ><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><TrackChangesIcon />Progress</button></NavLink>
                 <NavLink to="/employees"><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><PeopleIcon />Employees</button></NavLink>
                 <NavLink to="/users/add"><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><PersonAddIcon />Add Employee</button></NavLink>
                 <NavLink to="/viewLeaveReq"><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><TimeToLeaveIcon />Leave Requests</button></NavLink>
-                <NavLink to="/editReq"  ><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><EditIcon/>Edit Requests</button></NavLink>
+                <NavLink to="/editReq"  ><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><EditIcon />Edit Requests</button></NavLink>
                 <NavLink to="#"  ><button style={{ display: 'flex', justifyContent: 'row' }} onClick={handleLogout} className="adminSBlink" ><ExitToAppIcon />Logout</button></NavLink>
             </ul>
 

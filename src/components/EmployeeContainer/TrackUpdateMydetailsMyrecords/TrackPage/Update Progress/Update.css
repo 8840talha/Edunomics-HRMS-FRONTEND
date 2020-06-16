@@ -69,3 +69,73 @@
 .uB:focus {
   outline: none;
 }
+
+.UTarea {
+  border-radius: 25px;
+  border: 1px solid Green;
+  width: 700px;
+  margin-left: 291px;
+  margin-top: 25px;
+  height: 55px;
+}
+
+.UTareaActive {
+  border-radius: 25px;
+  border: 1px solid Green;
+  width: 700px;
+  margin-left: 162.5px;
+  margin-top: 55px;
+  height: 55px;
+}
+
+.UTarea:focus {
+  outline: none
+}
+
+.UTareaActive:focus {
+  outline: none;
+}
+
+.btnSU {
+  border-radius: 25px;
+  background-color: #00a652;
+  width: 700px;
+  margin-left: 291px;
+  margin-top: 25px;
+  height: 55px;
+  border: none;
+  color: #fff;
+}
+
+.btnSUActive {
+  border-radius: 25px;
+  width: 700px;
+  margin-left: 162.5px;
+  margin-top: 55px;
+  height: 55px;
+  border: none;
+  background-color: #00a652;
+  color: #fff;
+}
+
+.btnSU:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+.btnSUActive:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+.btnSU:hover {
+  background-color: #24a0ed;
+  color: #fff;
+  text-decoration: none;
+}
+
+.btnSUActive:hover {
+  background-color: #24a0ed;
+  color: #fff;
+  text-decoration: none;
+}

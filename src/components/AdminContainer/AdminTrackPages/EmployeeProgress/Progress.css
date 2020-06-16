@@ -1,0 +1,57 @@
+.PContainer {
+    width: 80%;
+    height: 900px;
+    margin-left: 10px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 70px;
+}
+
+.PContainerActive {
+    width: 100%;
+    height: 900px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 70px;
+}
+
+.PContainer h1 {
+    text-align: center;
+}
+
+.PContainerActive h1 {
+    text-align: center;
+}
+
+.Phead h1 {
+    text-align: center;
+    font-size: 40px;
+    background-color: #00a652;
+    width: 1282px;
+    color: #fff;
+    margin-top: 0px;
+    height: 60px;
+}
+
+.PheadActive h1 {
+    text-align: center;
+    font-size: 40px;
+    background-color: #00a652;
+    width: 1025px;
+    color: #fff;
+    margin-top: 0px;
+    height: 60px;
+}
+
+.PWidth {
+    width: 1200px;
+    margin-left: 41px;
+    background-color: #fff
+}
+
+.PWidthActive {
+    width: 1025px;
+    background-color: #fff;
+}
