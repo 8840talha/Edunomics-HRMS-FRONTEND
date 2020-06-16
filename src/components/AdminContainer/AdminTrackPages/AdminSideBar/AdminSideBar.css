@@ -4,11 +4,8 @@
     width: 20%;
     height: 900px;
     background-color: #151719;
-    
-    transition: all 0.5 linear;  
+    transition: all 0.5 linear;
 }
-
-
 
 .adminsideBar ul li {
     color: black;
@@ -20,7 +17,6 @@
 
 .admintoggle {
     position: absolute;
-   
 }
 
 .admintoggle span {
@@ -28,8 +24,12 @@
     width: 30px;
     height: 5px;
     background-color: #151719;
-    margin-bottom: 5px ;
+    margin-bottom: 5px;
     /* left: 20%; */
+}
+
+.admintoggle span:hover {
+    background-color: #ebebeb;
 }
 
 .adminSBlink {

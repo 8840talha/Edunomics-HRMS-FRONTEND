@@ -29,10 +29,15 @@
     text-align: center;
     font-size: 40px;
     background-color: #00a652;
-    width: 1282px;
+    width: 1284px;
     color: #fff;
     margin-top: 0px;
     height: 60px;
+}
+@-moz-document url-prefix() {
+    .LRhead h1 {
+        width: 1287px;
+    }
 }
 
 .LRheadActive h1 {
@@ -47,7 +52,7 @@
 
 .viewleaveWidth {
     width: 1200px;
-    margin-left: 41px;
+    margin-left: 42px;
     background-color: #fff
 }
 

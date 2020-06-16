@@ -29,12 +29,16 @@
   text-align: center;
   font-size: 40px;
   background-color: #00a652;
-  width: 1282px;
+  width: 1284px;
   color: #fff;
   margin-top: 0px;
   height: 60px;
 }
-
+@-moz-document url-prefix() {
+  .Progress h1 {
+      width: 1287px;
+  }
+}
 .ActiveProg h1 {
   text-align: center;
   font-size: 40px;
@@ -74,7 +78,7 @@
   border-radius: 25px;
   border: 1px solid Green;
   width: 700px;
-  margin-left: 291px;
+  margin-left: 292px;
   margin-top: 25px;
   height: 55px;
 }
@@ -100,7 +104,7 @@
   border-radius: 25px;
   background-color: #00a652;
   width: 700px;
-  margin-left: 291px;
+  margin-left: 292px;
   margin-top: 25px;
   height: 55px;
   border: none;

@@ -35,6 +35,9 @@
     /* left: 20%; */
 }
 
+.toggle span:hover{
+    background-color: #ebebeb;
+}
 .SBlink {
     width: 100%;
     background-color: #151719;

@@ -57,7 +57,7 @@
 }
 
 .CDActiveCont {
-  width: 10000%;
+  width: 100%;
   height: 56.25rem;
   background-color: #fff;
   margin-top: 70px;
@@ -75,12 +75,16 @@
   text-align: center;
   font-size: 40px;
   background-color: #00a652;
-  width: 1282px;
+  width: 1284px;
   color: #fff;
   margin-top: 0px;
   height: 60px;
 }
-
+@-moz-document url-prefix() {
+  .CDTHEAD h1 {
+      width: 1287px;
+  }
+}
 .CDTHEADACTIVE h1 {
   text-align: center;
   font-size: 40px;

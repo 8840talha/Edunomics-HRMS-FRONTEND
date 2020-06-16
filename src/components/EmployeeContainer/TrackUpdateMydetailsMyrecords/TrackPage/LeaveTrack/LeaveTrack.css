@@ -25,12 +25,16 @@
   text-align: center;
   font-size: 40px;
   background-color: #00a652;
-  width: 1282px;
+  width: 1284px;
   color: #fff;
   margin-top: 0px;
   height: 60px;
 }
-
+@-moz-document url-prefix() {
+  .LT h1 {
+      width: 1287px;
+  }
+}
 .LTActive h1 {
   text-align: center;
   font-size: 40px;
@@ -42,15 +46,15 @@
 }
 
 .btnContainer {
-  width: 800px;
+  width: 850px;
   display: flex;
   text-align: center;
-  margin-Left: 241px;
+  margin-Left: 217px;
   margin-bottom: 40px;
 }
 
 .btnContainer button {
-  width: 200px;
+  width: 212.5px;
   font-size: large;
   text-align: center;
   border: 1px solid black;
@@ -64,15 +68,15 @@
 }
 
 .btnContainerActive {
-  width: 800px;
+  width: 850px;
   display: flex;
   text-align: center;
-  margin-left: 112.5px;
+  margin-left: 87.5px;
   margin-bottom: 40px;
 }
 
 .btnContainerActive button {
-  width: 200px;
+  width: 212.5px;
   font-size: large;
   text-align: center;
   border: 1px solid black;
@@ -104,7 +108,7 @@
   background-color: whitesmoke;
   width: 850px;
   height: 350px;
-  margin-left: 216px;
+  margin-left: 217px;
   font-size: 25px;
   color: black;
 }

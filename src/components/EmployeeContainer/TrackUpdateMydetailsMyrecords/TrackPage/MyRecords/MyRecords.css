@@ -25,12 +25,16 @@
   text-align: center;
   font-size: 40px;
   background-color: #00a652;
-  width: 1282px;
+  width: 1284px;
   color: #fff;
   margin-top: 0px;
   height: 60px;
 }
-
+@-moz-document url-prefix() {
+  .Head h1 {
+      width: 1287px;
+  }
+}
 .HeadActive h1 {
   text-align: center;
   font-size: 40px;
@@ -43,7 +47,7 @@
 
 .mrTwidth {
   width: 850px;
-  margin-left: 216px;
+  margin-left: 217px;
   background-color: '#fff'
 }
 
@@ -54,7 +58,7 @@
 }
 
 .viewRec {
-  margin-left: 566px;
+  margin-left: 567px;
   width: 150px;
   margin-bottom: 30px;
   background-color: #00a652;

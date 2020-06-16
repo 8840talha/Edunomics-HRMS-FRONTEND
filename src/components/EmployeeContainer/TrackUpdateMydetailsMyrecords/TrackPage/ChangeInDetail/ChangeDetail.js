@@ -21,7 +21,7 @@ const userStyle = makeStyles(theme => ({
         textAlign: 'center'
     },
     changePaper: {
-        marginLeft: '291px',
+        marginLeft: '292px',
         width: '700px',
         height: '500px',
 

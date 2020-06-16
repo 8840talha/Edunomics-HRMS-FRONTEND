@@ -31,7 +31,12 @@
     margin-top: 0px;
     height: 60px;
 }
-
+@-moz-document url-prefix() {
+    .AUhead h1{
+    
+      width: 1287px;
+    }
+   }
 .AUheadActive h1 {
     text-align: center;
     font-size: 40px;
@@ -44,7 +49,7 @@
 
 .forrm {
     width: 700px;
-    margin-left: 291px;
+    margin-left: 292px;
     background-Color: #fff;
 }
 

@@ -6,7 +6,6 @@
   display: flex;
   justify-content: space-between;
   margin-top: 70px;
-  
 }
 
 .AContainerActive {
@@ -17,20 +16,29 @@
   justify-content: space-between;
   margin-top: 70px;
 }
-.AContainer h1{
+
+.AContainer h1 {
   text-align: center;
 }
-.AContainerActive h1{
+
+.AContainerActive h1 {
   text-align: center;
 }
-.Ahead h1{
+
+.Ahead h1 {
   text-align: center;
   font-size: 40px;
   background-color: #00a652;
-  width: 1282px;
+  width: 1284px;
   color: #fff;
   margin-top: 0px;
   height: 60px;
+}
+
+@-moz-document url-prefix() {
+  .Ahead h1 {
+    width: 1287px;
+  }
 }
 
 .AheadActive h1 {

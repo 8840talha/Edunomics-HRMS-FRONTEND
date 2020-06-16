@@ -29,11 +29,17 @@
     text-align: center;
     font-size: 40px;
     background-color: #00a652;
-    width: 1282px;
+    width: 1284px;
     color: #fff;
     margin-top: 0px;
     height: 60px;
 }
+@-moz-document url-prefix() {
+    .VEhead h1 {
+        width: 1287px;
+    }
+}
+
 
 .VEheadActive h1 {
     text-align: center;
@@ -47,7 +53,7 @@
 
 .vieweditWidth {
     width: 900px;
-    margin-left: 191px;
+    margin-left: 192px;
     background-color: #fff
 }
 
