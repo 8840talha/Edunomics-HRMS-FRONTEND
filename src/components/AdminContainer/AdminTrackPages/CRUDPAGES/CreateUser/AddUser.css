@@ -1,17 +1,17 @@
 .AUContainer {
     width: 80%;
     height: 900px;
-    margin-left: 10px;
     background-color: #fff;
     margin-top: 70px;
-    
 }
 
 .AUContainerActive {
+    position: absolute;
     width: 100%;
     height: 900px;
     background-color: #fff;
     margin-top: 70px;
+    left: 0;
 }
 
 .AUContainer h1 {
@@ -26,36 +26,36 @@
     text-align: center;
     font-size: 40px;
     background-color: #00a652;
-    width: 1282px;
+    width: 100%;
     color: #fff;
     margin-top: 0px;
     height: 60px;
 }
+
 @-moz-document url-prefix() {
-    .AUhead h1{
-    
-      width: 1287px;
+    .AUhead h1 {
+        width: 100%;
     }
-   }
+}
+
 .AUheadActive h1 {
     text-align: center;
     font-size: 40px;
     background-color: #00a652;
-    width: 1025px;
+    width: 100%;
     color: #fff;
     margin-top: 0px;
     height: 60px;
 }
 
 .forrm {
-    width: 700px;
-    margin-left: 292px;
+    width: 60%;
+    margin-left: 20%;
     background-Color: #fff;
 }
 
 .forrmActive {
-    width: 700px;
-    margin-left: 162.5px;
+    width: 60%;
+    margin-left: 20%;
     background-Color: #fff;
 }
-

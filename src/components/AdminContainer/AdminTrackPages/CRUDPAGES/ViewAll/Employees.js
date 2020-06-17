@@ -75,7 +75,7 @@ const Employees = (props) => {
           <h1 >Employees</h1>
         </div>
 
-        <table style={{ backgroundColor: '#fff' }} className="table table-bordered shadow table-striped ">
+        <table style={{ backgroundColor: '#fff', width: '80%', marginLeft: '10%' }} className="table table-bordered shadow table-striped ">
           <thead className="thead">
             <tr>
               <th scope="col">#</th>

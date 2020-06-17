@@ -1,16 +1,17 @@
 .empContainer {
     width: 80%;
     height: 900px;
-    margin-left: 10px;
     background-color: #fff;
     margin-top: 70px;
 }
 
 .empContainerActive {
+    position: absolute;
     width: 100%;
     height: 900px;
     background-color: #fff;
     margin-top: 70px;
+    left: 0;
 }
 
 .empContainer h1 {
@@ -25,23 +26,23 @@
     text-align: center;
     font-size: 40px;
     background-color: #00a652;
-    width: 1284px;
+    width: 100%;
     color: #fff;
     margin-top: 0px;
     height: 60px;
 }
+
 @-moz-document url-prefix() {
     .emphead h1 {
-        width: 1287px;
+        width: 100%;
     }
 }
-
 
 .empheadActive h1 {
     text-align: center;
     font-size: 40px;
     background-color: #00a652;
-    width: 1025px;
+    width: 100%;
     color: #fff;
     margin-top: 0px;
     height: 60px;
