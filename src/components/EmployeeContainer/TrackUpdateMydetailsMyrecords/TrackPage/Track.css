@@ -2,19 +2,16 @@
   width: 80%;
   height: 56.25rem;
   background-color: #fff;
-  display: flex;
   margin-top: 70px;
-  margin-left: 10px;
-  justify-content: space-between;
 }
 
 .ActiveCont {
+  position: absolute;
   width: 100%;
   height: 56.25rem;
   background-color: #fff;
-  display: flex;
   margin-top: 70px;
-  justify-content: space-between;
+  left: 0;
 }
 
 .ActiveCont h1 {
@@ -29,21 +26,23 @@
   text-align: center;
   font-size: 40px;
   background-color: #00a652;
-  width: 1284px;
+  width: 100%;
   color: #fff;
   margin-top: 0px;
   height: 60px;
 }
+
 @-moz-document url-prefix() {
   .THEAD h1 {
-      width: 1287px;
+    width: 100%;
   }
 }
+
 .THEADACTIVE h1 {
   text-align: center;
   font-size: 40px;
   background-color: #00a652;
-  width: 1025px;
+  width: 100%;
   color: #fff;
   margin-top: 0px;
   height: 60px;

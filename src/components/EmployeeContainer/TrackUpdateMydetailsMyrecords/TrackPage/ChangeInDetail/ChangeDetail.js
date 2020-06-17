@@ -21,14 +21,14 @@ const userStyle = makeStyles(theme => ({
         textAlign: 'center'
     },
     changePaper: {
-        marginLeft: '292px',
-        width: '700px',
+        width: '70%',
+        marginLeft: '15%',
         height: '500px',
 
     },
     changePaperActive: {
-        marginLeft: '162.5px',
-        width: '700px',
+        width: '70%',
+        marginLeft: '15%',
         height: '500px',
     }
 

@@ -1,20 +1,17 @@
 .LRContainer {
     width: 80%;
     height: 900px;
-    margin-left: 10px;
     background-color: #fff;
-    display: flex;
-    justify-content: space-between;
     margin-top: 70px;
 }
 
 .LRContainerActive {
+    position: absolute;
     width: 100%;
     height: 900px;
     background-color: #fff;
-    display: flex;
-    justify-content: space-between;
     margin-top: 70px;
+    left: 0;
 }
 
 .LRContainer h1 {
@@ -29,14 +26,15 @@
     text-align: center;
     font-size: 40px;
     background-color: #00a652;
-    width: 1284px;
+    width: 100%;
     color: #fff;
     margin-top: 0px;
     height: 60px;
 }
+
 @-moz-document url-prefix() {
     .LRhead h1 {
-        width: 1287px;
+        width: 100%;
     }
 }
 
@@ -44,19 +42,20 @@
     text-align: center;
     font-size: 40px;
     background-color: #00a652;
-    width: 1025px;
+    width: 100%;
     color: #fff;
     margin-top: 0px;
     height: 60px;
 }
 
 .viewleaveWidth {
-    width: 1200px;
-    margin-left: 42px;
+    width: 90%;
+    margin-left: 5%;
     background-color: #fff
 }
 
 .viewleaveWidthActive {
-    width: 1025px;
+    width: 90%;
+    margin-left: 5%;
     background-color: #fff;
 }

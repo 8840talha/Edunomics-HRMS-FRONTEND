@@ -7,8 +7,8 @@
 
 .changepara {
   margin-top: 20px;
-  width: 500px;
-  margin-left: 110px;
+  width: 70%;
+  margin-left:15%;
   font-size: 25px;
   color: black;
 }
@@ -53,14 +53,16 @@
   height: 56.25rem;
   background-color: #fff;
   margin-top: 70px;
-  margin-left: 10px;
+  
 }
 
 .CDActiveCont {
+  position: absolute;
   width: 100%;
   height: 56.25rem;
   background-color: #fff;
   margin-top: 70px;
+  left: 0;
 }
 
 .CDActiveCont h1 {
@@ -75,21 +77,21 @@
   text-align: center;
   font-size: 40px;
   background-color: #00a652;
-  width: 1284px;
+  width: 100%;
   color: #fff;
   margin-top: 0px;
   height: 60px;
 }
 @-moz-document url-prefix() {
   .CDTHEAD h1 {
-      width: 1287px;
+      width: 100%;
   }
 }
 .CDTHEADACTIVE h1 {
   text-align: center;
   font-size: 40px;
   background-color: #00a652;
-  width: 1025px;
+  width: 100%;
   color: #fff;
   margin-top: 0px;
   height: 60px;

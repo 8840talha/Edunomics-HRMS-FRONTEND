@@ -2,19 +2,16 @@
   width: 80%;
   height: 56.25rem;
   background-color: #fff;
-  display: flex;
   margin-top: 70px;
-  margin-left: 10px;
-  justify-content: space-between;
 }
 
 .LTActiveCont {
+  position: absolute;
   width: 100%;
   height: 56.25rem;
   background-color: #fff;
-  display: flex;
   margin-top: 70px;
-  justify-content: space-between;
+  left: 0;
 }
 
 .LtContainer h1 {
@@ -25,36 +22,38 @@
   text-align: center;
   font-size: 40px;
   background-color: #00a652;
-  width: 1284px;
+  width: 100%;
   color: #fff;
   margin-top: 0px;
   height: 60px;
 }
+
 @-moz-document url-prefix() {
   .LT h1 {
-      width: 1287px;
+    width: 100%;
   }
 }
+
 .LTActive h1 {
   text-align: center;
   font-size: 40px;
   background-color: #00a652;
-  width: 1025px;
+  width: 100%;
   color: #fff;
   margin-top: 0px;
   height: 60px;
 }
 
 .btnContainer {
-  width: 850px;
+  width: 80%;
   display: flex;
   text-align: center;
-  margin-Left: 217px;
+  margin-Left: 10%;
   margin-bottom: 40px;
 }
 
 .btnContainer button {
-  width: 212.5px;
+  width: 25%;
   font-size: large;
   text-align: center;
   border: 1px solid black;
@@ -68,15 +67,15 @@
 }
 
 .btnContainerActive {
-  width: 850px;
+  width: 80%;
+  margin-left: 10%;
   display: flex;
   text-align: center;
-  margin-left: 87.5px;
   margin-bottom: 40px;
 }
 
 .btnContainerActive button {
-  width: 212.5px;
+  width: 25%;
   font-size: large;
   text-align: center;
   border: 1px solid black;
@@ -106,9 +105,9 @@
 .para {
   margin-top: 0px;
   background-color: whitesmoke;
-  width: 850px;
+  width: 80%;
   height: 350px;
-  margin-left: 217px;
+  margin-left: 10%;
   font-size: 25px;
   color: black;
 }
@@ -116,9 +115,9 @@
 .paraActive {
   margin-top: 0px;
   background-color: whitesmoke;
-  width: 850px;
+  width: 80%;
   height: 350px;
-  margin-left: 87.5px;
+  margin-left: 10%;
   font-size: 25px;
   color: black
 }
@@ -126,8 +125,8 @@
 .req {
   background-color: #00a652;
   color: #fff;
-  width: 150px;
-  margin: 20px 566px;
+  width: 16%;
+  margin-left: 42%;
   text-decoration: none;
   height: 50px;
   border: none;
@@ -136,8 +135,8 @@
 .reqActive {
   background-color: #00a652;
   color: #fff;
-  width: 150px;
-  margin: 20px 437.5px;
+  width: 16%;
+  margin-left: 42%;
   text-decoration: none;
   height: 50px;
   border: none;
@@ -148,35 +147,40 @@
   color: #fff;
 }
 
+.reqActive:hover {
+  background-color: #24a0ed;
+  color: #fff;
+}
+
 .req:focus {
   outline: none;
 }
 
 .m-20 {
-  margin-left: 216px;
+  margin-left: 10%;
 }
 
 .m-20Active {
-  margin-left: 87.5px;
+  margin-left: 10%;
 }
 
 .tWidth {
-  width: 850px;
-  margin-left: 216px;
+  width: 80%;
+  margin-left: 10%;
   background-color: #fff;
 }
 
 .tWidthActive {
-  width: 850px;
-  margin-left: 87.5px;
+  width: 80%;
+  margin-left: 10%;
   background-color: #fff;
 }
 
 .Linpp {
   border-radius: 25px;
   border: 1px solid Green;
-  width: 700px;
-  margin-left: 75px;
+  width: 70%;
+  margin-left: 15%;
   margin-top: 25px;
   height: 55px;
 }

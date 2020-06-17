@@ -2,9 +2,6 @@
   width: 80%;
   height: 900px;
   background-color: #fff;
-  display: flex;
-  justify-content: space-between;
-  margin-left: 10px;
   margin-top: 70px;
 }
 
@@ -13,53 +10,55 @@
 }
 
 .myRecContainerActive {
+  position: absolute;
   width: 100%;
   height: 900px;
   background-color: #fff;
-  display: flex;
-  justify-content: space-between;
   margin-top: 70px;
+  left: 0;
 }
 
 .Head h1 {
   text-align: center;
   font-size: 40px;
   background-color: #00a652;
-  width: 1284px;
+  width: 100%;
   color: #fff;
   margin-top: 0px;
   height: 60px;
 }
+
 @-moz-document url-prefix() {
   .Head h1 {
-      width: 1287px;
+    width: 100%;
   }
 }
+
 .HeadActive h1 {
   text-align: center;
   font-size: 40px;
   background-color: #00a652;
-  width: 1025px;
+  width: 100%;
   color: #fff;
   margin-top: 0px;
   height: 60px;
 }
 
 .mrTwidth {
-  width: 850px;
-  margin-left: 217px;
+  width: 80%;
+  margin-left: 10%;
   background-color: '#fff'
 }
 
 .mrTwidthActive {
-  width: 850px;
-  margin-left: 87.5px;
+  width: 80%;
+  margin-left: 10%;
   background-color: '#fff'
 }
 
 .viewRec {
-  margin-left: 567px;
-  width: 150px;
+  width: 16%;
+  margin-left: 42%;
   margin-bottom: 30px;
   background-color: #00a652;
   color: #fff;
@@ -69,8 +68,8 @@
 }
 
 .viewRecActive {
-  margin-left: 437.5px;
-  width: 150px;
+  width: 16%;
+  margin-left: 42%;
   margin-bottom: 30px;
   background-color: #00a652;
   color: #fff;
@@ -84,6 +83,15 @@
 }
 
 .viewRec:hover {
+  background-color: #24a0ed;
+  color: #fff;
+}
+
+.viewRecActive:focus {
+  outline: none;
+}
+
+.viewRecActive:hover {
   background-color: #24a0ed;
   color: #fff;
 }

@@ -1,20 +1,17 @@
 .AContainer {
   width: 80%;
   height: 900px;
-  margin-left: 10px;
   background-color: #fff;
-  display: flex;
-  justify-content: space-between;
   margin-top: 70px;
 }
 
 .AContainerActive {
+  position: absolute;
   width: 100%;
   height: 900px;
   background-color: #fff;
-  display: flex;
-  justify-content: space-between;
   margin-top: 70px;
+  left: 0;
 }
 
 .AContainer h1 {
@@ -29,7 +26,7 @@
   text-align: center;
   font-size: 40px;
   background-color: #00a652;
-  width: 1284px;
+  width: 100%;
   color: #fff;
   margin-top: 0px;
   height: 60px;
@@ -37,7 +34,7 @@
 
 @-moz-document url-prefix() {
   .Ahead h1 {
-    width: 1287px;
+    width: 100%;
   }
 }
 
@@ -45,7 +42,7 @@
   text-align: center;
   font-size: 40px;
   background-color: #00a652;
-  width: 1025px;
+  width: 100%;
   color: #fff;
   margin-top: 0px;
   height: 60px;
