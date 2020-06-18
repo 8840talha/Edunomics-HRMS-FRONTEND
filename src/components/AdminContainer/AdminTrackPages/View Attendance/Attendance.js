@@ -64,8 +64,10 @@ const Attendance = (props) => {
                 <div className={show ? "VAheadActive" : "VAhead"}>
                     <h1 > View Attendance </h1>
                     <div className="VAmark">
-                        <input onChange={(e) => setDateFrom(e.target.value)} className="VAinp" type="text" placeholder="dateFrom" />
-                        <input onChange={(e) => setDateTo(e.target.value)} className="VAinp" type="text" placeholder="dateTo" />
+                        <h3 style={{margin: "auto"}}>Date From</h3>
+                        <input onChange={(e) => setDateFrom(e.target.value)} className="VAinp" type="date" placeholder="dateFrom" />
+                        <h3 style={{margin: "auto"}}>Date To</h3>
+                        <input onChange={(e) => setDateTo(e.target.value)} className="VAinp" type="date" placeholder="dateTo" />
                         <button onClick={searchHandler} className="ASearch">Search</button>
                     </div>
 
