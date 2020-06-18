@@ -9,6 +9,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import TimeToLeaveIcon from '@material-ui/icons/TimeToLeave';
 import KeyboardTabIcon from '@material-ui/icons/KeyboardTab';
 import TrackChangesIcon from '@material-ui/icons/TrackChanges';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 const AdminSideBar = (props) => {
 
     // protected route logic
@@ -39,7 +40,9 @@ const AdminSideBar = (props) => {
             <ul>
                 <NavLink to="/adminTrack"><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><HomeIcon />Home</button></NavLink>
                 {/* <NavLink to="/kanban"  ><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><KeyboardTabIcon />Kanban</button></NavLink> */}
-                <NavLink to="/viewTask"  ><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><TrackChangesIcon />View Tasks</button></NavLink>   
+
+                <NavLink to="/viewTask"  ><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><VisibilityIcon />View Tasks</button></NavLink>
+                <NavLink to="/viewAttendance"  ><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><VisibilityIcon/>View Attendance</button></NavLink>
                 <NavLink to="/progress"  ><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><TrackChangesIcon />Progress</button></NavLink>
                 <NavLink to="/employees"><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><PeopleIcon />Employees</button></NavLink>
                 <NavLink to="/users/add"><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><PersonAddIcon />Add Employee</button></NavLink>
