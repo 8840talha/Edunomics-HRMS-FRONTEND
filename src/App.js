@@ -24,6 +24,7 @@ import ForgetPass from './components/ForgetPassWord/ForgetPass';
 import Kanban from './components/kanban/KanbanApp'
 import Progress from './components/AdminContainer/AdminTrackPages/EmployeeProgress/Progress';
 import ViewTask from './components/AdminContainer/AdminTrackPages/ViewTask/ViewTask'
+import Attendance from './components/AdminContainer/AdminTrackPages/View Attendance/Attendance';
 
 // Protected Routing Goes here
 const ProtectedRoute = ({ component: Component, ...rest }) => {
@@ -52,6 +53,7 @@ class App extends Component {
             <ProtectedRoute exact path="/kanban" component={Kanban} /> {/* New kanban route included */}
             <ProtectedRoute exact path="/progress" component={Progress} />{/* New Route for employee progress*/}
             <ProtectedRoute exact path="/viewTask" component={ViewTask} />{/* New Route for admin to view tasks*/}
+            <ProtectedRoute exact path="/viewAttendance" component={Attendance} />{/* New Route for admin to view Attendance*/}
             <ProtectedRoute exact path="/viewLeaveReq" component={LeaveView} />
             <ProtectedRoute exact path="/employees" component={Employees} />
             <ProtectedRoute exact path='/leave' component={LeaveTrack} />

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import './MyRecords.css'
 import axios from 'axios'
 import SideBar from '../SideBar/Sidebar'

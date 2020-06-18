@@ -1,0 +1,88 @@
+.VAContainer {
+    width: 80%;
+    height: 900px;
+    background-color: #fff;
+    margin-top: 70px;
+}
+
+.VAContainerActive {
+    position: absolute;
+    width: 100%;
+    height: 900px;
+    background-color: #fff;
+    margin-top: 70px;
+    left: 0;
+}
+
+.VAContainer h1 {
+    text-align: center;
+}
+
+.VAContainerActive h1 {
+    text-align: center;
+}
+
+.VAhead h1 {
+    text-align: center;
+    font-size: 40px;
+    background-color: #00a652;
+    width: 100%;
+    color: #fff;
+    margin-top: 0px;
+    height: 60px;
+}
+
+@-moz-document url-prefix() {
+    .VAhead h1 {
+        width: 100%;
+    }
+}
+
+.VAheadActive h1 {
+    text-align: center;
+    font-size: 40px;
+    background-color: #00a652;
+    width: 100%;
+    color: #fff;
+    margin-top: 0px;
+    height: 60px;
+}
+
+.VAinp {
+    outline: none;
+    border: 1px solid #00a652;
+    border-radius: 25px;
+    margin: 5px;
+}
+
+.VAinp:focus {
+    outline: none;
+}
+
+.VAmark {
+    width: 60%;
+    margin-left: 20%;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: transparent;
+}
+
+.ASearch {
+    background-color: #00a652;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    width: 150px;
+    height: 45px;
+    border-radius: 2px;
+    margin: 5px;
+}
+
+.ASearch:hover {
+    background-color: #24a0ed;
+    color: #fff;
+}
+
+.ASearch:focus {
+    outline: none;
+}
