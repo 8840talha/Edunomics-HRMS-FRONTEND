@@ -23,11 +23,18 @@ const Attendance = (props) => {
         }).then(res => {
             console.log(res.data)
             if (res.data.success = "true") {
+                alert('Attendance Record Found')
                 setLeave(res.data.AttendenceRecord)
+            } else {
+                alert(res.data.message)
             }
 
         }).catch(err => {
-            console.log(err)
+            if (err.response.status == 500) {
+                alert(err.response.data.message)
+            } else if (err.response.status == 404) {
+                alert('No Record Found for these dates')
+            }
         })
         console.log('clicked')
     }
@@ -64,8 +71,8 @@ const Attendance = (props) => {
                 <div className={show ? "VAheadActive" : "VAhead"}>
                     <h1 > View Attendance </h1>
                     <div className="VAmark">
-                        <input onChange={(e) => setDateFrom(e.target.value)} className="VAinp" type="text" placeholder="dateFrom" />
-                        <input onChange={(e) => setDateTo(e.target.value)} className="VAinp" type="text" placeholder="dateTo" />
+                        <input onChange={(e) => setDateFrom(e.target.value)} className="VAinp" type="text" placeholder="dateFrom(yyyy/mm/dd)" />
+                        <input onChange={(e) => setDateTo(e.target.value)} className="VAinp" type="text" placeholder="dateTo(yyyy/mm/dd)" />
                         <button onClick={searchHandler} className="ASearch">Search</button>
                     </div>
 
