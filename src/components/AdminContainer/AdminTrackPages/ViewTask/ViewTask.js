@@ -39,24 +39,20 @@ const ViewTask = (props) => {
 
 
     };
-    // deleting a specific employee with its id
-    const deleteUser = async id => {
+    
+    // const project = async id => {
+    //     var tokenn = localStorage.getItem('token');
+    //     await axios.get(`https://hrms-project.herokuapp.com/api/projects/${id}`,
+    //         {
+    //             headers: { "Content-Type": "application/json", "Authorization": `Bearer ${tokenn}` }
+    //         }).then(result => {
+    //             console.log(result.data.project);
 
-        var tokenn = localStorage.getItem('token');
-        await axios.delete(`https://hrms-project.herokuapp.com/api/delete/${id}`,
-            {
-                headers: { "Content-Type": "application/json", "Authorization": `Bearer ${tokenn}` }
-            }).then(result => {
-                console.log(result.data.user);
-                loadUsers();
+    //         }).catch(err => {
+    //             console.log(err)
+    //         })
 
-            }).catch(err => {
-                console.log(err)
-            })
-
-
-
-    };
+    // }
     const [show, setshow] = useState(false);
 
     return (
@@ -93,7 +89,7 @@ const ViewTask = (props) => {
                                 <td>{user.employeeId}</td>
                                 <td>{user.email}</td>
                                 <td>
-                                    <Link className="btn btn-primary btn-block mr-2" to="/kanban">
+                                    <Link className="btn btn-primary btn-block mr-2" to={`/viewProject/${user.employeeId}`}>
                                         View Tasks
                 </Link>
 

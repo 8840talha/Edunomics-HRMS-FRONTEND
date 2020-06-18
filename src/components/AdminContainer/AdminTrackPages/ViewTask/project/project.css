@@ -1,0 +1,49 @@
+.VTContainer {
+    width: 80%;
+    height: 900px;
+    background-color: #fff;
+    margin-top: 70px;
+}
+
+.VTContainerActive {
+    position: absolute;
+    width: 100%;
+    height: 900px;
+    background-color: #fff;
+    margin-top: 70px;
+    left: 0;
+}
+
+.VTContainer h1 {
+    text-align: center;
+}
+
+.VTContainerActive h1 {
+    text-align: center;
+}
+
+.VThead h1 {
+    text-align: center;
+    font-size: 40px;
+    background-color: #00a652;
+    width: 100%;
+    color: #fff;
+    margin-top: 0px;
+    height: 60px;
+}
+
+@-moz-document url-prefix() {
+    .VThead h1 {
+        width: 100%;
+    }
+}
+
+.VTheadActive h1 {
+    text-align: center;
+    font-size: 40px;
+    background-color: #00a652;
+    width: 100%;
+    color: #fff;
+    margin-top: 0px;
+    height: 60px;
+}
