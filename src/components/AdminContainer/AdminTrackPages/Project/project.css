@@ -1,0 +1,190 @@
+.LTcontainer {
+    width: 80%;
+    height: 56.25rem;
+    background-color: #fff;
+    margin-top: 70px;
+}
+
+.LTActiveCont {
+    position: absolute;
+    width: 100%;
+    height: 56.25rem;
+    background-color: #fff;
+    margin-top: 70px;
+    left: 0;
+}
+
+.LtContainer h1 {
+    text-align: center;
+}
+
+.LT h1 {
+    text-align: center;
+    font-size: 40px;
+    background-color: #00a652;
+    width: 100%;
+    color: #fff;
+    margin-top: 0px;
+    height: 60px;
+}
+
+@-moz-document url-prefix() {
+    .LT h1 {
+        width: 100%;
+    }
+}
+
+.LTActive h1 {
+    text-align: center;
+    font-size: 40px;
+    background-color: #00a652;
+    width: 100%;
+    color: #fff;
+    margin-top: 0px;
+    height: 60px;
+}
+
+.btnContainer {
+    width: 80%;
+    display: flex;
+    text-align: center;
+    margin-Left: 10%;
+    margin-bottom: 40px;
+}
+
+.btnContainer button {
+    width: 25%;
+    font-size: large;
+    text-align: center;
+    border: 1px solid black;
+    text-decoration: none;
+    background-color: #fff;
+    color: black;
+}
+
+.btnContainer button:focus {
+    outline: none;
+}
+
+.btnContainerActive {
+    width: 80%;
+    margin-left: 10%;
+    display: flex;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.btnContainerActive button {
+    width: 25%;
+    font-size: large;
+    text-align: center;
+    border: 1px solid black;
+    text-decoration: none;
+    background-color: #fff;
+    color: black;
+}
+
+.green {
+    background-color: #00a652;
+    color: #fff;
+    outline: none;
+}
+
+.green:hover {
+    background-color: #24a0ed;
+    color: #fff;
+    outline: none;
+}
+
+.green:focus {
+    background-color: #00a652;
+    outline: none;
+    color: #fff;
+}
+
+.para {
+    margin-top: 0px;
+    background-color: whitesmoke;
+    width: 80%;
+    height: 350px;
+    margin-left: 10%;
+    font-size: 25px;
+    color: black;
+}
+
+.paraActive {
+    margin-top: 0px;
+    background-color: whitesmoke;
+    width: 80%;
+    height: 350px;
+    margin-left: 10%;
+    font-size: 25px;
+    color: black
+}
+
+.req {
+    background-color: #00a652;
+    color: #fff;
+    width: 16%;
+    margin-left: 42%;
+    text-decoration: none;
+    height: 50px;
+    border: none;
+}
+
+.reqActive {
+    background-color: #00a652;
+    color: #fff;
+    width: 16%;
+    margin-left: 42%;
+    text-decoration: none;
+    height: 50px;
+    border: none;
+}
+
+.req:hover {
+    background-color: #24a0ed;
+    color: #fff;
+}
+
+.reqActive:hover {
+    background-color: #24a0ed;
+    color: #fff;
+}
+
+.req:focus {
+    outline: none;
+}
+
+.m-20 {
+    margin-left: 10%;
+}
+
+.m-20Active {
+    margin-left: 10%;
+}
+
+.tWidth {
+    width: 80%;
+    margin-left: 10%;
+    background-color: #fff;
+}
+
+.tWidthActive {
+    width: 80%;
+    margin-left: 10%;
+    background-color: #fff;
+}
+
+.Linpp {
+    border-radius: 25px;
+    border: 1px solid Green;
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 25px;
+    height: 55px;
+}
+
+.Linpp:focus {
+    outline: none
+}

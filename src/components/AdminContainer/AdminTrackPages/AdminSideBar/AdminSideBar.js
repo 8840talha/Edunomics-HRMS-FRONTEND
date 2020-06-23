@@ -4,6 +4,7 @@ import './AdminSideBar.css'
 import HomeIcon from '@material-ui/icons/Home';
 import PeopleIcon from '@material-ui/icons/People';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import DonutLargeIcon from '@material-ui/icons/DonutLarge';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import EditIcon from '@material-ui/icons/Edit';
 import TimeToLeaveIcon from '@material-ui/icons/TimeToLeave';
@@ -48,6 +49,7 @@ const AdminSideBar = (props) => {
                 <NavLink to="/users/add"><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><PersonAddIcon />Add Employee</button></NavLink>
                 <NavLink to="/viewLeaveReq"><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><TimeToLeaveIcon />Leave Requests</button></NavLink>
                 <NavLink to="/editReq"  ><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><EditIcon />Edit Requests</button></NavLink>
+                <NavLink to="/projects/add"  ><button style={{ display: 'flex', justifyContent: 'row' }} className="SBlink" ><DonutLargeIcon/>Projects</button></NavLink>
                 <NavLink to="#"  ><button style={{ display: 'flex', justifyContent: 'row' }} onClick={handleLogout} className="adminSBlink" ><ExitToAppIcon />Logout</button></NavLink>
             </ul>
 
