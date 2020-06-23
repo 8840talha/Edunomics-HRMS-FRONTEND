@@ -42,7 +42,7 @@ const AdminSideBar = (props) => {
                 <NavLink to="/adminTrack"><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><HomeIcon />Home</button></NavLink>
                 {/* <NavLink to="/kanban"  ><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><KeyboardTabIcon />Kanban</button></NavLink> */}
 
-                <NavLink to="/viewTask"  ><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><VisibilityIcon />View Tasks</button></NavLink>
+                {/* <NavLink to="/viewTask"  ><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><VisibilityIcon />View Tasks</button></NavLink> */}
                 <NavLink to="/viewAttendance"  ><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><VisibilityIcon/>View Attendance</button></NavLink>
                 <NavLink to="/progress"  ><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><TrackChangesIcon />Progress</button></NavLink>
                 <NavLink to="/employees"><button style={{ display: 'flex', justifyContent: 'row' }} className="adminSBlink" ><PeopleIcon />Employees</button></NavLink>

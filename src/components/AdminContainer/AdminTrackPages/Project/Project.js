@@ -85,6 +85,7 @@ class Project extends Component {
                 this.setState({
                     description: ''
                 })
+                this.props.history.push('/kanban');
             })
             .catch(err => {
                 if(err == 401) {

@@ -51,8 +51,8 @@ const User = (props) => {
   };
   return (
     <div style={{ marginTop: '100px', backgroundColor: '#fff' }} className="container py-4">
-      <Link style={{ height: '50px' }} className="btn btn-dark" to="/viewTask">
-        Back to Tasks
+      <Link style={{ height: '50px' }} className="btn btn-dark" to="/projects/add">
+        Back to Projects
       </Link>
       <h1 >User Id: {id}</h1>
       <table style={{ backgroundColor: '#fff', width: '80%', marginLeft: '10%' }} className="table table-bordered shadow table-striped ">
