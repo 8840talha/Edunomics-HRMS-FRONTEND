@@ -2,26 +2,18 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import './project.css';
-import jwt_decode from 'jwt-decode'
 
 const User = (props) => {
-  // giving Role Based Access by jwt token
-  var decoded = jwt_decode(localStorage.getItem('token'));
-  console.log(decoded.role);
-  if (decoded.role !== "admin") {
-    alert(' Unauthorized Acess, Only Admins are Authorized for these Routes')
-    props.history.push('/track')
-  }
+
   const [projects, setProjects] = useState([]);
 
-  const { id } = useParams();
   useEffect(() => {
     loadProject();
   }, []);
   // getting a view of an specific employee by id
   const loadProject = async () => {
     var token = localStorage.getItem('token');
-    fetch(`https://hrms-project.herokuapp.com/api/projects/${id}`, { method: 'get', headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}`} })
+    fetch(`https://hrms-project.herokuapp.com/api/project/all`, { method: 'get', headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}`} })
     .then(res => {
         if (res.status !== 200 && res.status !== 201) {
             console.log('hellllo');
@@ -52,10 +44,6 @@ const User = (props) => {
   };
   return (
     <div style={{ marginTop: '100px', backgroundColor: '#fff' }} className="container py-4">
-      <Link style={{ height: '50px' }} className="btn btn-dark" to="/projects/add">
-        Back to Projects
-      </Link>
-      <h1 >User Id: {id}</h1>
       <table style={{ backgroundColor: '#fff', width: '80%', marginLeft: '10%' }} className="table table-bordered shadow table-striped ">
                     <thead className="thead">
                         <tr>

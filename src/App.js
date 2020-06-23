@@ -27,6 +27,7 @@ import ViewTask from './components/AdminContainer/AdminTrackPages/ViewTask/ViewT
 import Project from './components/AdminContainer/AdminTrackPages/ViewTask/project/Project';
 import Attendance from './components/AdminContainer/AdminTrackPages/View Attendance/Attendance';
 import Projects from './components/AdminContainer/AdminTrackPages/Project/Project';
+import EmpProjects from './components/EmployeeContainer/TrackUpdateMydetailsMyrecords/TrackPage/Projects/project';
 // Protected Routing Goes here
 const ProtectedRoute = ({ component: Component, ...rest }) => {
 
@@ -68,6 +69,8 @@ class App extends Component {
             <ProtectedRoute exact path="/editReq" component={EditReqView} />
             <ProtectedRoute exact path="/detailChange" component={ChangeDetails} />
             <ProtectedRoute exact path="/projects/add" component={Projects} />
+            <ProtectedRoute exact path="/projectsEmp" component={EmpProjects} />
+
 
             <Route component={Falsy} />
           </Switch>
