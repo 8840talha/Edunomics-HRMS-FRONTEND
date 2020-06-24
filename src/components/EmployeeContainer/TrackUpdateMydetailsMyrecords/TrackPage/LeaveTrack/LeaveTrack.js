@@ -219,9 +219,9 @@ class LeaveTrack extends Component {
 
             <div style={{ display: 'flex' }} >
                 <div style={{ width: '20%' }}>
-                    <SideBar show={this.state.showSide} />
+                    <SideBar show={this.state.showSide} height=" 96.25rem" />
                 </div>
-                <div className={this.state.showSide ? "LTcontainer" : "LTActiveCont"}>
+                <div className={this.state.showSide ? "LTrackcontainer" : "LTrackActiveCont"}>
                     <div style={{ marginTop: '15px' }} className='toggle' onClick={() => this.setState({ showSide: !this.state.showSide })}>
                         <span></span>
                         <span></span>
@@ -253,15 +253,15 @@ class LeaveTrack extends Component {
                                 <div className={this.state.showSide ? "paraActive" : "para"}>
                                     <div className="block">
                                         <label className='LABEL'>Purpose</label>
-                                        <textarea className='Linput' style={{marginTop:'5px', resize: 'none', height: '130px' }} rows="5" cols="50" value={this.state.description} onChange={this.handleChange} name="description" placeholder="Purpose for leave" type="Text" />
+                                        <textarea className='Linput' style={{ marginTop: '5px', resize: 'none', height: '130px' }} rows="5" cols="50" value={this.state.description} onChange={this.handleChange} name="description" placeholder="Purpose for leave" type="Text" />
                                     </div>
                                     <div className="block">
                                         <label className='LABEL'>Date From</label>
-                                        <input style={{ marginBottom:'5px'}} value={this.state.dateFrom} className='Linput' onChange={this.handleChange} name="dateFrom" placeholder="Date From" type="date" />
+                                        <input style={{ marginBottom: '5px' }} value={this.state.dateFrom} className='Linput' onChange={this.handleChange} name="dateFrom" placeholder="Date From" type="date" />
                                     </div>
                                     <div className="block">
                                         <label className='LABEL'>Date To</label>
-                                        <input value={this.state.dateTo} className='Linput' onChange={this.handleChange} name="dateTo" placeholder="Date To" type="date"  />
+                                        <input value={this.state.dateTo} className='Linput' onChange={this.handleChange} name="dateTo" placeholder="Date To" type="date" />
                                     </div>
                                 </div>
                                 {this.state.requested ? <button className={this.state.showSide ? 'reqActive' : 'req'} onClick={this.sendreqHandler} >Send Request</button> : null}

@@ -28,10 +28,11 @@ const SideBar = (props) => {
     }
     //
     const show = props.show;
+
     return (
 
 
-        show ? <div className={'sideBar'} >
+        show ? <div style={{ ...props }} className={'sideBar'} >
 
             <ul>
                 <NavLink to="/track"  ><button style={{ display: 'flex', justifyContent: 'row' }} className="SBlink" ><HomeIcon />Home</button></NavLink>
