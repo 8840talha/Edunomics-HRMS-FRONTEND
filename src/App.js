@@ -52,7 +52,8 @@ class App extends Component {
             <Route exact path='/empLogin' component={LoginForm} />
             <Route exact path='/forget' component={ForgetPass} />
             <Route exact path='/track' component={Track} />
-            <ProtectedRoute exact path="/kanban" component={Kanban} /> {/* New kanban route included */}
+            
+            <ProtectedRoute exact path="/kanban" component={Kanban} /> 
             <ProtectedRoute exact path="/progress" component={Progress} />{/* New Route for employee progress*/}
             <ProtectedRoute exact path="/viewTask" component={ViewTask} />{/* New Route for admin to view tasks*/}
             <ProtectedRoute exact path="/viewProject/:id" component={Project} />

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Modal, Form, Button, Alert } from "react-bootstrap";
-import { TextField } from '@material-ui/core'
+import { backendUrl as url } from '../backendUrl/url'
+const axios = require('axios')
 
 function AddBucket(props) {
   const [bucketName, setBucketName] = React.useState("");
@@ -8,6 +9,25 @@ function AddBucket(props) {
   useEffect(() => {
     setBucketName("");
   }, [props.visibility]);
+
+  const handleSaveBucket = () => {
+    const newBucket = {
+      name: bucketName,
+      rank: props.rank,
+      projectId: props.ideaId
+    }
+    axios.post(`${url}/bucket/add`, { bucket: newBucket }, {
+      headers: {
+        "Content-Type": "application/json", "Authorization": `Bearer ${props.token}`
+      }
+    }).then(res => {
+      console.log(res.data)
+      props.toggleVisibility()
+      props.refetch()
+    }).catch(err => {
+      console.log(err)
+    })
+  }
 
   return (
     <div>
@@ -21,16 +41,7 @@ function AddBucket(props) {
           <Modal.Title>Add New Bucket</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <TextField
-              onChange={(e) => setBucketName(e.target.value)}
-              value={bucketName}
-              variant="outlined"
-              label="Bucket Name"
-              fullWidth
-            ></TextField>
-          </div>
-          {/* <Form>
+          <Form>
             <Form.Group>
               <Form.Label>Name :</Form.Label>
               <Form.Control
@@ -39,7 +50,7 @@ function AddBucket(props) {
                 value={bucketName}
               />
             </Form.Group>
-          </Form> */}
+          </Form>
           <Alert
             variant="danger"
             className="text-center"
@@ -54,8 +65,7 @@ function AddBucket(props) {
             block
             variant="primary"
             onClick={() => {
-              props.saveFunction(bucketName);
-              setBucketName("");
+              handleSaveBucket()
             }}
             disabled={
               bucketName === "" || props.buckets.indexOf(bucketName) !== -1

@@ -11,7 +11,6 @@ import {
   DropdownButton,
   Container
 } from "react-bootstrap";
-
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./style.css"
@@ -23,7 +22,7 @@ import exlIcon from '../images/excel.jpg'
 import { backendUrl as url } from '../backendUrl/url'
 
 function EditTask(props) {
-  const [task, setTask] = useState(props.taskData);
+  const [task, setTask] = useState({});
   const extension = {
     'png': image,
     'jpg': image,
@@ -38,8 +37,7 @@ function EditTask(props) {
 
   useEffect(() => {
     setTask(props.taskData);
-  }, [props.taskData]);
-
+  }, [props]);
   const showNewImage = (event) => {
     const files = event.target.files;
     var AttacmentContainer = document.getElementById("attachments-container")
@@ -112,13 +110,15 @@ function EditTask(props) {
     }
     props.saveFunction(task, fileForm)
   }
+  if (task === {}) {
+    return <div>Loading</div>
+  }
   return (
     <Modal
       size="lg"
       centered
       show={props.visibility}
       onHide={() => props.hideModal()}
-      className="task-desc"
     >
       <Modal.Header closeButton>
         <Modal.Title>Edit Task</Modal.Title>
@@ -201,16 +201,17 @@ function EditTask(props) {
               <Col className="text-center">Bucket:</Col>
               <Col>
                 <DropdownButton
-                  title={task.bucket || ""}
+                  title={task.bucket !== undefined ? task.bucket.name : ""}
                   size="sm"
                   onSelect={(eventKey) => {
-                    setTask({ ...task, bucket: eventKey });
+                    const newBucket = props.buckets.filter(bucket => bucket._id === eventKey)
+                    setTask({ ...task, bucket: newBucket[0] });
                   }}
                 >
                   {props.buckets
                     ? props.buckets.map((bucket, idx) => (
-                      <Dropdown.Item eventKey={bucket} key={idx}>
-                        {bucket}
+                      <Dropdown.Item eventKey={bucket._id} key={idx}>
+                        {bucket.name}
                       </Dropdown.Item>
                     ))
                     : null}
@@ -315,8 +316,8 @@ function EditTask(props) {
             ))
             )
             : ""}
-        </Container> */}
-        <hr />
+        </Container>
+      <hr /> */}
         <Row className="mt-3">
           <Col className="text-center">Label Colour:</Col>
           <Col>

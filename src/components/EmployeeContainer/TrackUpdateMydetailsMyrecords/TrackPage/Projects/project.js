@@ -54,16 +54,21 @@ const User = (props) => {
                     </thead>
                     <tbody>
                         {projects.map((user, index) => (
+                          
                             <tr key={index}>
                                 <th scope="row">{index + 1}</th>
                                 <td>{user.name}</td>
                                 <td>
-                                <Link className="btn btn-primary btn-block mr-2" to="/kanban">
+                                <Link className="btn btn-primary btn-block mr-2" 
+                                to={{pathname: "/kanban",
+                                state: {project: user}
+                                }}>
                                         View Tasks
                 </Link>
                                 </td>
                             </tr>
-                        ))}
+                        ))
+                        }
                     </tbody>
                 </table>
 

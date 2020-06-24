@@ -79,13 +79,13 @@ class Project extends Component {
                 return res.json();
             })
             .then(response => {
-                console.log(response);
+                console.log(response._id);
                 
                 alert('request successfully sent');
                 this.setState({
                     description: ''
                 })
-                this.props.history.push('/kanban');
+                this.props.history.push('/kanban', {project: response});
             })
             .catch(err => {
                 if(err == 401) {

@@ -1,11 +1,13 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom'
 import MainPage from './components/MainPage';
+
 function KanbanApp(props) {
   document.title = 'Kanban | Edunomics'
-  document.body.style.backgroundColor = "white"
+  const location = useLocation()
   return (
     <div>
-      <MainPage />
+      <MainPage location={location} />
     </div>
   );
 }
