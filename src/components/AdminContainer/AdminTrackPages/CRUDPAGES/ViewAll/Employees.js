@@ -92,7 +92,7 @@ const Employees = (props) => {
                 <td>{user.name}</td>
                 <td>{user.employeeId}</td>
                 <td>{user.email}</td>
-                <td>
+                <td style={{display:'flex'}}>
                   <Link className="btn btn-primary mr-2" to={`/users/${user._id}`}>
                     View
                 </Link>
