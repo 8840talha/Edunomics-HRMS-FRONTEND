@@ -2,12 +2,15 @@ import React, { Component } from "react";
 import { Button, Container, Row, Col, Card, Alert } from "react-bootstrap";
 import axios from "axios";
 import "./style.css";
+import Header from "./Header";
+import Footer from "./Footer";
 import AddBucket from "./AddBucket";
 import EditBucket from "./EditBucket";
 import EditTask from "./EditTask";
 import AddTask from "./AddTask";
 import Settings from "./Settings";
 import { backendUrl as url } from '../backendUrl/url'
+const token = localStorage.getItem('token')
 class MainPage extends Component {
   constructor(props) {
     super(props);
@@ -18,6 +21,8 @@ class MainPage extends Component {
       bucketName: "",
       showBucketModal: false,
       remountVar: false,
+      ideaId: null,
+      newBucketRank: -1,
 
       //Helper Variables
       hasBeenFetched: false,
@@ -31,30 +36,23 @@ class MainPage extends Component {
       showSettings: false,
       showEditBucketModal: false,
 
-      //dragging variables.
-      draggedCard: null,
-      dragOn: false,
-      dragOverBucket: null,
+      //Dragging variables for buckets.
+      draggedBucketIndex: -1,
+      targetBucketIndex: -1,
+      isBucketDragged: false,
+      isBucketEntered: false,
 
-      draggedBucket: null,
+      //Dragging variables for tasks
+      draggedTask: null,
+      targetTask: null,
+      isTaskDragged: false,
+      isTaskEntered: false,
+      draggedTaskTargetBucket: null,
+      targetBucketForTask: null,
 
       autoSave: true,
-      jwtToken: ""
     };
     this.saveData = this.saveData.bind(this)
-  }
-  async componentDidMount() {
-    await this.setState({ jwtToken: localStorage.getItem("token") })
-    this.setState({ remountVar: false })
-    this.setState({
-      autoSave:
-        window.localStorage.getItem("autoSave") === "true" ? true : false,
-    });
-    this.fetchAllData()
-
-    setInterval(() => {
-      this.autoSaveData();
-    }, 5000);
   }
   smoothScroll() {
     window.scrollTo({
@@ -63,56 +61,15 @@ class MainPage extends Component {
       behavior: "smooth",
     });
   }
-  autoSaveData() {
-    window.localStorage.setItem("autoSave", this.state.autoSave);
-    this.state.autoSave &&
-      axios
-        .post(
-          url + "buckets/save",
-          { buckets: Object.assign({}, this.state.buckets_array), _user: this.state.jwtToken.userId },
-          {
-            headers: {
-              Authorization: 'Bearer ' + this.state.jwtToken
-            }
-          }
-        )
-        .then(
-          (response) => { },
-          (error) => {
-            console.log(error);
-            alert("Error. Can not Load Data.");
-          }
-        );
-
-    this.state.autoSave &&
-      axios
-        .post(
-          url + "tasks/save",
-          { tasks: this.state.tasks, _user: this.state.jwtToken.userId },
-          {
-            headers: {
-              Authorization: 'Bearer ' + this.state.jwtToken
-            }
-          }
-        )
-        .then(
-          (response) => { },
-          (error) => {
-            console.log(error);
-            alert("Error. Can not Load Data.");
-          }
-        );
-  }
-
   saveData = async () => {
     this.setState({ showSettings: false });
     await axios
       .post(
-        url + "buckets/save",
-        { buckets: Object.assign({}, this.state.buckets_array), _user: this.state.jwtToken.userId },
+        url + "api/user/buckets/save",
+        { buckets: Object.assign({}, this.state.buckets_array), ideaId: this.state.ideaId },
         {
           headers: {
-            Authorization: 'Bearer ' + this.state.jwtToken
+            'x-access-token': token
           }
         }
       )
@@ -127,11 +84,11 @@ class MainPage extends Component {
       );
     await axios
       .post(
-        url + "tasks/save",
-        { tasks: this.state.tasks },
+        url + "api/user/tasks/save",
+        { tasks: this.state.tasks, ideaId: this.state.ideaId },
         {
           headers: {
-            Authorization: 'Bearer ' + this.state.jwtToken
+            'x-access-token': token
           }
         }
       )
@@ -147,82 +104,131 @@ class MainPage extends Component {
     this.setState({ showSettings: false });
   };
   fetchAllData = () => {
-    console.log(this.state.jwtToken)
-    axios.get(url + "buckets/", {
-      headers: {
-        Authorization: 'Bearer ' + this.state.jwtToken
-      }
-    }).then(
-      (response) => {
-        var arr = Object.values(response.data);
-        for (var i in arr) {
-          arr[i] = arr[i]["name"];
-        }
-        this.setState({ buckets_array: arr });
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-
-    axios
-      .get(url + "tasks/", {
+    if (this.props.location.state) {
+      const _id = this.props.location.state.project._id
+      axios.get(url + "bucket/" + _id, {
         headers: {
-          Authorization: "Bearer " + this.state.jwtToken
+          "Content-Type": "application/json", "Authorization": `Bearer ${token}`
         }
-      })
-      .then((response) => {
-        var tasks = response.data;
-        for (var i in tasks) {
-          tasks[i].start_date = new Date(tasks[i].start_date);
-          tasks[i].due_date = new Date(tasks[i].due_date);
+      }).then(
+        (response) => {
+          console.log(response.data)
+          this.setState({ newBucketRank: response.data.length + 1 })
+          this.setState({ buckets_array: response.data });
+        },
+        (error) => {
+          console.log(error);
         }
+      );
 
-        this.setState({ tasks: tasks, hasBeenFetched: true });
-      });
+      axios
+        .get(url + "tasks/" + _id, {
+          headers: {
+            "Content-Type": "application/json", "Authorization": `Bearer ${token}`
+          }
+        })
+        .then((response) => {
+          console.log(response.data)
+          var tasks = response.data;
+          for (var i in tasks) {
+            //console.log(new Date(tasks[i].start_date));
 
+            tasks[i].start_date = Date.parse(tasks[i].start_date);
+            tasks[i].due_date = Date.parse(tasks[i].due_date);
+          }
+
+          this.setState({ tasks: tasks, hasBeenFetched: true });
+        });
+    }
 
   }
+  callEditBucket(bucket) {
+    console.log(bucket);
+    
+    axios.put(`${url}bucket/edit`, { bucket: bucket }, {
+      headers: {
+        "Content-Type": "application/json", "Authorization": `Bearer ${token}`
+      }
+    }).then(res => {
+      console.log("Edited")
+      this.setState({ showEditBucketModal: false })
+      this.fetchAllData()
+    }).catch(err => {
+      console.log(err)
+    })
+  }
+  async componentDidMount() {
+    console.log(this.props);
+    if (this.props.location.state) {
+      await this.setState({ ideaId: this.props.location.state.project._id })
+    }
+    this.setState({ remountVar: false })
+    this.setState({
+      autoSave:
+        window.localStorage.getItem("autoSave") === "true" ? true : false,
+    });
+    this.fetchAllData()
+  }
+
+  orderTask = async (task, b_Id) => {
+    console.log("Bucket id " + b_Id)
+    var tasks = this.state.tasks;
+    var bucketId = task.bucket._id ? task.bucket._id : task.bucket
+    if (b_Id) {
+      bucketId = b_Id
+    }
+    var rank = -1
+    //Find new rank for new task
+    let tasks_ = Object.keys(tasks).filter(id => { return tasks[id]['bucket']['_id'] === bucketId })
+    if (tasks_.length === 0) {
+      rank = 1
+    }
+    else {
+      let ranks = tasks_.map(bucket => tasks[bucket].rank)
+      rank = Math.max.apply(0, ranks) + 1
+    }
+    return rank
+  }
+
   // This function is used to add a new task
   addTask = async (task, fileForm) => {
-    var tasks = this.state.tasks;
-    var n = -1
-    if (Object.keys(tasks).length === 0) {
-      n = 1
-    }
-    else if (Object.keys(tasks).length === 1) {
-      n = 2
-    }
-    else if (Object.keys(tasks).length > 1) {
-      n = parseInt(Object.keys(tasks).reduce((a, b) => a > b ? a : b)) + 1;
-    }
-    var rank = 1;
-    for (var i in tasks) {
-      if (tasks[i].bucket === task.bucket) rank++;
-    }
-    task.id = n;
-    task.rank = rank;
-    console.log(task)
-    tasks[task.id] = task;
-    this.setState({
-      tasks: tasks,
-      showAddModal: false,
-    });
-    if (fileForm.get("attachments")) {
-      await this.saveData()
-      fileForm.append("id", n)
-      const config = {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+    task.rank = await this.orderTask(task)
+    console.log(task);
+    
+    //Call Add task API
+    axios.post(`${url}tasks/add`, { task: task }, {
+      headers: {
+        "Content-Type": "application/json", "Authorization": `Bearer ${token}`
       }
-      axios.post(url + 'files', fileForm, config).then((res) => {
-        console.log(res)
-        this.fetchAllData()
-      }).catch(err => {
-        console.log(err)
-      })
-    }
+    }).then(res => {
+      console.log(res.data)
+      this.setState({ showAddModal: false })
+      this.fetchAllData()
+    }).catch(err => {
+      console.log(err)
+    })
+
+    // this.setState({
+    //   tasks: tasks,
+    //   showAddModal: false,
+    // });
+
+    // if (fileForm.get("attachments")) {
+    //   await this.saveData()
+    //   fileForm.append("id", n)
+    //   const config = {
+    //     headers: {
+    //       'Content-Type': 'multipart/form-data',
+    //       'x-access-token': token
+    //     }
+    //   }
+    //   axios.post(url + 'files', fileForm, config).then((res) => {
+    //     console.log(res)
+    //     this.fetchAllData()
+    //   }).catch(err => {
+    //     console.log(err)
+    //   })
+    // }
   };
 
   editTask(task) {
@@ -243,191 +249,89 @@ class MainPage extends Component {
   }
 
   saveEditTask = async (task, fileForm) => {
-    console.log(task)
-    var tasks = this.state.tasks;
-    tasks[task.id] = task;
-    this.setState({ tasks: tasks, showEditModal: false });
-    if (fileForm.get("attachments")) {
-      await this.saveData()
-      fileForm.append("id", task.id)
-      const config = {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+    task.rank = await this.orderTask(task, "edit")
+    axios.put(`${url}tasks/edit`, { task: task }, {
+      headers: {
+        "Content-Type": "application/json", "Authorization": `Bearer ${token}`
       }
-      axios.post(url + 'files', fileForm, config).then((res) => {
-        console.log(res)
-        this.fetchAllData()
-      }).catch(err => {
-        console.log(err)
-      })
-    } else {
-      await this.saveData()
+    }).then(res => {
+      console.log(res.data)
       this.fetchAllData()
-    }
+      this.setState({ showEditModal: false })
+    }).catch(err => {
+      console.log(err)
+    })
+    //var tasks = this.state.tasks;
+    //tasks[task.id] = task;
+    //this.setState({ tasks: tasks, showEditModal: false });
+
+
+    // if (fileForm.get("attachments")) {
+    //   await this.saveData()
+    //   fileForm.append("id", task.id)
+    //   const config = {
+    //     headers: {
+    //       'Content-Type': 'multipart/form-data'
+    //     }
+    //   }
+    //   axios.post(url + 'files', fileForm, config).then((res) => {
+    //     console.log(res)
+    //     this.fetchAllData()
+    //   }).catch(err => {
+    //     console.log(err)
+    //   })
+    // } else {
+    //   await this.saveData()
+    //   this.fetchAllData()
+    // }
   };
   deleteTask = (task) => {
-    var bucket = task.bucket;
-    var id = task.id;
-    var temp = this.state.tasks;
-    for (var i in temp) {
-      if (temp[i].bucket === bucket && temp[i].rank > task.rank) temp[i].rank--;
-    }
-    delete temp[id];
-    this.setState({ tasks: temp, showEditModal: false });
+    console.log(task)
+    axios.delete(`${url}tasks/delete`, {
+      data: { task: task },
+      headers: {
+        "Content-Type": "application/json", "Authorization": `Bearer ${token}`
+      }
+    }).then(res => {
+      if (res.data.message === "Deleted") {
+        console.log(res.data)
+        this.fetchAllData()
+      }
+      else {
+        console.log(res.data)
+      }
+      this.setState({ showEditModal: false });
+    }).catch(err => {
+      console.log(err)
+    })
   };
   //bucket
-  saveBucket = (bucketName) => {
-    var arr = this.state.buckets_array;
-    arr.push(bucketName);
-    this.setState(
-      {
-        buckets_array: arr,
-        showBucketModal: false,
-        bucketName: "",
-      },
-      this.smoothScroll
-    );
-  };
-
-  //All drag event listeners start here
-
-  dragStart(e, task) {
-    var elt = e.target
-    setTimeout(() => {
-      elt.className += ' task-card-dragged'
-      this.setState({ draggedCard: task, dragOn: true });
-    }, 1)
-
-  }
-
-  dragEnd(e) {
-    this.setState({ draggedCard: null, dragOn: false, dragOverBucket: null });
-    e.target.className = e.target.className.replace(' task-card-dragged', '')
-  }
-
-  dragOver(e, bucket) {
-    e.preventDefault();
-    if (this.state.dragOverBucket !== bucket)
-      this.setState({ dragOverBucket: bucket });
-    // console.log(this.state.dragOverBucket);
-  }
-
-  dropCard(e, index) {
-    console.log("Calling dropCard")
-    if (this.state.draggedBucket !== null) {
-      var draggedBucket = this.state.draggedBucket;
-      var arr = this.state.buckets_array;
-      var target = arr[index];
-      var target_index = arr.indexOf(target);
-      arr = arr.filter(function (ele) {
-        return ele !== draggedBucket;
-      });
-      console.log(arr, target_index);
-      arr.splice(target_index, 0, draggedBucket);
-      this.setState({ buckets_array: arr });
-      return;
-    }
-    if (this.state.draggedCard.bucket === this.state.buckets_array[index]) {
-      return;
-    }
-    let task = this.state.draggedCard;
-    let task_id = task.id;
-    let toList = index;
-    var tasks = this.state.tasks;
-    var bucket = this.state.buckets_array[toList];
-
-    var rank = 1;
-    for (var i in tasks) {
-      if (tasks[i].bucket === bucket) rank = rank + 1;
-    }
-
-    for (i in tasks) {
-      if (
-        tasks[i].bucket === task.bucket &&
-        Number(tasks[i].rank) > Number(task.rank)
-      ) {
-        tasks[i].rank--;
+  deleteBucket = (bucket) => {
+    axios.delete(`${url}bucket/delete`, {
+      data: { bucket: bucket },
+      headers: {
+        "Content-Type": "application/json", "Authorization": `Bearer ${token}`
       }
-    }
-    tasks[task_id].bucket = this.state.buckets_array[toList];
-    tasks[task_id].rank = rank;
-    this.setState({ tasks: tasks, dragOn: false, dragOverBucket: null, draggedCard: null });
-  }
-
-  dropVertical(e, task) {
-    if (this.state.draggedBucket !== null) {
-      return;
-    }
-    if (this.state.draggedCard.bucket !== task.bucket) {
-      return;
-    }
-
-    var draggedRank = this.state.draggedCard.rank;
-    var droppedRank = task.rank;
-    var tasks = this.state.tasks;
-    if (draggedRank > droppedRank) {
-      for (var i in tasks) {
-        if (
-          tasks[i].bucket === task.bucket &&
-          tasks[i].rank >= droppedRank &&
-          tasks[i].rank <= draggedRank
-        ) {
-          tasks[i].rank++;
-        }
+    }).then(res => {
+      if (res.data.message === "Deleted") {
+        this.fetchAllData()
       }
-      tasks[this.state.draggedCard.id].rank = droppedRank;
-      this.setState({ tasks: tasks });
-    } else if (draggedRank < droppedRank) {
-      for (i in tasks) {
-        if (
-          tasks[i].bucket === task.bucket &&
-          tasks[i].rank <= droppedRank &&
-          tasks[i].rank >= draggedRank
-        ) {
-          tasks[i].rank--;
-        }
+      else {
+        console.log(res.data)
       }
-      tasks[this.state.draggedCard.id].rank = droppedRank;
-      this.setState({ tasks: tasks, draggedCard: null });
-    }
+    }).catch(err => {
+      console.log(err)
+    })
   }
-
-  bucketDrop(e, target) {
-    if (this.state.draggedBucket === null) {
-      return;
-    }
-    var draggedBucket = this.state.draggedBucket;
-    var arr = this.state.buckets_array;
-    var target_index = arr.indexOf(target);
-    arr = arr.filter(function (ele) {
-      return ele !== draggedBucket;
-    });
-    console.log(arr, target_index);
-    arr.splice(target_index, 0, draggedBucket);
-    this.setState({ buckets_array: arr, draggedCard: null });
-  }
-
 
   // This is the render function
   render() {
-    var tasks_array = [];
-    var tasks = this.state.tasks;
-    var buckets = this.state.buckets_array;
-    var n = Object.keys(tasks).length;
-    for (var i in buckets) {
-      for (var j = 1; j <= n; j++) {
-        for (var task in tasks) {
-          if (
-            Number(tasks[task].rank) === j &&
-            tasks[task].bucket === buckets[i]
-          )
-            tasks_array.push(tasks[task]);
-        }
-      }
+    if (this.state.ideaId === null) {
+      return (<div>No Idea specified</div>)
     }
     return (
       <div className="App">
+        <Header />
         {/* ----------------------------------------------Container-------------------------------------------- */}
         <Container className="board" fluid>
           {/* ---------------------Add Task Button------------------- */}
@@ -448,48 +352,117 @@ class MainPage extends Component {
 
           <Row className="flex-row flex-nowrap bucket-container" fluid="true" xs="6">
             {/* ---------------------Buckets------------------- */}
-            {this.state.buckets_array.map((bucket, idx) => (
+            {this.state.buckets_array.sort((a, b) => { return a.rank > b.rank }).map((bucket, idx) => (
               <Col
                 key={idx}
-                id={this.state.buckets_array.indexOf(bucket)}
+                id={bucket._id}
                 className="bucket"
-                onDragOver={(e) => this.dragOver(e, bucket)}
-                onDrop={(e) =>
-                  this.dropCard(e, this.state.buckets_array.indexOf(bucket))
+                draggable={true}
+                //All drag event handlers for buckets below
+                onDragStart={() => {
+                  this.setState({ isBucketDragged: true })
+                  this.setState({ draggedBucketIndex: this.state.buckets_array.indexOf(bucket) })
+                }}
+                onDragOver={() => {
+                  if (bucket !== this.state.targetBucketForTask) {
+                    this.setState({ targetBucketForTask: bucket })
+                  }
+                }}
+                onDragEnter={async () => {
+                  if (this.state.isBucketDragged) {
+                    if (this.state.draggedBucketIndex !== this.state.buckets_array.indexOf(bucket)) {
+                      this.setState({ isBucketEntered: true })
+                    }
+                    await this.setState({ targetBucketIndex: this.state.buckets_array.indexOf(bucket) })
+                  }
+                  else if (this.state.isTaskDragged) {
+                    this.setState({ draggedTaskTargetBucket: bucket })
+                  }
+                }}
+                onDragEnd={async (e) => {
+                  if (this.state.isBucketDragged) {
+                    if (this.state.isBucketEntered) {
+                      const buckets = this.state.buckets_array
+                      const draggedRank = buckets[this.state.draggedBucketIndex].rank
+                      const targetRank = buckets[this.state.targetBucketIndex].rank
+                      buckets[this.state.draggedBucketIndex].rank = targetRank
+                      buckets[this.state.targetBucketIndex].rank = draggedRank
+                      this.setState({ buckets_array: buckets })
+                      axios.put(`${url}bucket/bucketswap`, {
+                        bucket1: buckets[this.state.draggedBucketIndex],
+                        bucket2: buckets[this.state.targetBucketIndex]
+                      }, {
+                        headers: {
+                          "Content-Type": "application/json", "Authorization": `Bearer ${token}`
+                        }
+                      }).then(res => {
+                        console.log(res.data)
+                        this.setState({ draggedBucketIndex: -1, targetBucketIndex: -1, isBucketDragged: false })
+                      }).catch(err => {
+                        console.log(err)
+                      })
+                    }
+                  }
+                  else if (this.state.isTaskDragged && this.state.isTaskEntered) {
+                    const tasks = this.state.tasks
+                    console.log(this.state.draggedTask.bucket)
+                    console.log(this.state.targetBucketForTask)
+                    if (this.state.draggedTask.bucket._id !== this.state.targetBucketForTask._id) {
+                      let rank = await this.orderTask(this.state.draggedTask, this.state.targetBucketForTask._id)
+                      tasks[this.state.draggedTask._id].bucket = this.state.targetBucketForTask
+                      tasks[this.state.draggedTask._id].rank = rank
+
+                      axios.put(`${url}tasks/edit`, { task: tasks[this.state.draggedTask._id] }, {
+                        headers: {
+                          "Content-Type": "application/json", "Authorization": `Bearer ${token}`
+                        }
+                      }).then(res => {
+                        console.log(res.data)
+                        this.fetchAllData()
+                      }).catch(err => {
+                        console.log(err)
+                      })
+                    }
+                    else {
+                      const tasks = this.state.tasks
+                      const draggedRank = this.state.draggedTask.rank
+                      console.log(this.state.draggedTask)
+                      console.log(this.state.targetTask)
+                      tasks[this.state.draggedTask._id].rank = this.state.targetTask.rank
+                      tasks[this.state.targetTask._id].rank = draggedRank
+
+                      axios.put(`${url}tasks/taskswap`, {
+                        task1: tasks[this.state.draggedTask._id],
+                        task2: tasks[this.state.targetTask._id]
+                      }, {
+                        headers: {
+                          "Content-Type": "application/json", "Authorization": `Bearer ${token}`
+                        }
+                      }).then(res => {
+                        console.log(res.data)
+                        this.setState({ isTaskDragged: false, isTaskEntered: false, targetTask: null, draggedTask: null, targetBucketForTask: null })
+                      }).catch(err => {
+                        console.log(err)
+                      })
+                    }
+                    this.setState({ tasks: tasks })
+                  }
+                }
                 }
               >
                 <div className="paper-list" id={idx + 'bc'}>
                   <div
                     className="bucket-title"
                     style={{ padding: "5px" }}
-                    draggable="true"
-                    onDragStart={(e) => {
-                      var elt = e.target.parentNode
-                      setTimeout(() => {
-                        elt.className += ' bucket-dragged'
-                      }, 1)
-                      this.setState({ draggedBucket: bucket });
-                    }}
-                    onDragEnd={(e) => {
-                      console.log("Drag end")
-                      var elt = e.target.parentNode
-                      elt.className = elt.className.replace(' bucket-dragged', '')
-                      this.setState({
-                        draggedBucket: null,
-                        dragOn: false,
-                        dragOverBucket: null,
-                      });
-                    }}
-                    onDrop={(e) => this.bucketDrop(e, bucket)}
                   >
                     <Row>
                       <Col>
                         <h6
-                          id={bucket}
+                          id={bucket._id}
                           style={{ margin: "0" }}
                           className="float-left ml-2"
                         >
-                          {bucket}
+                          {bucket.name}
                         </h6>
                       </Col>
                       <Col>
@@ -500,23 +473,7 @@ class MainPage extends Component {
                               if (
                                 window.confirm("Are you sure to delete bucket?")
                               ) {
-                                var arr = this.state.buckets_array;
-                                arr = arr.filter(function (ele) {
-                                  return ele !== bucket;
-                                });
-                                var tasks = this.state.tasks;
-                                for (var i in tasks) {
-                                  if (tasks[i].bucket === bucket) {
-                                    delete tasks[i];
-                                  }
-                                }
-                                this.setState(
-                                  {
-                                    buckets_array: arr,
-                                    tasks: tasks,
-                                  },
-                                  this.smoothScroll
-                                );
+                                this.deleteBucket(bucket)
                               }
                             }}
                           ></i>
@@ -533,19 +490,35 @@ class MainPage extends Component {
                       </Col>
                     </Row>
                   </div>
-                  {Object.values(tasks_array).map((task, idx) =>
-                    task.bucket === bucket ? (
+                  {Object.values(this.state.tasks).sort((a, b) => { return a.rank > b.rank }).map((task, idx) =>
+                    task.bucket._id === bucket._id ? (
                       <Card
                         key={idx}
                         style={{
                           maxWidth: "100%"
                         }}
-                        id={idx + 'card'}
+                        id={task._id}
                         className={'mt-2 task-card'}
-                        draggable="true"
-                        onDragStart={(e) => this.dragStart(e, task)}
-                        onDragEnd={(e) => this.dragEnd(e)}
-                        onDrop={(e) => this.dropVertical(e, task)}
+                        draggable={true}
+                        onDragStart={(e) => {
+                          e.stopPropagation()
+                          this.setState({ draggedTask: task, isTaskDragged: true })
+                        }}
+                        onDragEnter={(e) => {
+                          console.log("Task entered")
+                          if (this.state.draggedTask !== task) {
+                            console.log(task)
+                            this.setState({ targetTask: task, isTaskEntered: true })
+                          }
+                          // Must be set to true even if task is same 
+                          this.setState({ isTaskEntered: true })
+
+                        }}
+                        onDragEnd={(e) => {
+                          console.log("Task drag Ended")
+
+
+                        }}
                       >
                         <Card.Body
                           className='task-card-body'
@@ -572,23 +545,13 @@ class MainPage extends Component {
                       </Card>
                     ) : null
                   )}
-                  <Card
+                  {/* <Card
                     className="mt-2 task-card"
-                    style={{
-                      display:
-                        this.state.draggedCard &&
-                          this.state.dragOverBucket === bucket &&
-                          this.state.draggedCard.bucket !== bucket
-                          ? "block"
-                          : "none",
-                      opacity: 0.7,
-                      backgroundColor: "#f7fff2",
-                    }}
                   >
                     <Card.Body>
                       <Card.Text className="float-left mb-0 mt-1"></Card.Text>
                     </Card.Body>
-                  </Card>
+                  </Card> */}
 
                   <Alert
                     className="add-task"
@@ -608,7 +571,6 @@ class MainPage extends Component {
                 </div>
               </Col>
             ))}
-            {this.state.hasBeenFetched ? (
               <Col id="i-add-bucket">
                 <div
                   className="add-bucket"
@@ -617,17 +579,20 @@ class MainPage extends Component {
                   + Add Bucket
                 </div>
               </Col>
-            ) : (
-                <div></div>
-              )}
+           
           </Row>
         </Container>
 
         {/* ---------------------Pop Up Modal for Adding NEW Bucket------------------- */}
         <AddBucket
           visibility={this.state.showBucketModal}
+          toggleVisibility={() => { this.setState({ showBucketModal: !this.state.showBucketModal }) }}
           buckets={this.state.buckets_array}
+          ideaId={this.state.ideaId}
           saveFunction={this.saveBucket}
+          refetch={this.fetchAllData}
+          token={token}
+          rank={this.state.newBucketRank}
           hideModal={() => {
             this.setState({ showBucketModal: false });
           }}
@@ -637,21 +602,8 @@ class MainPage extends Component {
         <EditBucket
           visibility={this.state.showEditBucketModal}
           bucket={this.state.bucket}
-          saveFunction={(newName) => {
-            var buckets = this.state.buckets_array;
-            var tasks = this.state.tasks;
-            var index = buckets.indexOf(this.state.bucket);
-            buckets[index] = newName;
-            for (var i in tasks) {
-              if (tasks[i].bucket === this.state.bucket)
-                tasks[i].bucket = newName;
-            }
-            this.setState({
-              tasks: tasks,
-              buckets_array: buckets,
-              bucket: "",
-              showEditBucketModal: false,
-            });
+          saveFunction={(bucket) => {
+            this.callEditBucket(bucket)
           }}
           hideModal={() => {
             this.setState({ showEditBucketModal: false });
@@ -674,6 +626,7 @@ class MainPage extends Component {
           visibility={this.state.showAddModal}
           bucket={this.state.bucket}
           buckets={this.state.buckets_array}
+          ideaId={this.state.ideaId}
           // callingBucket={this.state.bucketCallingAddTask}
           saveFunction={this.addTask}
           hideModal={() => this.setState({ showAddModal: false })}
@@ -688,6 +641,8 @@ class MainPage extends Component {
           saveFunction={this.saveData}
           hideModal={() => this.setState({ showSettings: false })}
         />
+
+        <Footer />
       </div >
     );
   }

@@ -41,15 +41,16 @@ function AddTask(props) {
       description: "",
       assignees: [],
       rank: "",
-      bucket: props.bucket,
+      bucket: props.bucket._id,
       start_date: new Date(),
       due_date: new Date(),
       progress: "",
       label_color: "#3797a4",
       priority: "",
-      attachments: []
+      attachments: [],
+      projectId: props.ideaId
     });
-  }, [props.visibility, props.bucket]);
+  }, [props]);
   const extension = {
     'png': image,
     'jpg': image,
@@ -130,7 +131,6 @@ function AddTask(props) {
       centered
       show={props.visibility}
       onHide={() => props.hideModal()}
-      className="task-desc"
     >
       <Modal.Header closeButton>
         <Modal.Title>Enter Task</Modal.Title>
@@ -209,7 +209,7 @@ function AddTask(props) {
               <Col className="text-center">Bucket:</Col>
               <Col>
                 <DropdownButton
-                  title={props.bucket}
+                  title={props.bucket.name}
                   size="sm"
                   onSelect={(eventKey) => {
                     setTask({ ...task, bucket: eventKey });
@@ -217,8 +217,8 @@ function AddTask(props) {
                 >
                   {props.buckets
                     ? props.buckets.map((bucket, idx) => (
-                      <Dropdown.Item eventKey={bucket} key={idx}>
-                        {bucket}
+                      <Dropdown.Item eventKey={bucket._id} key={idx}>
+                        {bucket.name}
                       </Dropdown.Item>
                     ))
                     : null}
@@ -291,18 +291,16 @@ function AddTask(props) {
           />
         </InputGroup>
         <hr />
-        {/* TODO: Un-comment after backend attachment route is fixed
-        <Row>
+        {/* <Row>
           <Col md={{ span: 3, offset: 1 }}>Attachments:</Col>
           <Col md={{ span: 4 }}>
             <input type="file" id="attachments" className="custom-file-input" multiple onChange={showNewImage} />
             <label className="custom-file-label">Add Attachments</label>
           </Col>
         </Row>
-        Attachments will be populated here once user adds
         <Container id="attachments-container">
-        </Container> */}
-        <hr />
+        </Container>
+        <hr /> */}
         <Row className="mt-3">
           <Col className="text-center">Label Colour:</Col>
           <Col>

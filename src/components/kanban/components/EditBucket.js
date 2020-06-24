@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
 import { Modal, Form, Button } from "react-bootstrap";
-import { TextField } from '@material-ui/core'
 
 
 function EditBucket(props) {
-  const [bucketName, setBucketName] = React.useState("");
+  const [bucket, setBucket] = React.useState({});
 
   useEffect(() => {
-    setBucketName(props.bucket);
+    setBucket(props.bucket);
   }, [props.bucket]);
 
   return (
@@ -22,26 +21,26 @@ function EditBucket(props) {
           <Modal.Title>Edit Bucket</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <TextField
-              onChange={(e) => setBucketName(e.target.value)}
-              value={bucketName}
-              variant="outlined"
-              label="Bucket Name"
-              fullWidth
-            ></TextField>
-          </div>
+          <Form>
+            <Form.Group>
+              <Form.Label>Name :</Form.Label>
+              <Form.Control
+                type="text"
+                onChange={(e) => setBucket({ ...bucket, name: e.target.value })}
+                value={bucket.name}
+              />
+            </Form.Group>
+          </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button
             block
             variant="primary"
             onClick={() => {
-              props.saveFunction(bucketName);
-              setBucketName("");
+              props.saveFunction(bucket);
             }}
-            disabled={bucketName === "" ? true : false}
-            style={{ cursor: bucketName === "" ? "not-allowed" : "pointer" }}
+            disabled={bucket.name === "" ? true : false}
+            style={{ cursor: bucket.name === "" ? "not-allowed" : "pointer" }}
           >
             Save Bucket
           </Button>
