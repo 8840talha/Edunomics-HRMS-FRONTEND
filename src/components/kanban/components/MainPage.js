@@ -18,6 +18,7 @@ class MainPage extends Component {
     super(props);
     this.state = {
       //data
+      projectName: '',
       buckets_array: [],
       tasks: {},
       bucketName: "",
@@ -168,7 +169,8 @@ class MainPage extends Component {
     }
     console.log(this.props);
     if (this.props.location.state) {
-      await this.setState({ ideaId: this.props.location.state.project._id })
+      await this.setState({ ideaId: this.props.location.state.project._id });
+      await this.setState({projectName: this.props.location.state.project.name });
     }
     this.setState({ remountVar: false })
     this.setState({
@@ -344,7 +346,9 @@ class MainPage extends Component {
         <Container className="board" fluid>
           {/* ---------------------Add Task Button------------------- */}
           <Row className="mt-2 mb-2">
-            <Col></Col>
+            <Col>
+    <h1>Project Name: {this.state.projectName}</h1>
+            </Col>
             <Col>
               <Button
                 variant="outline-dark"
