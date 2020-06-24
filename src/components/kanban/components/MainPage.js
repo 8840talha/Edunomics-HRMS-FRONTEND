@@ -11,6 +11,21 @@ import EditTask from "./EditTask";
 import AddTask from "./AddTask";
 import Settings from "./Settings";
 import { backendUrl as url } from '../backendUrl/url'
+ const reloadPage = () => {
+  // window.location.reload(false)
+  // The last "domLoading" Time //
+  var currentDocumentTimestamp =
+    new Date(performance.timing.domLoading).getTime();
+  // Current Time //
+  var now = Date.now();
+  // Ten Seconds //
+  var tenSec = 10 * 1000;
+  // Plus Ten Seconds //
+  var plusTenSec = currentDocumentTimestamp + tenSec;
+  if (now > plusTenSec) {
+    window.location.reload();
+  } else { }
+ }
 
 const token = localStorage.getItem('token')
 class MainPage extends Component {
@@ -160,12 +175,8 @@ class MainPage extends Component {
     })
   }
   async componentDidMount() {
-    window.onload = function () {
-      if (!window.location.hash) {
-        window.location = window.location + '#loaded';
-        window.location.reload();
-      }
-    }
+
+
     console.log(this.props);
     if (this.props.location.state) {
       await this.setState({ ideaId: this.props.location.state.project._id })
@@ -353,9 +364,16 @@ class MainPage extends Component {
               >
                 Settings<i className="fas fa-cog  settings-icon ml-2"></i>
               </Button>
-              <Link style={{ height: '38px',float:'right' }} className="btn btn-outline-dark" to="/track">
-                Back to Home
+              <Link style={{ height: '38px', float: 'right' }} className="btn btn-outline-dark" to="/projectsEmp">
+                Back to Projects
       </Link>
+              <Button
+                variant="outline-dark"
+                className="float-right mr-2"
+                onClick={reloadPage}
+              >
+                LoadBucket<i className="fas fa-cog  settings-icon ml-2"></i>
+              </Button>
             </Col>
           </Row>
 
@@ -464,7 +482,7 @@ class MainPage extends Component {
                 <div className="paper-list" id={idx + 'bc'}>
                   <div
                     className="bucket-title"
-                    style={{ padding: "5px" }}
+                    style={{ padding: "5px"}}
                   >
                     <Row>
                       <Col>
