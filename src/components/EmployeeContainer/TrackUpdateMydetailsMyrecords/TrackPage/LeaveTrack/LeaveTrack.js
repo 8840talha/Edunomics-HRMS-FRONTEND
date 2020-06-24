@@ -251,9 +251,12 @@ class LeaveTrack extends Component {
                             {/* Requested */}
                             {this.state.requested ? <div>
                                 <div className={this.state.showSide ? "paraActive" : "para"}>
+                                 
                                     <textarea style={{ resize: 'none', height: '150px' }} rows="5" cols="50" value={this.state.description} className='Linpp' onChange={this.handleChange} name="description" placeholder="Purpose for leave" type="Text" />
-                                    <input value={this.state.dateFrom} className='Linpp' onChange={this.handleChange} name="dateFrom" placeholder="Date From" type="text" />
-                                    <input value={this.state.dateTo} className='Linpp' onChange={this.handleChange} name="dateTo" placeholder="Date To" type="text" />
+                                    {/* <label className='LABELS'>Date From</label> */}
+                                    <input  value={this.state.dateFrom} className='Linpp' onChange={this.handleChange} name="dateFrom" placeholder="Date From" type="date" />
+                                    {/* <label  className='LABELS'>Date To</label> */}
+                                    <input value={this.state.dateTo} className='Linpp' onChange={this.handleChange} name="dateTo" placeholder="Date To" type="date" />
                                 </div>
                                 {this.state.requested ? <button className={this.state.showSide ? 'reqActive' : 'req'} onClick={this.sendreqHandler} >Send Request</button> : null}
                             </div> : null}

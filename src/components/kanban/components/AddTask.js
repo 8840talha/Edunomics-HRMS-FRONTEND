@@ -227,9 +227,9 @@ function AddTask(props) {
             </Row>
             <hr />
             <Row className="mt-3">
-              <Col className="text-center">
-                <span className="ml-4">Start Date:</span>
-              </Col>
+
+              <span className="ml-3">Start Date:</span>
+
               <Col>
                 <DatePicker
                   selected={task.start_date}
@@ -263,9 +263,9 @@ function AddTask(props) {
             </Row>
             <hr />
             <Row className="mt-3">
-              <Col className="text-center">
-                <span className="ml-5">Due Date:</span>
-              </Col>
+
+              <span className="ml-3">Due Date:</span>
+
               <Col>
                 <DatePicker
                   selected={task.due_date}

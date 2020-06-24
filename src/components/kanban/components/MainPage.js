@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, Container, Row, Col, Card, Alert } from "react-bootstrap";
 import axios from "axios";
 import "./style.css";
+import { Link } from 'react-router-dom'
 import Header from "./Header";
 import Footer from "./Footer";
 import AddBucket from "./AddBucket";
@@ -10,6 +11,7 @@ import EditTask from "./EditTask";
 import AddTask from "./AddTask";
 import Settings from "./Settings";
 import { backendUrl as url } from '../backendUrl/url'
+
 const token = localStorage.getItem('token')
 class MainPage extends Component {
   constructor(props) {
@@ -144,7 +146,7 @@ class MainPage extends Component {
   }
   callEditBucket(bucket) {
     console.log(bucket);
-    
+
     axios.put(`${url}bucket/edit`, { bucket: bucket }, {
       headers: {
         "Content-Type": "application/json", "Authorization": `Bearer ${token}`
@@ -158,6 +160,12 @@ class MainPage extends Component {
     })
   }
   async componentDidMount() {
+    window.onload = function () {
+      if (!window.location.hash) {
+        window.location = window.location + '#loaded';
+        window.location.reload();
+      }
+    }
     console.log(this.props);
     if (this.props.location.state) {
       await this.setState({ ideaId: this.props.location.state.project._id })
@@ -194,7 +202,7 @@ class MainPage extends Component {
   addTask = async (task, fileForm) => {
     task.rank = await this.orderTask(task)
     console.log(task);
-    
+
     //Call Add task API
     axios.post(`${url}tasks/add`, { task: task }, {
       headers: {
@@ -331,7 +339,7 @@ class MainPage extends Component {
     }
     return (
       <div className="App">
-        <Header />
+        {/* <Header /> */}
         {/* ----------------------------------------------Container-------------------------------------------- */}
         <Container className="board" fluid>
           {/* ---------------------Add Task Button------------------- */}
@@ -340,11 +348,14 @@ class MainPage extends Component {
             <Col>
               <Button
                 variant="outline-dark"
-                className="float-right mr-4"
+                className="float-right ml-2 mr-4"
                 onClick={() => this.setState({ showSettings: true })}
               >
                 Settings<i className="fas fa-cog  settings-icon ml-2"></i>
               </Button>
+              <Link style={{ height: '38px',float:'right' }} className="btn btn-outline-dark" to="/track">
+                Back to Home
+      </Link>
             </Col>
           </Row>
 
@@ -571,15 +582,15 @@ class MainPage extends Component {
                 </div>
               </Col>
             ))}
-              <Col id="i-add-bucket">
-                <div
-                  className="add-bucket"
-                  onClick={() => this.setState({ showBucketModal: true })}
-                >
-                  + Add Bucket
+            <Col id="i-add-bucket">
+              <div
+                className="add-bucket"
+                onClick={() => this.setState({ showBucketModal: true })}
+              >
+                + Add Bucket
                 </div>
-              </Col>
-           
+            </Col>
+
           </Row>
         </Container>
 
