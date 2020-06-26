@@ -9,7 +9,7 @@ const User = (props) => {
   console.log(decoded.role);
   if (decoded.role !== "admin") {
     alert(' Unauthorized Acess, Only Admins are Authorized for these Routes')
-    props.history.push('/track')
+    props.history.push('/')
   }
   const [user, setUser] = useState({
     name: "",

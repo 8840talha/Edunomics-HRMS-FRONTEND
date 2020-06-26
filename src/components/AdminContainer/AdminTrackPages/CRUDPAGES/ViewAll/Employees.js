@@ -11,7 +11,7 @@ const Employees = (props) => {
   console.log(decoded.role);
   if (decoded.role !== "admin") {
     alert(' Unauthorized Acess, Only Admins are Authorized for these Routes')
-    props.history.push('/track')
+    props.history.push('/')
   }
   //  else {
   //     props.history.push('/adminTrack');

@@ -46,14 +46,14 @@ class App extends Component {
         <div>
           <Header />
           <Switch>
-            <Route exact path="/" component={EmpAdmin} />
+            {/* <Route exact path="/" component={EmpAdmin} /> */}
             <Route exact path="/adminTrack" component={AdminTrack} />
             <Route exact path='/adminLogin' component={AdminLoginForm} />
-            <Route exact path='/empLogin' component={LoginForm} />
+            <Route exact path='/' component={LoginForm} />
             <Route exact path='/forget' component={ForgetPass} />
-            <Route exact path='/track' component={Track} />
-            
-            <ProtectedRoute exact path="/kanban" component={Kanban} /> 
+            <ProtectedRoute exact path='/track' component={Track} />
+
+            <ProtectedRoute exact path="/kanban" component={Kanban} />
             <ProtectedRoute exact path="/progress" component={Progress} />{/* New Route for employee progress*/}
             <ProtectedRoute exact path="/viewTask" component={ViewTask} />{/* New Route for admin to view tasks*/}
             <ProtectedRoute exact path="/viewProject/:id" component={Project} />

@@ -5,26 +5,33 @@ import jwt_decode from 'jwt-decode';
 import AdminSideBar from '../AdminSideBar/AdminSideBar'
 
 const AdminTrack = (props) => {
+
     //protected Route Logic
-
-
-
     const token = localStorage.getItem('token');
     console.log(token)
-    var login = true;
+    // var login = true;
     if (token == null) {
-        login = false;
-    }
-    const [loggedIn, setLogin] = useState(login)
-
-    if (loggedIn === false) {
         return <Redirect to="/adminLogin" />
     }
-    const handleLogout = () => {
-        localStorage.removeItem('token');
-        setLogin(!login)
+    // const [loggedIn, setLogin] = useState(login)
 
+    // if (loggedIn === false) {
+    //     return <Redirect to="/adminLogin" />
+    // }
+    // const handleLogout = () => {
+    //     localStorage.removeItem('token');
+    //     setLogin(!login)
+    // }
+
+    // giving role based access by jwt token
+    var decoded = jwt_decode(localStorage.getItem('token'));
+    console.log(decoded.role);
+    if (decoded.role !== "admin") {
+        alert(' Unauthorized Acess, Only Admins are Authorized for these Routes')
+        props.history.push('/')
     }
+    //
+
     const [show, setshow] = useState(false)
     return (
         <div style={{ display: 'flex' }}>
