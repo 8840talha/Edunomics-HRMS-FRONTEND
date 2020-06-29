@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import './project.css';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { NavLink, } from 'react-router-dom'
 import { InputBase } from '@material-ui/core';
 import axios from 'axios';
+import jwt_decode from 'jwt-decode'
 import SideBar from '../AdminSideBar/AdminSideBar';
-import {Button} from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 class Project extends Component {
 
     state = {
@@ -21,6 +22,7 @@ class Project extends Component {
         project: []
     }
 
+
     handleChange = (event) => {
         event.preventDefault();
 
@@ -33,6 +35,12 @@ class Project extends Component {
 
     componentDidMount() {
         // get leave count
+        var decoded = jwt_decode(localStorage.getItem('token'));
+        console.log(decoded.role);
+        if (decoded.role !== "admin") {
+            alert(' Unauthorized Acess, Only Admins are Authorized for these Routes')
+            this.props.history.push('/projectsEmp')
+        }
         const tokenKey = localStorage.getItem('token');
         fetch('https://hrms-project.herokuapp.com/api/user/all', { method: 'get', headers: { "Content-Type": "application/json", "Authorization": `Bearer ` + tokenKey } })
             .then(res => {
@@ -44,7 +52,7 @@ class Project extends Component {
             })
             .then(response => {
                 console.log(response);
-                this.setState({users: response.user})
+                this.setState({ users: response.user })
 
                 // this.setState({ NoOFLeaves: response.user.leaveCount });
 
@@ -67,7 +75,7 @@ class Project extends Component {
 
         var data = JSON.stringify({
             "name": this.state.description,
-            "member":this.state.user
+            "member": this.state.user
         });
         const tokenKey = localStorage.getItem('token');
         fetch('https://hrms-project.herokuapp.com/api/project', { method: 'post', body: data, headers: { "Content-Type": "application/json", "Authorization": `Bearer ` + tokenKey } })
@@ -80,30 +88,30 @@ class Project extends Component {
             })
             .then(response => {
                 console.log(response._id);
-                
+
                 alert('request successfully sent');
                 this.setState({
                     description: ''
                 })
-                this.props.history.push('/kanban', {project: response});
+                this.props.history.push('/kanban', { project: response });
             })
             .catch(err => {
-                if(err == 401) {
+                if (err == 401) {
                     alert('unauthorised access');
                 } else {
                     alert('Some error occurred')
                 }
                 console.log(err);
-                
-                
+
+
             })
     }
 
-    
+
 
 
     onApprovedClick = () => {
-        
+
         // get approved call
         this.setState({
             requested: false,
@@ -123,19 +131,19 @@ class Project extends Component {
             })
             .then(response => {
                 console.log(response.user);
-                this.setState({project:response.user})
-                
-                
+                this.setState({ project: response.user })
+
+
             })
             .catch(err => {
-                
+
                 console.log(err);
-                
-                
+
+
             })
     }
-    
-    
+
+
     renderApprovedData() {
         return this.state.project.map((project, index) => {
             return (
@@ -144,46 +152,46 @@ class Project extends Component {
                     <td>{project.name}</td>
                     <td>{project.employeeId}</td>
                     <td><Link className="btn btn-primary btn-block mr-2" to={`/viewProject/${project.employeeId}`}>
-                                        View Project
+                        View Project
                 </Link></td>
-                    
+
                 </tr>
             )
         })
     }
 
-    
+
 
     renderUserData() {
         console.log("helllll0");
-        
-        return this.state.users.map((user,index) =>{
+
+        return this.state.users.map((user, index) => {
             <tr key={index}>
                 <th scope="row">{index + 1}</th>
                 <td>{user.name}</td>
                 <td>{user.employeeId}</td>
 
-                </tr>
+            </tr>
         })
     }
 
     userAdd(employeeId) {
         let list = [...this.state.user];
-        if(list.indexOf(employeeId) === -1) {
+        if (list.indexOf(employeeId) === -1) {
             list = [...this.state.user, employeeId];
         }
 
         console.log(list);
-        this.setState({user: list});
-        
-        
+        this.setState({ user: list });
+
+
     }
     userDelete(employeeId) {
         const list = [...this.state.user];
-        for(var i =0; i< list.length;i++) {
-            if(list[i] === employeeId) {
-                list.splice(i,1);
-                
+        for (var i = 0; i < list.length; i++) {
+            if (list[i] === employeeId) {
+                list.splice(i, 1);
+
             }
         }
         console.log(list);
@@ -214,10 +222,10 @@ class Project extends Component {
                                     rejected: false
                                 })}
                             >Add Project</button>
-                            
+
                             <button className={this.state.approved ? 'green' : null}
                                 onClick={this.onApprovedClick}>View Projects</button>
-                            
+
                         </div>
                         <div>
                             {/* Requested */}
@@ -227,41 +235,41 @@ class Project extends Component {
                                     <table className={this.state.showSide ? "table table-striped table-bordered tWidthActive" : "table table-striped table-bordered tWidth"}>
                                         <thead>
                                             <tr>
-                                            <th scope="col">#</th>
+                                                <th scope="col">#</th>
                                                 <th>Employee ID</th>
                                                 <th>Name</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        
-            {this.state.users.map((user, index) => (
-              <tr key={index}>
-                <th scope="row">{index + 1}</th>
-                <td>{user.name}</td>
-                <td>{user.employeeId}</td>
-                <td>
-                  <Button className="btn btn-primary mr-2"
-                  onClick={()=>{this.userAdd(user.employeeId)}}
-                  >
-                    Add user
+
+                                            {this.state.users.map((user, index) => (
+                                                <tr key={index}>
+                                                    <th scope="row">{index + 1}</th>
+                                                    <td>{user.name}</td>
+                                                    <td>{user.employeeId}</td>
+                                                    <td>
+                                                        <Button className="btn btn-primary mr-2"
+                                                            onClick={() => { this.userAdd(user.employeeId) }}
+                                                        >
+                                                            Add user
                 </Button>
-                  
-                  <Button className="btn btn-danger"
-                    onClick={()=>{this.userDelete(user.employeeId)}}
-                  >
-                    Delete user
+
+                                                        <Button className="btn btn-danger"
+                                                            onClick={() => { this.userDelete(user.employeeId) }}
+                                                        >
+                                                            Delete user
                 </Button>
-                </td>
-               
-                
-              </tr>
-            ))}
-          </tbody>
-                                       
+                                                    </td>
+
+
+                                                </tr>
+                                            ))}
+                                        </tbody>
+
                                     </table>
                                 </div>
-                                
+
                                 {this.state.requested ? <button className={this.state.showSide ? 'reqActive' : 'req'} onClick={this.sendreqHandler} >Send Request</button> : null}
                             </div> : null}
 
@@ -269,9 +277,9 @@ class Project extends Component {
                             {this.state.approved ? <div>
                                 <div>
                                     <table className={this.state.showSide ? "table table-striped table-bordered tWidthActive" : "table table-striped table-bordered tWidth"}>
-                                    <thead>
+                                        <thead>
                                             <tr>
-                                            <th scope="col">#</th>
+                                                <th scope="col">#</th>
                                                 <th>Employee Name</th>
                                                 <th>Employee ID</th>
                                                 <th>Action</th>
@@ -287,7 +295,7 @@ class Project extends Component {
                             </div> : null
 
                             }
-                            
+
                         </div>
                     </div>
                 </div>
