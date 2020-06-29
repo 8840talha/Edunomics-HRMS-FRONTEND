@@ -176,7 +176,7 @@ const LoginForm = (props) => {
         //         <img alt="LoginLogo" src={require('../../../assets/edunomics.png')} />
         //     </div>
         // </Paper>
-        <div>
+        <div style={{overflowX:'hidden'}}>
             <img class="wave" src={require('../../../assets/img/wave.png')} />
             <div class="Container">
                 <div class="img">

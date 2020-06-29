@@ -37,7 +37,16 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
   }} />
 }
 // 
+// 
+const ProtectedRouteAdmin = ({ component: Component, ...rest }) => {
 
+  return <Route {...rest} render={(props) => {
+    return localStorage.getItem('token') ? <Component {...props} /> : <Redirect to="/adminLogin" />
+
+  }} />
+}
+
+// 
 
 class App extends Component {
   render() {
@@ -54,22 +63,22 @@ class App extends Component {
             <ProtectedRoute exact path='/track' component={Track} />
 
             <ProtectedRoute exact path="/kanban" component={Kanban} />
-            <ProtectedRoute exact path="/progress" component={Progress} />{/* New Route for employee progress*/}
-            <ProtectedRoute exact path="/viewTask" component={ViewTask} />{/* New Route for admin to view tasks*/}
+            <ProtectedRouteAdmin exact path="/progress" component={Progress} />{/* New Route for employee progress*/}
+            <ProtectedRouteAdmin exact path="/viewTask" component={ViewTask} />{/* New Route for admin to view tasks*/}
             <ProtectedRoute exact path="/viewProject/:id" component={Project} />
-            <ProtectedRoute exact path="/viewAttendance" component={Attendance} />{/* New Route for admin to view Attendance*/}
-            <ProtectedRoute exact path="/viewLeaveReq" component={LeaveView} />
-            <ProtectedRoute exact path="/employees" component={Employees} />
+            <ProtectedRouteAdmin exact path="/viewAttendance" component={Attendance} />{/* New Route for admin to view Attendance*/}
+            <ProtectedRouteAdmin exact path="/viewLeaveReq" component={LeaveView} />
+            <ProtectedRouteAdmin exact path="/employees" component={Employees} />
             <ProtectedRoute exact path='/leave' component={LeaveTrack} />
             <ProtectedRoute exact path='/update' component={Update} />
             <ProtectedRoute exact path='/mydetails' component={MyDetails} />
             <ProtectedRoute exact path='/myrecords' component={MyRecords} />
-            <ProtectedRoute exact path="/users/add" component={AddUser} />
-            <ProtectedRoute exact path="/users/edit/:id" component={EditUser} />
-            <ProtectedRoute exact path="/users/:id" component={User} />
-            <ProtectedRoute exact path="/editReq" component={EditReqView} />
+            <ProtectedRouteAdmin exact path="/users/add" component={AddUser} />
+            <ProtectedRouteAdmin exact path="/users/edit/:id" component={EditUser} />
+            <ProtectedRouteAdmin exact path="/users/:id" component={User} />
+            <ProtectedRouteAdmin exact path="/editReq" component={EditReqView} />
             <ProtectedRoute exact path="/detailChange" component={ChangeDetails} />
-            <ProtectedRoute exact path="/projects/add" component={Projects} />
+            <ProtectedRouteAdmin exact path="/projects/add" component={Projects} />
             <ProtectedRoute exact path="/projectsEmp" component={EmpProjects} />
 
 

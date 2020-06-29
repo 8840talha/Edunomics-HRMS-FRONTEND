@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Button, Container, Row, Col, Card, Alert } from "react-bootstrap";
 import axios from "axios";
 import "./style.css";
-import { Link } from 'react-router-dom'
+import { Link, useParams, withRouter } from 'react-router-dom'
 import Header from "./Header";
 import Footer from "./Footer";
 import AddBucket from "./AddBucket";
@@ -11,7 +11,7 @@ import EditTask from "./EditTask";
 import AddTask from "./AddTask";
 import Settings from "./Settings";
 import { backendUrl as url } from '../backendUrl/url'
- const reloadPage = () => {
+const reloadPage = () => {
   // window.location.reload(false)
   // The last "domLoading" Time //
   var currentDocumentTimestamp =
@@ -25,7 +25,10 @@ import { backendUrl as url } from '../backendUrl/url'
   if (now > plusTenSec) {
     window.location.reload();
   } else { }
- }
+}
+const EmpId = () => {
+  const { E_id } = useParams();
+}
 
 const token = localStorage.getItem('token')
 class MainPage extends Component {
@@ -33,6 +36,7 @@ class MainPage extends Component {
     super(props);
     this.state = {
       //data
+
       projectName: '',
       buckets_array: [],
       tasks: {},
@@ -72,6 +76,7 @@ class MainPage extends Component {
     };
     this.saveData = this.saveData.bind(this)
   }
+
   smoothScroll() {
     window.scrollTo({
       top: document.body.scrollHeight,
@@ -177,11 +182,13 @@ class MainPage extends Component {
   }
   async componentDidMount() {
 
-
-    console.log(this.props);
+    // await this.setState({ E_id: id })
+    console.log(this.props.match.params)
+    // const id = this.props.match.params.id;
+    // console.log(this.props);
     if (this.props.location.state) {
       await this.setState({ ideaId: this.props.location.state.project._id });
-      await this.setState({projectName: this.props.location.state.project.name });
+      await this.setState({ projectName: this.props.location.state.project.name });
     }
     this.setState({ remountVar: false })
     this.setState({
@@ -358,26 +365,30 @@ class MainPage extends Component {
           {/* ---------------------Add Task Button------------------- */}
           <Row className="mt-2 mb-2">
             <Col>
-    <h1>Project Name: {this.state.projectName}</h1>
+              <h1>Project Name: {this.state.projectName}</h1>
             </Col>
-            <Col>
+            <Col style={{ width: '60%' }}>
               <Button
                 variant="outline-dark"
-                className="float-right ml-2 mr-4"
+                className="float-right ml-2 "
                 onClick={() => this.setState({ showSettings: true })}
               >
                 Settings<i className="fas fa-cog  settings-icon ml-2"></i>
               </Button>
-              <Link style={{ height: '38px', float: 'right' }} className="btn btn-outline-dark" to="/projectsEmp">
-                Back to Projects
-      </Link>
               <Button
                 variant="outline-dark"
-                className="float-right mr-2"
+                className="float-right ml-2 "
                 onClick={reloadPage}
               >
                 LoadBucket<i className="fas fa-cog  settings-icon ml-2"></i>
               </Button>
+              <Link style={{ height: '38px', }} className="btn btn-outline-dark" to="/projectsEmp">
+                Back to Employee
+      </Link>
+              <Link style={{ height: '38px', }} className="btn btn-outline-dark ml-2" to="/projects/add">
+                Back to AdminProjects
+      </Link>
+
             </Col>
           </Row>
 
@@ -486,7 +497,7 @@ class MainPage extends Component {
                 <div className="paper-list" id={idx + 'bc'}>
                   <div
                     className="bucket-title"
-                    style={{ padding: "5px"}}
+                    style={{ padding: "5px" }}
                   >
                     <Row>
                       <Col>
@@ -681,4 +692,4 @@ class MainPage extends Component {
   }
 }
 
-export default MainPage;
+export default withRouter(MainPage);
