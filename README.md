@@ -26,7 +26,7 @@
 # 7  Employees can view projects Assigned to them
 # 8  Logout
 # 9  Admin  can Add/Delete/Edit/Update/View All emplyees 
-# 10 Admin can Approve there leave or reject there leave 
+# 10 Admin can Approve their leave or reject there leave 
 # 11 Employees Cannot access Admin Routes As Role Based Access is Added
 
 # check it Live At heroku https://hrmgtsys.herokuapp.com/
