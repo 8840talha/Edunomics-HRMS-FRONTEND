@@ -19,14 +19,14 @@
 # Major Functionalities
 # 1  Login for Admin/Employee
 # 2  Register for Employees By admin
-# 3  Employee can reset there Passwords
-# 4  Employee Can mark there attendence
-# 5  Employee can make request for leave and track there leave status
-# 6  Employee can Edit there Profile.
-# 7  Employee can view projects Assigned to them
+# 3  Employees can reset their Passwords
+# 4  Employees Can mark there attendence
+# 5  Employees can make request for leave and track there leave status
+# 6  Employees can Edit there Profile.
+# 7  Employees can view projects Assigned to them
 # 8  Logout
 # 9  Admin  can Add/Delete/Edit/Update/View All emplyees 
-# 10 Admin can Approve there leave or reject there leave 
+# 10 Admin can Approve their leave or reject there leave 
 # 11 Employees Cannot access Admin Routes As Role Based Access is Added
 
 # check it Live At heroku https://hrmgtsys.herokuapp.com/
